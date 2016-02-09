@@ -1,0 +1,7 @@
+*.pyc
+tmp/
+venv/
+.DS_Store
+node_modules
+.sass-cache
+*.log

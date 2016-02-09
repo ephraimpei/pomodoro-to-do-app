@@ -1,0 +1,32 @@
+{
+  "name": "pomodoro-to-do-app",
+  "version": "1.0.0",
+  "description": "WIP - Live Site coming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ephraim Pei",
+  "license": "ISC",
+  "jshintConfig": {
+    "esnext": true
+  },
+  "dependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eventemitter3": "^1.1.1",
+    "flux": "^2.1.1",
+    "jquery": "^2.2.0",
+    "node-sass": "^3.4.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0-rc6",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.13"
+  }
+}
