@@ -27,9 +27,7 @@ Pomodoro To-Do List is a To-Do list application that allows users to create, upd
 * Python technologies
   + MongoEngine
   + BCrypt
-  + Flask-Script
   + Flask-WTForms
-  + Flask-SocketIO
 * DB technologies
   + MongoDB
 
