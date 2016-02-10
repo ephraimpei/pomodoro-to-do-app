@@ -14,6 +14,14 @@ def handle_user_request(username):
     elif request.method == "DELETE":
         return __destroy_user(username)
 
+def __show_user(username):
+    user = User.find_by_username(username)
+
+    if user:
+        return jsonify(user = __user_response_obj(user[0]))
+    else:
+        return jsonify(error="Could not find user."), 400
+
 def __create_user(username):
     form = RegistrationForm(request.form)
 
@@ -24,14 +32,12 @@ def __create_user(username):
         new_user.reset_session_token()
 
         if new_user.save():
-            user_response = __build_user_response_object(new_user)
-
-            return jsonify(user = user_response,
+            return jsonify(user = __user_response_obj(new_user),
                 message = "User creation successful! Welcome {0}!".format(new_user.username))
         else:
             return jsonify(error="Could not create user."), 401
     else:
         return jsonify(errors=form.errors.items()), 400
 
-def __build_user_response_object(user):
+def __user_response_obj(user):
     return { "username": user.username }
