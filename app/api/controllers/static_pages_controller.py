@@ -6,5 +6,6 @@ def page_not_found(error):
     return send_from_directory(app.static_folder, "./views/404.html"), 404
 
 @app.route("/")
+@app.route("/user/new")
 def index():
     return send_from_directory(app.static_folder, "./views/index.html")
