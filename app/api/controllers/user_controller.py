@@ -1,6 +1,7 @@
 from app import app
 from flask import request, session, jsonify
 from app.api.models import User, RegistrationForm
+from app.api.utilities import user_response_obj
 import pdb
 
 @app.route("/user/<username>", methods=["GET", "POST", "PUT", "DELETE"])
@@ -18,7 +19,7 @@ def __show_user(username):
     user = User.find_by_username(username)
 
     if user:
-        return jsonify(user = __user_response_obj(user[0]))
+        return jsonify(user = user_response_obj(user[0]))
     else:
         return jsonify(error="Could not find user."), 400
 
@@ -26,18 +27,13 @@ def __create_user(username):
     form = RegistrationForm(request.form)
 
     if form.validate():
-        pdb.set_trace()
         new_user = User(username = form.username.data)
         new_user.generate_password_digest(form.password.data)
-        new_user.reset_session_token()
 
         if new_user.save():
-            return jsonify(user = __user_response_obj(new_user),
+            return jsonify(user = user_response_obj(new_user),
                 message = "User creation successful! Welcome {0}!".format(new_user.username))
         else:
             return jsonify(error="Could not create user."), 401
     else:
         return jsonify(errors=form.errors.items()), 400
-
-def __user_response_obj(user):
-    return { "username": user.username }
