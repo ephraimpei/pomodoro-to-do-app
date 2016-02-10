@@ -20,11 +20,7 @@ class User(db.Document):
 
     @classmethod
     def find_by_username(cls, username):
-        user = User.objects.get(username = username)
-        if user:
-            return user
-        else:
-            return None
+        return User.objects(username = username)
 
     @classmethod
     def destroy(cls, user):

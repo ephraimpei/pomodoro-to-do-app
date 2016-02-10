@@ -22,7 +22,6 @@ class SignUpPage extends React.Component {
   }
 
   render () {
-    debugger;
     return (
       <div className="sign-up-page">
         <h1>Welcome to the Pomodoro To Do App!</h1>

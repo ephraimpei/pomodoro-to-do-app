@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+import apiUserUtil from '../../apiutil/api_user_util.js';
 
 class SignUpForm extends React.Component {
   constructor(props, context) {
@@ -13,7 +15,17 @@ class SignUpForm extends React.Component {
   }
 
   handleSignUpSubmission (e) {
+    if (e) { e.preventDefault(); }
 
+    $(".submit").addClass("disabled").prop("disabled", true);
+
+    const formData = new FormData();
+
+    formData.append("username", this.state.username);
+    formData.append("password", this.state.password);
+    formData.append("confirm", this.state.passwordConf);
+
+    apiUserUtil.create(formData, this.success, this.failure);
   }
 
   handleKeyPress (e) {

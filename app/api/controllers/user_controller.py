@@ -4,12 +4,10 @@ from app.api.models import User, RegistrationForm
 from app.api.utilities import user_response_obj
 import pdb
 
-@app.route("/user/<username>", methods=["GET", "POST", "PUT", "DELETE"])
+@app.route("/user/<username>", methods=["GET", "PUT", "DELETE"])
 def handle_user_request(username):
     if request.method == "GET":
         return __show_user(username)
-    elif request.method == "POST":
-        return __create_user(username)
     elif request.method == "PUT":
         return __update_user(username)
     elif request.method == "DELETE":
@@ -23,7 +21,9 @@ def __show_user(username):
     else:
         return jsonify(error="Could not find user."), 400
 
-def __create_user(username):
+@app.route("/user", methods=["POST"])
+def __create_user():
+    pdb.set_trace()
     form = RegistrationForm(request.form)
 
     if form.validate():
