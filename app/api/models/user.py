@@ -12,8 +12,11 @@ class User(db.Document):
 
     @classmethod
     def validate_user_credentials(cls, user, password):
-        return bcrypt.hashpw(password.encode('utf-8'), \
-            user.password_digest.encode('utf-8')) == user.password_digest
+        if user:
+            return bcrypt.hashpw(password.encode('utf-8'), \
+                user.password_digest.encode('utf-8')) == user.password_digest
+        else:
+            return False
 
     @classmethod
     def find_by_username(cls, username):
