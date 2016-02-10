@@ -4,7 +4,7 @@ WIP - Live Site coming
 
 ## Summary
 
-Pomodoro To-Do List is a To-Do list application that allows users to create, update, read, and delete personal to-do items.  In addition, users can allocate a number of Pomodoros to each to-do item.  Users can start to-do items and will get notified once a Pomodoro is over.
+Pomodoro To-Do List is a single page application that allows users to create, update, read, and delete personal to-do items.  In addition, users can allocate a number of Pomodoros to each to-do item.  Users can start to-do items and will get notified once a Pomodoro is over.
 
 ### Languages
 
