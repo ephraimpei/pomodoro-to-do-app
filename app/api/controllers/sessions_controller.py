@@ -15,13 +15,13 @@ def handle_session_request():
         return __destroy_session()
 
 def __fetch_session():
-    pdb.set_trace()
     cookie = request.cookies.get('pomodoro-to-do')
+    session = User.objects.get().sessions.filter(session_token=cookie)
 
-    user = Session.find_user_by_cookie(cookie)
+    if session:
+        user = session._instance
 
-    if user:
-        return jsonify(user=user_response_obj(user[0]))
+        return jsonify(user=user_response_obj(user))
     else:
         return jsonify(user={})
 
@@ -33,9 +33,7 @@ def __create_session():
         session = Session(session_token=Session.generate_session_token())
         user.update(add_to_set__sessions=session)
 
-        user_response = user_response_obj(user)
-
-        response = jsonify(user=user_response,
+        response = jsonify(user=user_response_obj(user),
             message = "Login successful! Welcome {0}!".format(user.username))
         response.set_cookie('pomodoro-to-do', session.session_token)
 
@@ -47,11 +45,10 @@ def __destroy_session():
     cookie = request.cookies.get('pomodoro-to-do')
     session = User.objects.get().sessions.filter(session_token=cookie)
     user = session._instance
-    user_response = user_response_obj(user)
 
     User.objects(username=user.username).update_one(pull__sessions__session_token=cookie)
 
-    response = jsonify(user=user_response,
+    response = jsonify(user=user_response_obj(user),
         message="Goodbye {0}!".format(user.username))
     response.set_cookie('pomodoro-to-do', '', expires=0)
 

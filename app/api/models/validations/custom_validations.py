@@ -10,10 +10,7 @@ def check_if_username_exists(form, field):
         raise ValidationError("Username not found")
 
 def validate_user_credentials(form, field):
-    if User.find_by_username(form.username.data):
-        user = User.find_by_username(form.username.data)[0]
-    else:
-        return
+    user = User.find_by_username(form.username.data)
 
     if not User.validate_user_credentials(user, form.password.data):
         raise ValidationError("Invalid credentials")
