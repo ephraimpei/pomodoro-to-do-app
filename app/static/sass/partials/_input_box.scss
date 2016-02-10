@@ -1,0 +1,10 @@
+input {
+  padding: $input-box-padding;
+  border-radius: $input-box-border-radius;
+  font-size: $base-font-size;
+}
+
+input.invalid {
+  border: $failed-validation-input-border;
+  box-shadow: $failed-validation-box-shadow;
+}

@@ -36,3 +36,4 @@ Pomodoro To-Do List is a To-Do list application that allows users to create, upd
 - Incorporates latest JavaScript ES6 features and syntax
 - Webpack used to manage JavaScript module dependencies and to load ES6 and SASS files
 - Stores user and to-do items in MongoDB (user credentials hashed with BCrypt)
+- RESTful API for retrieving to-do list items

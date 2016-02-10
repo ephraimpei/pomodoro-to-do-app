@@ -1,0 +1,32 @@
+#footer-wrapper {
+  background: $footer-bg;
+  border-top: $standard-border;
+  height: $footer-height;
+	position: absolute;
+  width: 100%;
+	bottom: 0;
+	left: 0;
+
+  .footer {
+    width: $footer-width;
+    margin: $footer-margin;
+    padding: $footer-padding;
+    font-size: $footer-font-size;
+    color: $footer-font-color;
+
+    .about {
+      margin-top: $about-me-margin-top;
+      opacity: $about-me-opacity;
+      float: left;
+    }
+
+    .links {
+      float: right;
+
+      a {
+        margin-left: $icon-list-margin;
+        display: inline-block;
+      }
+    }
+  }
+}
