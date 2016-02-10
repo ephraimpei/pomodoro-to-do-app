@@ -33,7 +33,7 @@ class User(db.Document):
 
     def generate_password_digest(self, password):
         salt = bcrypt.gensalt()
-        hash = bcrypt.hashpw(password, salt)
+        hash = bcrypt.hashpw(password.encode('utf-8'), salt)
         self.password_digest = hash
 
     def reset_session_token(self):
