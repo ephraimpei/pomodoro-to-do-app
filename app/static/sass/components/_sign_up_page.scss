@@ -1,0 +1,32 @@
+.sign-up-page {
+  h1, h2 { text-align: center; }
+
+  .sign-up-form {
+    width: $sign-up-form-width;
+    margin: auto;
+
+    .sign-up-form-wrapper {
+      * {
+        margin: $sign-up-form-item-margin;
+      }
+
+      label, a {
+        text-align: center;
+      }
+
+      a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      input {
+        width: 100%;
+       }
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: $sign-up-form-margins;
+    }
+  }
+}
