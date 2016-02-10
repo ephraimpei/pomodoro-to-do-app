@@ -10,10 +10,13 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // components
 import PomodoroToDoApp from './components/main/pomodoro_to_do_app.jsx';
 import Footer from './components/main/footer.jsx';
+import LoginPage from './components/auth/login_page.jsx';
 
 $(document).ready(function () {
   const routes = (
-    <Route path="/" components={ PomodoroToDoApp } />
+    <Route path="/" components={ PomodoroToDoApp } >
+      <IndexRoute component={ LoginPage } />
+    </Route>
   );
 
   render(<Router history={ browserHistory } routes={routes} />,

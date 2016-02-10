@@ -1,0 +1,36 @@
+.login-page {
+  h1, h2 { text-align: center; }
+
+  .login-form {
+    width: $login-form-width;
+    margin: auto;
+
+    .login-form-wrapper {
+      button, label, input {
+        margin: $login-form-item-margin;
+      }
+
+      a {
+        text-align: center;
+      }
+      
+      a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      label {
+        text-align: center;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: $login-form-margins;
+    }
+  }
+}
