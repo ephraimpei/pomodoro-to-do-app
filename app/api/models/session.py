@@ -9,12 +9,6 @@ class Session(db.EmbeddedDocument):
     def generate_session_token(cls):
         return str(uuid.uuid1())
 
-    def destroy(self):
-        if self.delete():
-            return True
-        else:
-            return False
-
     def __repr__(self):
         return '<session {0}>'.format(self.session_token)
 

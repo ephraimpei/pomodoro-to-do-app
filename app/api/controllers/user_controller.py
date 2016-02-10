@@ -19,7 +19,7 @@ def __show_user(username):
     user = User.find_by_username(username)
 
     if user:
-        return jsonify(user = user_response_obj(user[0]))
+        return jsonify(user = user_response_obj(user))
     else:
         return jsonify(error="Could not find user."), 400
 
