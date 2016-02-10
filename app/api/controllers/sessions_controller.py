@@ -29,7 +29,7 @@ def __create_session():
     form = LoginForm(request.form)
 
     if form.validate():
-        user = User.find_by_username(form.username.data)[0]
+        user = User.find_by_username(form.username.data)
         session = Session(session_token=Session.generate_session_token())
         user.update(add_to_set__sessions=session)
 
@@ -49,7 +49,7 @@ def __destroy_session():
     user = session._instance
     user_response = user_response_obj(user)
 
-    session.delete()
+    User.objects(username=user.username).update_one(pull__sessions__session_token=cookie)
 
     response = jsonify(user=user_response,
         message="Goodbye {0}!".format(user.username))
