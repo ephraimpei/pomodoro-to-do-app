@@ -1,0 +1,10 @@
+from app import app
+from flask import send_from_directory
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return send_from_directory(app.static_folder, "./views/404.html"), 404
+
+@app.route("/")
+def index():
+    return send_from_directory(app.static_folder, "./views/index.html")
