@@ -11,15 +11,17 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import PomodoroToDoApp from './components/main/pomodoro_to_do_app.jsx';
 import Footer from './components/main/footer.jsx';
 import LoginPage from './components/auth/login_page.jsx';
+import SignUpPage from './components/auth/sign_up_page.jsx';
 
 $(document).ready(function () {
   const routes = (
-    <Route path="/" components={ PomodoroToDoApp } >
+    <Route path="/" component={ PomodoroToDoApp } >
       <IndexRoute component={ LoginPage } />
+      <Route path="/user/new" component={ SignUpPage } />
     </Route>
   );
 
-  render(<Router history={ browserHistory } routes={routes} />,
+  render(<Router history={ browserHistory } routes={ routes } />,
     document.getElementById('content'));
   render(<Footer/>, document.getElementById('footer-wrapper'));
 });

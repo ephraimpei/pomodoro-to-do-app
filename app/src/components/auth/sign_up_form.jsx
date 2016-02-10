@@ -1,28 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
 
-class LoginForm extends React.Component {
+class SignUpForm extends React.Component {
   constructor(props, context) {
-    super(props, context);
-    this.handleLoginSubmission = this.handleLoginSubmission.bind(this);
+    super(props);
+    this.handleSignUpSubmission = this.handleSignUpSubmission.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.logIntoDemoAccount = this.logIntoDemoAccount.bind(this);
     this.changeUsername = this.changeUsername.bind(this);
     this.changePassword = this.changePassword.bind(this);
-    this.state = { username: "", password: ""};
+    this.changePasswordConf = this.changePasswordConf.bind(this);
+    this.state = { username: "", password: "", passwordConf: "" };
   }
 
-  handleLoginSubmission (e) {
+  handleSignUpSubmission (e) {
 
   }
 
   handleKeyPress (e) {
     if (e.charCode === 13) { this.handleSignUpSubmission(); }
-  }
-
-  logIntoDemoAccount (e) {
-
   }
 
   changeUsername (e) {
@@ -33,6 +28,10 @@ class LoginForm extends React.Component {
     this.setState({ password: e.currentTarget.value });
   }
 
+  changePasswordConf (e) {
+    this.setState({ passwordConf: e.currentTarget.value });
+  }
+
   render() {
     const usernameErrors = this.props.usernameErrors.map( (err, idx) =>
       <li key={ idx }>{ err }</li>
@@ -41,17 +40,14 @@ class LoginForm extends React.Component {
     const passwordErrors = this.props.passwordErrors.map( (err, idx) =>
       <li key={ idx }>{ err }</li>
     );
-
     return (
-      <form className="login-form"
+      <form className="sign-up-form"
         onKeyPress={ this.handleKeyPress }
-        onSubmit={ this.handleLoginSubmission }>
-        <div className="login-form-wrapper">
-          <button className="login-form-demo-account"
-            onClick={ this.logIntoDemoAccount }>Demo Account</button>
+        onSubmit={ this.handleSignUpSubmission }>
 
+        <div className="sign-up-form-wrapper">
           <label>Username
-          <ul className="form-error-wrapper">
+          <ul className="error-wrapper">
             { usernameErrors }
           </ul>
           <input
@@ -61,7 +57,7 @@ class LoginForm extends React.Component {
           </label>
 
           <label>Password
-          <ul className="form-error-wrapper">
+          <ul className="error-wrapper">
             { passwordErrors }
           </ul>
           <input
@@ -70,12 +66,19 @@ class LoginForm extends React.Component {
             onChange={ this.changePassword }/>
           </label>
 
-          <button className="submit" type="submit">Log In!</button>
-          <Link to={ `/user/new` }>Create a user</Link>
+          <label>Confirm Password
+          <input
+            className="form-password-input"
+            type="password"
+            onChange={ this.changePasswordConf }/>
+          </label>
+
+          <button className="submit" type="submit">Sign Up!</button>
+          <Link to={ `/` }>Already have an account?</Link>
         </div>
       </form>
     );
   }
 }
 
-export default LoginForm;
+export default SignUpForm;
