@@ -2,10 +2,11 @@ import $ from 'jquery';
 import ToDoActions from "../actions/to_do_actions.js";
 
 class ApiToDoUtil {
-  create (formData, username, success, failure) {
+  create (formData, username, success, failure, optCallback) {
     const receiveToDo = (data) => {
       ToDoActions.receiveToDo(data.to_do);
       success(data.message);
+      optCallback && optCallback();
     };
 
     const receiveError = (data) => failure(data.responseJSON.errors);
@@ -21,10 +22,9 @@ class ApiToDoUtil {
       .fail(receiveError);
   }
 
-  fetch (username, success, failure) {
+  fetch (username) {
     const receiveToDos = (data) => ToDoActions.receiveToDos(data.to_dos);
 
-    // const receiveError = (data) => failure(data.responseJSON.errors);
     $.get(`/user/${ username }/todo`).done(receiveToDos);
   }
 }

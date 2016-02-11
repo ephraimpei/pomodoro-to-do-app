@@ -11,19 +11,13 @@
   }
 
   .description-textbox {
-    resize: none;
-    border: $standard-border;
-    border-radius: $base-border-radius;
     width: $description-textbox-width;
     height: $description-textbox-height;
-    font-size: $description-textbox-font-size;
-    padding: $description-textbox-padding;
-    vertical-align: top;
   }
 
   .submit {
-    padding: 5px;
-    font-size: 1em;
+    padding: $to-do-form-submit-padding;
+    font-size: $to-do-form-font-size;
   }
 }
 

@@ -40,14 +40,18 @@ $failed-validation-input-border: 2px solid red;
 $failed-validation-box-shadow: 0 0 10px red;
 
 /* flash messages */
-$flash-top: 15vh;
-$flash-left: 40vw;
+$flash-top: 1vh;
+$flash-left: 30vw;
 $flash-font-size: 1.2em;
 $flash-border: $standard-border;
 $flash-border-radius: $base-border-radius;
 $flash-background-color: yellow;
 $flash-padding: 5px;
 $flash-z-index: 1;
+
+/* text area */
+$textarea-font-size: .8em;
+$textarea-padding: 10px;
 
 /* footer */
 $footer-height: 72px;
@@ -96,6 +100,8 @@ $to-do-form-margin-top: 5vh;
 $title-input-width: 30vw;
 $description-textbox-height: 20vh;
 $description-textbox-width: 30vw;
-$description-textbox-font-size: .8em;
-$description-textbox-padding: 10px;
 $to-do-form-spacing: 5px 0;
+
+    /* to do form - submit button */
+    $to-do-form-submit-padding: 5px;
+    $to-do-form-font-size: 1em;
