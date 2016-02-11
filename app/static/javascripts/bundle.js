@@ -138,7 +138,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 1vh;\n  left: 30vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vh; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .submit, .to-do-form .clear {\n    padding: 5px;\n    font-size: 1em; }\n  .to-do-form .clear {\n    margin-left: 10px; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
+	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 1vh;\n  left: 30vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vh; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 1em;\n    height: 1em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .submit, .to-do-form .clear {\n    padding: 5px;\n    font-size: 1em; }\n  .to-do-form .clear {\n    margin-left: 10px; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
 	
 	// exports
 
@@ -36374,7 +36374,8 @@
 	            toDoDescriptionErrors: this.state.toDoDescriptionErrors,
 	            deleteToDoTitleErrors: this.deleteToDoTitleErrors,
 	            deleteToDoDescriptionErrors: this.deleteToDoDescriptionErrors }),
-	          _react2.default.createElement(_todo_index2.default, { toDos: this.state.toDos })
+	          _react2.default.createElement(_todo_index2.default, { toDos: this.state.toDos,
+	            username: this.props.routeParams.username })
 	        )
 	      );
 	    }
@@ -36425,8 +36426,13 @@
 	  _createClass(ToDoIndex, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      var toDos = this.props.toDos.map(function (toDo, idx) {
-	        return _react2.default.createElement(_todo_item2.default, { key: idx, id: idx + 1, attr: toDo });
+	        return _react2.default.createElement(_todo_item2.default, { key: idx,
+	          id: idx + 1,
+	          attr: toDo,
+	          username: _this2.props.username });
 	      });
 	
 	      return _react2.default.createElement(
@@ -36478,6 +36484,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props));
 	
+	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
 	    _this.state = {
 	      complete: _this.props.attr.complete,
 	      showDetails: false
@@ -36486,6 +36493,13 @@
 	  }
 	
 	  _createClass(ToDoItem, [{
+	    key: 'deleteToDoItem',
+	    value: function deleteToDoItem(e) {
+	      e.preventDefault();
+	
+	      _api_to_do_util2.default.delete(this.props.username, this.props.attr.to_do_id.$oid);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -36515,6 +36529,12 @@
 	          'button',
 	          { className: 'show-to-do-details' },
 	          '▼'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'delete-to-do-item',
+	            onClick: this.deleteToDoItem },
+	          'Delete'
 	        )
 	      );
 	    }
@@ -36556,11 +36576,11 @@
 	
 	  _createClass(ApiToDoUtil, [{
 	    key: "create",
-	    value: function create(formData, username, success, failure, optCallback) {
+	    value: function create(formData, username, success, failure, clearForm) {
 	      var receiveToDo = function receiveToDo(data) {
 	        _to_do_actions2.default.receiveToDo(data.to_do);
 	        success(data.message);
-	        optCallback && optCallback();
+	        clearForm();
 	      };
 	
 	      var receiveError = function receiveError(data) {
@@ -36583,6 +36603,18 @@
 	      };
 	
 	      _jquery2.default.get("/user/" + username + "/todo").done(receiveToDos);
+	    }
+	  }, {
+	    key: "delete",
+	    value: function _delete(username, toDoId) {
+	      var deleteToDo = function deleteToDo(data) {
+	        _to_do_actions2.default.deleteToDo(data.to_do);
+	      };
+	
+	      _jquery2.default.ajax({
+	        url: "/user/" + username + "/todo/" + toDoId,
+	        type: 'DELETE'
+	      }).done(deleteToDo);
 	    }
 	  }]);
 	
@@ -36635,6 +36667,14 @@
 	    value: function receiveToDo(toDo) {
 	      _dispatcher2.default.dispatch({
 	        actionType: _to_do_constants2.default.RECEIVE_TO_DO,
+	        toDo: toDo
+	      });
+	    }
+	  }, {
+	    key: "deleteToDo",
+	    value: function deleteToDo(toDo) {
+	      _dispatcher2.default.dispatch({
+	        actionType: _to_do_constants2.default.DELETE_TO_DO,
 	        toDo: toDo
 	      });
 	    }
@@ -36722,7 +36762,7 @@
 	      formData.append("title", this.state.title);
 	      formData.append("description", this.state.description);
 	
-	      _api_to_do_util2.default.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm());
+	      _api_to_do_util2.default.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm);
 	    }
 	  }, {
 	    key: 'changeTitle',
@@ -36751,6 +36791,14 @@
 	
 	      (0, _jquery2.default)(".title-input").val('');
 	      (0, _jquery2.default)(".description-textbox").val('');
+	
+	      (0, _auth.removeInvalidClass)("title-input");
+	      (0, _auth.removeInvalidClass)("description-textbox");
+	
+	      this.props.deleteToDoTitleErrors();
+	      this.props.deleteToDoDescriptionErrors();
+	
+	      this.setState({ title: "", description: "", numPomodoros: 0 });
 	    }
 	  }, {
 	    key: 'render',
@@ -36798,6 +36846,27 @@
 	          descriptionErrors
 	        ),
 	        _react2.default.createElement('textarea', { className: 'description-textbox', onChange: this.changeDescription }),
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Pomodoros: ',
+	          this.state.pomodoros
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'pomodoro-counter-wrapper' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'remove-pomodoro' },
+	            '−'
+	          ),
+	          _react2.default.createElement('img', { src: '/images/pomodoro.png' }),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'add-pomodoro' },
+	            '+'
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'to-do-form-options' },
@@ -36886,7 +36955,7 @@
 	    key: 'add',
 	    value: function add(toDo) {
 	      var findToDo = this.toDos.find(function (el) {
-	        return el === toDo;
+	        return el.to_do_id.$oid === toDo.to_do_id.$oid;
 	      });
 	
 	      if (typeof findUser === 'undefined') {
@@ -36898,7 +36967,10 @@
 	  }, {
 	    key: 'remove',
 	    value: function remove(toDo) {
-	      var toDoIdx = this.toDos.indexOf(toDo);
+	      debugger;
+	      var toDoIdx = this.toDos.findIndex(function (el) {
+	        return el.to_do_id.$oid === toDo.to_do_id.$oid;
+	      });
 	
 	      if (toDoIdx !== -1) {
 	        this.toDos.splice(toDoIdx, 1);

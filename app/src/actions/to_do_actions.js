@@ -15,4 +15,11 @@ export default new class {
       toDo: toDo
     });
   }
+
+  deleteToDo (toDo) {
+    AppDispatcher.dispatch({
+      actionType: ToDoConstants.DELETE_TO_DO,
+      toDo: toDo
+    });
+  }
 }();

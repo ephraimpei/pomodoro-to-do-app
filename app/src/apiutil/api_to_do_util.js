@@ -2,11 +2,11 @@ import $ from 'jquery';
 import ToDoActions from "../actions/to_do_actions.js";
 
 class ApiToDoUtil {
-  create (formData, username, success, failure, optCallback) {
+  create (formData, username, success, failure, clearForm) {
     const receiveToDo = (data) => {
       ToDoActions.receiveToDo(data.to_do);
       success(data.message);
-      optCallback && optCallback();
+      clearForm();
     };
 
     const receiveError = (data) => failure(data.responseJSON.errors);
@@ -27,6 +27,17 @@ class ApiToDoUtil {
 
     $.get(`/user/${ username }/todo`).done(receiveToDos);
   }
+
+  delete (username, toDoId) {
+    const deleteToDo = (data) => {
+      ToDoActions.deleteToDo(data.to_do);
+    };
+
+    $.ajax({
+      url: `/user/${ username }/todo/${ toDoId }`,
+      type: 'DELETE'
+    }).done(deleteToDo)
+;  }
 }
 
 const apiToDoUtil = new ApiToDoUtil();

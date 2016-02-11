@@ -4,10 +4,17 @@ import ApiToDoUtil from '../../apiutil/api_to_do_util';
 class ToDoItem extends React.Component {
   constructor(props) {
     super(props);
+    this.deleteToDoItem = this.deleteToDoItem.bind(this);
     this.state = {
       complete: this.props.attr.complete,
       showDetails: false
      };
+  }
+
+  deleteToDoItem (e) {
+    e.preventDefault();
+    
+    ApiToDoUtil.delete(this.props.username, this.props.attr.to_do_id.$oid);
   }
 
   render () {
@@ -24,6 +31,9 @@ class ToDoItem extends React.Component {
         <label>{ this.props.attr.title }</label>
 
         <button className="show-to-do-details">▼</button>
+
+        <button className="delete-to-do-item"
+          onClick={ this.deleteToDoItem }>Delete</button>
       </li>
     );
   }

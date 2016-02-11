@@ -15,6 +15,20 @@
     height: $description-textbox-height;
   }
 
+  .pomodoro-counter-wrapper {
+    button {
+      border-radius: $pomodoro-counter-button-border-radius;
+    }
+
+    img {
+      width: $pomodoro-counter-img-dim;
+      height: $pomodoro-counter-img-dim;
+      margin: $pomodoro-counter-img-margin;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
   .submit, .clear {
     padding: $to-do-form-button-padding;
     font-size: $to-do-form-button-font-size;
