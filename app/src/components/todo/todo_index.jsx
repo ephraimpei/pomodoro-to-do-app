@@ -1,31 +1,22 @@
 import React from 'react';
+import ToDoItem from './todo_item.jsx';
 
-class UserShowPage extends React.Component {
+class ToDoIndex extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount () {
-
-  }
-
-  componentDidMount () {
-
-  }
-
-  componentWillUnmount () {
-
-  }
-
   render () {
-    const toDoTitles = this.props.toDos.map( (toDo, idx) => <li key={ idx }>{ toDo.title }</li> );
+    const toDos = this.props.toDos.map( (toDo, idx) => {
+      return <ToDoItem key={ idx } id={ idx + 1 } attr={ toDo }/>;
+    });
 
     return (
       <ul className="to-do-index">
-        { toDoTitles }
+        { toDos }
       </ul>
     );
   }
 }
 
-export default UserShowPage;
+export default ToDoIndex;

@@ -9,7 +9,7 @@ $body-bg: #eee;
 /* base font */
 $base-font-family: sans-serif;
 $base-font-weight: $regular;
-$base-font-size: 14px;
+$base-font-size: 16px;
 $base-line-height: 1.4;
 
 /* icons */
@@ -24,7 +24,7 @@ $base-border-radius: 10px;
 
 /* buttons */
 $button-padding: 3px;
-$button-font-size: 16px;
+$button-font-size: .8em;
 $button-border: 1px solid darkgrey;
 $button-border-radius: 10px;
 $button-background: lightblue;
@@ -35,14 +35,14 @@ $h2-font-size: 24px;
 
 /* input boxes */
 $input-box-padding: 5px 2.5px;
-$input-box-border-radius: 10px;
+$input-box-border-radius: .6em;
 $failed-validation-input-border: 2px solid red;
 $failed-validation-box-shadow: 0 0 10px red;
 
 /* flash messages */
 $flash-top: 15vh;
 $flash-left: 40vw;
-$flash-font-size: 18px;
+$flash-font-size: 1.2em;
 $flash-border: $standard-border;
 $flash-border-radius: $base-border-radius;
 $flash-background-color: yellow;
@@ -51,7 +51,7 @@ $flash-z-index: 1;
 
 /* footer */
 $footer-height: 72px;
-$footer-font-size: 16px;
+$footer-font-size: 1em;
 $footer-font-color: #fff;
 $footer-width: 70vw;
 $footer-margin: auto;
@@ -72,3 +72,19 @@ $sign-up-form-item-margin: 5px 0;
 $sign-up-form-width: 200px;
 $sign-up-form-margins: 50px 0;
 $sign-up-input-box-width: 100%;
+
+/* user show page */
+$to-do-index-wrapper-bg: white;
+$to-do-index-wrapper-width: 80vw;
+$to-do-index-wrapper-min-height: 50vw;
+$to-do-index-wrapper-margin: 10vh auto;
+$to-do-index-wrapper-padding: 10vh 0;
+
+    /* user show page - to do index */
+    $to-do-index-width: 60vw;
+    $to-do-index-margin: 5vh 0;
+
+        /* user show page - to do index - to do item */
+        $to-do-item-margin: 10px 0;
+        $to-do-item-spacing: 0 1vh;
+        $to-do-show-details-button-radius: 3px;

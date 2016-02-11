@@ -21,7 +21,7 @@ class Footer extends React.Component {
               className="social-media-icon"
               src="/images/icons/linkedin.png"/>
           </a>
-          <a href="https://github.com/ephraimpei/chatterbox">
+          <a href="https://github.com/ephraimpei/pomodoro-to-do-app">
             <img
               className="social-media-icon"
               src="/images/icons/github.png"/>
