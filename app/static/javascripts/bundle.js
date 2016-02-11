@@ -138,7 +138,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* footer */\n/* login page */\n/* sign up page */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 14px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 16px;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 15vh;\n  left: 40vw;\n  font-size: 18px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 10px;\n  font-size: 14px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 16px;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n", ""]);
+	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 15vh;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vh; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n", ""]);
 	
 	// exports
 
@@ -35027,7 +35027,7 @@
 	          ),
 	          _react2.default.createElement(
 	            "a",
-	            { href: "https://github.com/ephraimpei/chatterbox" },
+	            { href: "https://github.com/ephraimpei/pomodoro-to-do-app" },
 	            _react2.default.createElement("img", {
 	              className: "social-media-icon",
 	              src: "/images/icons/github.png" })
@@ -36262,8 +36262,12 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props));
 	
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
+	    _this.toggleToDoForm = _this.toggleToDoForm.bind(_this);
 	    _this._onChange = _this._onChange.bind(_this);
-	    _this.state = { toDos: _this.getStateFromStore() };
+	    _this.state = {
+	      toDos: _this.getStateFromStore(),
+	      displayToDoForm: false
+	    };
 	    return _this;
 	  }
 	
@@ -36288,6 +36292,15 @@
 	      return _to_do_store2.default.get();
 	    }
 	  }, {
+	    key: 'toggleToDoForm',
+	    value: function toggleToDoForm(e) {
+	      e.preventDefault();
+	
+	      newState = this.state.displayToDoForm ? false : true;
+	
+	      this.setState({ displayToDoForm: newState });
+	    }
+	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
 	      this.setState({ toDos: this.getStateFromStore() });
@@ -36295,12 +36308,25 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var buttonText = undefined;
+	
+	      if (this.state.displayToDoForm) {
+	        buttonText = "Nevermind!";
+	      } else {
+	        buttonText = "Create To Do Item!";
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'user-show-page' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'to-do-list-wrapper' },
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.toggleToDoForm },
+	            buttonText
+	          ),
 	          _react2.default.createElement(_todo_index2.default, { toDos: this.state.toDos })
 	        )
 	      );
@@ -36316,7 +36342,7 @@
 /* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36328,6 +36354,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _todo_item = __webpack_require__(244);
+	
+	var _todo_item2 = _interopRequireDefault(_todo_item);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36336,47 +36366,34 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var UserShowPage = function (_React$Component) {
-	  _inherits(UserShowPage, _React$Component);
+	var ToDoIndex = function (_React$Component) {
+	  _inherits(ToDoIndex, _React$Component);
 	
-	  function UserShowPage(props) {
-	    _classCallCheck(this, UserShowPage);
+	  function ToDoIndex(props) {
+	    _classCallCheck(this, ToDoIndex);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoIndex).call(this, props));
 	  }
 	
-	  _createClass(UserShowPage, [{
-	    key: "componentWillMount",
-	    value: function componentWillMount() {}
-	  }, {
-	    key: "componentDidMount",
-	    value: function componentDidMount() {}
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {}
-	  }, {
-	    key: "render",
+	  _createClass(ToDoIndex, [{
+	    key: 'render',
 	    value: function render() {
-	      var toDoTitles = this.props.toDos.map(function (toDo, idx) {
-	        return _react2.default.createElement(
-	          "li",
-	          { key: idx },
-	          toDo.title
-	        );
+	      var toDos = this.props.toDos.map(function (toDo, idx) {
+	        return _react2.default.createElement(_todo_item2.default, { key: idx, id: idx + 1, attr: toDo });
 	      });
 	
 	      return _react2.default.createElement(
-	        "ul",
-	        { className: "to-do-index" },
-	        toDoTitles
+	        'ul',
+	        { className: 'to-do-index' },
+	        toDos
 	      );
 	    }
 	  }]);
 	
-	  return UserShowPage;
+	  return ToDoIndex;
 	}(_react2.default.Component);
 	
-	exports.default = UserShowPage;
+	exports.default = ToDoIndex;
 
 /***/ },
 /* 239 */
@@ -36893,6 +36910,89 @@
 	  RECEIVE_TO_DO: "RECEIVE_TO_DO",
 	  DELETE_TO_DO: "DELETE_TO_DO"
 	};
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _api_to_do_util = __webpack_require__(241);
+	
+	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ToDoItem = function (_React$Component) {
+	  _inherits(ToDoItem, _React$Component);
+	
+	  function ToDoItem(props) {
+	    _classCallCheck(this, ToDoItem);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props));
+	
+	    _this.state = {
+	      complete: _this.props.attr.complete,
+	      showDetails: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(ToDoItem, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'li',
+	        { className: 'to-do-item' },
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          '#',
+	          this.props.id
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Complete?',
+	          _react2.default.createElement('input', { type: 'checkbox',
+	            id: 'complete',
+	            checked: this.state.complete,
+	            disabled: true })
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          this.props.attr.title
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'show-to-do-details' },
+	          '▼'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ToDoItem;
+	}(_react2.default.Component);
+	
+	exports.default = ToDoItem;
 
 /***/ }
 /******/ ]);

@@ -1,0 +1,11 @@
+.to-do-item {
+  margin: $to-do-item-margin;
+
+  label, button {
+    margin: $to-do-item-spacing;
+  }
+
+  .show-to-do-details {
+    border-radius: $to-do-show-details-button-radius;
+  }
+}
