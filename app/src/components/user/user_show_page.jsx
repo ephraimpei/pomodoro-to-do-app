@@ -1,5 +1,7 @@
 import React from 'react';
+import $ from 'jquery';
 import ToDoIndex from '../todo/todo_index.jsx';
+import ToDoForm from '../todo/todo_form.jsx';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
 import ToDoStore from '../../stores/to_do_store.js';
 
@@ -34,7 +36,7 @@ class UserShowPage extends React.Component {
   toggleToDoForm (e) {
     e.preventDefault();
 
-    newState = this.state.displayToDoForm ? false : true;
+    const newState = this.state.displayToDoForm ? false : true;
 
     this.setState({ displayToDoForm: newState });
   }
@@ -44,18 +46,15 @@ class UserShowPage extends React.Component {
   }
 
   render () {
-    let buttonText;
-
-    if (this.state.displayToDoForm) {
-      buttonText = "Nevermind!";
-    } else {
-      buttonText = "Create To Do Item!";
-    }
+    const buttonText = this.state.displayToDoForm ? "Nevermind!" : "Create To Do Item!";
 
     return (
       <div className="user-show-page">
         <div className="to-do-list-wrapper">
-          <button onClick={ this.toggleToDoForm }>{ buttonText }</button>
+          <button className="toggle-to-do-form" onClick={ this.toggleToDoForm }>{ buttonText }</button>
+
+          <ToDoForm visible={ this.state.displayToDoForm }/>
+
           <ToDoIndex toDos={ this.state.toDos }/>
         </div>
       </div>
