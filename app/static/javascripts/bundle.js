@@ -36221,7 +36221,7 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36232,6 +36232,14 @@
 	var _react = __webpack_require__(6);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _todo_index = __webpack_require__(238);
+	
+	var _todo_index2 = _interopRequireDefault(_todo_index);
+	
+	var _api_to_do_util = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../apiutil/api_to_do_util.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36244,16 +36252,48 @@
 	var UserShowPage = function (_React$Component) {
 	  _inherits(UserShowPage, _React$Component);
 	
-	  function UserShowPage() {
+	  function UserShowPage(props) {
 	    _classCallCheck(this, UserShowPage);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props));
+	
+	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
+	    _this._onChange = _this._onChange.bind(_this);
+	    _this.state = { to_dos: _this.getStateFromStore() };
+	    return _this;
 	  }
 	
 	  _createClass(UserShowPage, [{
-	    key: "render",
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      debugger;
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'getStateFromStore',
+	    value: function getStateFromStore() {}
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange() {
+	      this.setState({ to_dos: this.getStateFromStore() });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement("div", { className: "user-show-page" });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'user-show-page' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'todo-list-wrapper' },
+	          _react2.default.createElement(_todo_index2.default, { to_dos: this.state.to_dos })
+	        )
+	      );
 	    }
 	  }]);
 	
@@ -36261,6 +36301,12 @@
 	}(_react2.default.Component);
 	
 	exports.default = UserShowPage;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);
