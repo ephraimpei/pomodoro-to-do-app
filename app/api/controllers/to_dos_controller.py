@@ -4,7 +4,7 @@ from app.api.models import User, ToDo, ToDoForm
 import pdb
 
 @app.route("/user/<username>/todo", methods=["GET", "POST"])
-def handle_to_do_list_request(username):
+def handle_to_do_request(username):
     if request.method == "GET":
         return __fetch_to_do_items(username)
     elif request.method == "POST":

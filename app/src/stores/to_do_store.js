@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/dispatcher.js';
-import ToDoConstants from "../constants/user_constants.js";
+import ToDoConstants from "../constants/to_do_constants.js";
 import EventEmitter from 'eventemitter3';
 
 const CHANGE_EVENT = "change";

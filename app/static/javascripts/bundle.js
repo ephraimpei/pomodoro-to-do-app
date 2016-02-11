@@ -36237,9 +36237,13 @@
 	
 	var _todo_index2 = _interopRequireDefault(_todo_index);
 	
-	var _api_to_do_util = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../apiutil/api_to_do_util.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _api_to_do_util = __webpack_require__(241);
 	
 	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
+	
+	var _to_do_store = __webpack_require__(239);
+	
+	var _to_do_store2 = _interopRequireDefault(_to_do_store);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36259,28 +36263,34 @@
 	
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
 	    _this._onChange = _this._onChange.bind(_this);
-	    _this.state = { to_dos: _this.getStateFromStore() };
+	    _this.state = { toDos: _this.getStateFromStore() };
 	    return _this;
 	  }
 	
 	  _createClass(UserShowPage, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      debugger;
+	      _api_to_do_util2.default.fetch(this.props.routeParams.username);
 	    }
 	  }, {
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	    value: function componentDidMount() {
+	      _to_do_store2.default.addChangeListener(this._onChange);
+	    }
 	  }, {
 	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {}
+	    value: function componentWillUnmount() {
+	      _to_do_store2.default.removeChangeListener(this._onChange);
+	    }
 	  }, {
 	    key: 'getStateFromStore',
-	    value: function getStateFromStore() {}
+	    value: function getStateFromStore() {
+	      return _to_do_store2.default.get();
+	    }
 	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
-	      this.setState({ to_dos: this.getStateFromStore() });
+	      this.setState({ toDos: this.getStateFromStore() });
 	    }
 	  }, {
 	    key: 'render',
@@ -36290,8 +36300,8 @@
 	        { className: 'user-show-page' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'todo-list-wrapper' },
-	          _react2.default.createElement(_todo_index2.default, { to_dos: this.state.to_dos })
+	          { className: 'to-do-list-wrapper' },
+	          _react2.default.createElement(_todo_index2.default, { toDos: this.state.toDos })
 	        )
 	      );
 	    }
@@ -36304,9 +36314,585 @@
 
 /***/ },
 /* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserShowPage = function (_React$Component) {
+	  _inherits(UserShowPage, _React$Component);
+	
+	  function UserShowPage(props) {
+	    _classCallCheck(this, UserShowPage);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props));
+	  }
+	
+	  _createClass(UserShowPage, [{
+	    key: "componentWillMount",
+	    value: function componentWillMount() {}
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {}
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var toDoTitles = this.props.toDos.map(function (toDo, idx) {
+	        return _react2.default.createElement(
+	          "li",
+	          { key: idx },
+	          toDo.title
+	        );
+	      });
+	
+	      return _react2.default.createElement(
+	        "ul",
+	        { className: "to-do-index" },
+	        toDoTitles
+	      );
+	    }
+	  }]);
+	
+	  return UserShowPage;
+	}(_react2.default.Component);
+	
+	exports.default = UserShowPage;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dispatcher = __webpack_require__(227);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	var _to_do_constants = __webpack_require__(243);
+	
+	var _to_do_constants2 = _interopRequireDefault(_to_do_constants);
+	
+	var _eventemitter = __webpack_require__(240);
+	
+	var _eventemitter2 = _interopRequireDefault(_eventemitter);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CHANGE_EVENT = "change";
+	
+	var ToDoStore = function (_EventEmitter) {
+	  _inherits(ToDoStore, _EventEmitter);
+	
+	  function ToDoStore() {
+	    _classCallCheck(this, ToDoStore);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoStore).call(this));
+	
+	    _this.toDos = [];
+	    return _this;
+	  }
+	
+	  _createClass(ToDoStore, [{
+	    key: 'addChangeListener',
+	    value: function addChangeListener(callback) {
+	      this.on(CHANGE_EVENT, callback);
+	    }
+	  }, {
+	    key: 'removeChangeListener',
+	    value: function removeChangeListener(callback) {
+	      this.removeListener(CHANGE_EVENT, callback);
+	    }
+	  }, {
+	    key: 'get',
+	    value: function get() {
+	      return this.toDos.slice();
+	    }
+	  }, {
+	    key: 'add',
+	    value: function add(toDo) {
+	      var findToDo = this.toDos.find(function (el) {
+	        return el === toDo;
+	      });
+	
+	      if (typeof findUser === 'undefined') {
+	        this.toDos.push(toDo);
+	      }
+	
+	      this.emit(CHANGE_EVENT);
+	    }
+	  }, {
+	    key: 'remove',
+	    value: function remove(toDo) {
+	      var toDoIdx = this.toDos.indexOf(toDo);
+	
+	      if (toDoIdx !== -1) {
+	        this.toDos.splice(toDoIdx, 1);
+	      }
+	
+	      this.emit(CHANGE_EVENT);
+	    }
+	  }, {
+	    key: 'set',
+	    value: function set(toDos) {
+	      this.toDos = toDos;
+	
+	      this.emit(CHANGE_EVENT);
+	    }
+	  }]);
+	
+	  return ToDoStore;
+	}(_eventemitter2.default);
+	
+	var toDoStore = new ToDoStore();
+	
+	_dispatcher2.default.register(function (payload) {
+	  switch (payload.actionType) {
+	    case _to_do_constants2.default.RECEIVE_TO_DOS:
+	      toDoStore.set(payload.toDos);
+	      break;
+	    case _to_do_constants2.default.RECEIVE_TO_DO:
+	      toDoStore.add(payload.toDo);
+	      break;
+	    case _to_do_constants2.default.DELETE_TO_DO:
+	      toDoStore.remove(payload.toDo);
+	      break;
+	  }
+	});
+	
+	exports.default = toDoStore;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	//
+	// We store our EE objects in a plain object whose properties are event names.
+	// If `Object.create(null)` is not supported we prefix the event names with a
+	// `~` to make sure that the built-in object properties are not overridden or
+	// used as an attack vector.
+	// We also assume that `Object.create(null)` is available when the event name
+	// is an ES6 Symbol.
+	//
+	var prefix = typeof Object.create !== 'function' ? '~' : false;
+	
+	/**
+	 * Representation of a single EventEmitter function.
+	 *
+	 * @param {Function} fn Event handler to be called.
+	 * @param {Mixed} context Context for function execution.
+	 * @param {Boolean} once Only emit once
+	 * @api private
+	 */
+	function EE(fn, context, once) {
+	  this.fn = fn;
+	  this.context = context;
+	  this.once = once || false;
+	}
+	
+	/**
+	 * Minimal EventEmitter interface that is molded against the Node.js
+	 * EventEmitter interface.
+	 *
+	 * @constructor
+	 * @api public
+	 */
+	function EventEmitter() { /* Nothing to set */ }
+	
+	/**
+	 * Holds the assigned EventEmitters by name.
+	 *
+	 * @type {Object}
+	 * @private
+	 */
+	EventEmitter.prototype._events = undefined;
+	
+	/**
+	 * Return a list of assigned event listeners.
+	 *
+	 * @param {String} event The events that should be listed.
+	 * @param {Boolean} exists We only need to know if there are listeners.
+	 * @returns {Array|Boolean}
+	 * @api public
+	 */
+	EventEmitter.prototype.listeners = function listeners(event, exists) {
+	  var evt = prefix ? prefix + event : event
+	    , available = this._events && this._events[evt];
+	
+	  if (exists) return !!available;
+	  if (!available) return [];
+	  if (available.fn) return [available.fn];
+	
+	  for (var i = 0, l = available.length, ee = new Array(l); i < l; i++) {
+	    ee[i] = available[i].fn;
+	  }
+	
+	  return ee;
+	};
+	
+	/**
+	 * Emit an event to all registered event listeners.
+	 *
+	 * @param {String} event The name of the event.
+	 * @returns {Boolean} Indication if we've emitted an event.
+	 * @api public
+	 */
+	EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
+	  var evt = prefix ? prefix + event : event;
+	
+	  if (!this._events || !this._events[evt]) return false;
+	
+	  var listeners = this._events[evt]
+	    , len = arguments.length
+	    , args
+	    , i;
+	
+	  if ('function' === typeof listeners.fn) {
+	    if (listeners.once) this.removeListener(event, listeners.fn, undefined, true);
+	
+	    switch (len) {
+	      case 1: return listeners.fn.call(listeners.context), true;
+	      case 2: return listeners.fn.call(listeners.context, a1), true;
+	      case 3: return listeners.fn.call(listeners.context, a1, a2), true;
+	      case 4: return listeners.fn.call(listeners.context, a1, a2, a3), true;
+	      case 5: return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
+	      case 6: return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
+	    }
+	
+	    for (i = 1, args = new Array(len -1); i < len; i++) {
+	      args[i - 1] = arguments[i];
+	    }
+	
+	    listeners.fn.apply(listeners.context, args);
+	  } else {
+	    var length = listeners.length
+	      , j;
+	
+	    for (i = 0; i < length; i++) {
+	      if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true);
+	
+	      switch (len) {
+	        case 1: listeners[i].fn.call(listeners[i].context); break;
+	        case 2: listeners[i].fn.call(listeners[i].context, a1); break;
+	        case 3: listeners[i].fn.call(listeners[i].context, a1, a2); break;
+	        default:
+	          if (!args) for (j = 1, args = new Array(len -1); j < len; j++) {
+	            args[j - 1] = arguments[j];
+	          }
+	
+	          listeners[i].fn.apply(listeners[i].context, args);
+	      }
+	    }
+	  }
+	
+	  return true;
+	};
+	
+	/**
+	 * Register a new EventListener for the given event.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Functon} fn Callback function.
+	 * @param {Mixed} context The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.on = function on(event, fn, context) {
+	  var listener = new EE(fn, context || this)
+	    , evt = prefix ? prefix + event : event;
+	
+	  if (!this._events) this._events = prefix ? {} : Object.create(null);
+	  if (!this._events[evt]) this._events[evt] = listener;
+	  else {
+	    if (!this._events[evt].fn) this._events[evt].push(listener);
+	    else this._events[evt] = [
+	      this._events[evt], listener
+	    ];
+	  }
+	
+	  return this;
+	};
+	
+	/**
+	 * Add an EventListener that's only called once.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Function} fn Callback function.
+	 * @param {Mixed} context The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.once = function once(event, fn, context) {
+	  var listener = new EE(fn, context || this, true)
+	    , evt = prefix ? prefix + event : event;
+	
+	  if (!this._events) this._events = prefix ? {} : Object.create(null);
+	  if (!this._events[evt]) this._events[evt] = listener;
+	  else {
+	    if (!this._events[evt].fn) this._events[evt].push(listener);
+	    else this._events[evt] = [
+	      this._events[evt], listener
+	    ];
+	  }
+	
+	  return this;
+	};
+	
+	/**
+	 * Remove event listeners.
+	 *
+	 * @param {String} event The event we want to remove.
+	 * @param {Function} fn The listener that we need to find.
+	 * @param {Mixed} context Only remove listeners matching this context.
+	 * @param {Boolean} once Only remove once listeners.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
+	  var evt = prefix ? prefix + event : event;
+	
+	  if (!this._events || !this._events[evt]) return this;
+	
+	  var listeners = this._events[evt]
+	    , events = [];
+	
+	  if (fn) {
+	    if (listeners.fn) {
+	      if (
+	           listeners.fn !== fn
+	        || (once && !listeners.once)
+	        || (context && listeners.context !== context)
+	      ) {
+	        events.push(listeners);
+	      }
+	    } else {
+	      for (var i = 0, length = listeners.length; i < length; i++) {
+	        if (
+	             listeners[i].fn !== fn
+	          || (once && !listeners[i].once)
+	          || (context && listeners[i].context !== context)
+	        ) {
+	          events.push(listeners[i]);
+	        }
+	      }
+	    }
+	  }
+	
+	  //
+	  // Reset the array, or remove it completely if we have no more listeners.
+	  //
+	  if (events.length) {
+	    this._events[evt] = events.length === 1 ? events[0] : events;
+	  } else {
+	    delete this._events[evt];
+	  }
+	
+	  return this;
+	};
+	
+	/**
+	 * Remove all listeners or only the listeners for the specified event.
+	 *
+	 * @param {String} event The event want to remove all listeners for.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
+	  if (!this._events) return this;
+	
+	  if (event) delete this._events[prefix ? prefix + event : event];
+	  else this._events = prefix ? {} : Object.create(null);
+	
+	  return this;
+	};
+	
+	//
+	// Alias methods names because people roll like that.
+	//
+	EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	
+	//
+	// This function doesn't apply anymore.
+	//
+	EventEmitter.prototype.setMaxListeners = function setMaxListeners() {
+	  return this;
+	};
+	
+	//
+	// Expose the prefix.
+	//
+	EventEmitter.prefixed = prefix;
+	
+	//
+	// Expose the module.
+	//
+	if (true) {
+	  module.exports = EventEmitter;
+	}
+
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _jquery = __webpack_require__(5);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _to_do_actions = __webpack_require__(242);
+	
+	var _to_do_actions2 = _interopRequireDefault(_to_do_actions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var ApiToDoUtil = function () {
+	  function ApiToDoUtil() {
+	    _classCallCheck(this, ApiToDoUtil);
+	  }
+	
+	  _createClass(ApiToDoUtil, [{
+	    key: "create",
+	    value: function create(formData, username, success, failure) {
+	      var receiveToDo = function receiveToDo(data) {
+	        _to_do_actions2.default.receiveToDo(data.to_do);
+	        success(data.message);
+	      };
+	
+	      var receiveError = function receiveError(data) {
+	        return failure(data.responseJSON.errors);
+	      };
+	
+	      _jquery2.default.ajax({
+	        url: "/user/" + username + "/todo",
+	        method: "POST",
+	        processData: false,
+	        contentType: false,
+	        dataType: "json",
+	        data: formData }).done(receiveToDo).fail(receiveError);
+	    }
+	  }, {
+	    key: "fetch",
+	    value: function fetch(username, success, failure) {
+	      var receiveToDos = function receiveToDos(data) {
+	        return _to_do_actions2.default.receiveToDos(data.to_dos);
+	      };
+	
+	      // const receiveError = (data) => failure(data.responseJSON.errors);
+	      _jquery2.default.get("/user/" + username + "/todo").done(receiveToDos);
+	    }
+	  }]);
+	
+	  return ApiToDoUtil;
+	}();
+	
+	var apiToDoUtil = new ApiToDoUtil();
+	
+	exports.default = apiToDoUtil;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dispatcher = __webpack_require__(227);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	var _to_do_constants = __webpack_require__(243);
+	
+	var _to_do_constants2 = _interopRequireDefault(_to_do_constants);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	exports.default = new (function () {
+	  function _class() {
+	    _classCallCheck(this, _class);
+	  }
+	
+	  _createClass(_class, [{
+	    key: "receiveToDos",
+	    value: function receiveToDos(toDos) {
+	      _dispatcher2.default.dispatch({
+	        actionType: _to_do_constants2.default.RECEIVE_TO_DOS,
+	        toDos: toDos
+	      });
+	    }
+	  }, {
+	    key: "receiveToDo",
+	    value: function receiveToDo(toDo) {
+	      _dispatcher2.default.dispatch({
+	        actionType: _to_do_constants2.default.RECEIVE_TO_DO,
+	        toDo: toDo
+	      });
+	    }
+	  }]);
+	
+	  return _class;
+	}())();
+
+/***/ },
+/* 243 */
 /***/ function(module, exports) {
 
 	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  RECEIVE_TO_DOS: "RECEIVE_TO_DOS",
+	  RECEIVE_TO_DO: "RECEIVE_TO_DO",
+	  DELETE_TO_DO: "DELETE_TO_DO"
+	};
 
 /***/ }
 /******/ ]);
