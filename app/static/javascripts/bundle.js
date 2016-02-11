@@ -35086,6 +35086,8 @@
 	
 	    _this.successfulLogin = _this.successfulLogin.bind(_this);
 	    _this.failedLogin = _this.failedLogin.bind(_this);
+	    _this.deleteUsernameErrors = _this.deleteUsernameErrors.bind(_this);
+	    _this.deletePasswordErrors = _this.deletePasswordErrors.bind(_this);
 	    _this.state = { usernameErrors: [], passwordErrors: [] };
 	    return _this;
 	  }
@@ -35120,6 +35122,16 @@
 	      this.setState({ usernameErrors: usernameErrors, passwordErrors: passwordErrors });
 	    }
 	  }, {
+	    key: 'deleteUsernameErrors',
+	    value: function deleteUsernameErrors() {
+	      this.setState({ usernameErrors: [] });
+	    }
+	  }, {
+	    key: 'deletePasswordErrors',
+	    value: function deletePasswordErrors() {
+	      this.setState({ passwordErrors: [] });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -35138,7 +35150,9 @@
 	        _react2.default.createElement(_login_form2.default, { success: this.successfulLogin,
 	          failure: this.failedLogin,
 	          usernameErrors: this.state.usernameErrors,
-	          passwordErrors: this.state.passwordErrors })
+	          passwordErrors: this.state.passwordErrors,
+	          deleteUsernameErrors: this.deleteUsernameErrors,
+	          deletePasswordErrors: this.deletePasswordErrors })
 	      );
 	    }
 	  }]);
@@ -35233,11 +35247,19 @@
 	  }, {
 	    key: 'changeUsername',
 	    value: function changeUsername(e) {
+	      (0, _auth.removeInvalidClass)("form-username-input");
+	
+	      this.props.deleteUsernameErrors();
+	
 	      this.setState({ username: e.currentTarget.value });
 	    }
 	  }, {
 	    key: 'changePassword',
 	    value: function changePassword(e) {
+	      (0, _auth.removeInvalidClass)("form-password-input");
+	
+	      this.props.deletePasswordErrors();
+	
 	      this.setState({ password: e.currentTarget.value });
 	    }
 	  }, {

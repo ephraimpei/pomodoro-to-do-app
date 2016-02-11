@@ -1,1 +1,1 @@
-from custom_validations import *
+from auth_validations import *

@@ -6,5 +6,6 @@ import datetime
 class ToDo(db.EmbeddedDocument):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     title = db.StringField(max_length=255, required=True)
-    description = db.StringField(max_length=255, required=True)
+    description = db.StringField(max_length=500, required=True)
+    complete = db.BooleanField(default=False, required=True)
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
