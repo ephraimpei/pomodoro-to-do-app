@@ -23,7 +23,6 @@ def __show_user(username):
 
 @app.route("/user", methods=["POST"])
 def __create_user():
-    pdb.set_trace()
     form = RegistrationForm(request.form)
 
     if form.validate():
