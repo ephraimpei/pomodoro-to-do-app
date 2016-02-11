@@ -29,9 +29,11 @@ def __create_session():
     form = LoginForm(request.form)
 
     if form.validate():
-        user = User.find_by_username(form.username.data)
+        user = User.find_by_username(form.username.data)[0]
         session = Session(session_token=Session.generate_session_token())
         user.update(add_to_set__sessions=session)
+
+        __maintain_max_session_limit(user)
 
         response = jsonify(user=user_response_obj(user),
             message = "Login successful! Welcome {0}!".format(user.username))
@@ -53,3 +55,12 @@ def __destroy_session():
     response.set_cookie('pomodoro-to-do', '', expires=0)
 
     return response
+
+def __maintain_max_session_limit(user):
+    sessions = User.objects.get(username=user.username).sessions
+    num_sessions = sessions.count()
+
+    if num_sessions > 5:
+        oldest_session = sessions[0]
+        User.objects(username=user.username)\
+            .update_one(pull__sessions__session_token=oldest_session.session_token)

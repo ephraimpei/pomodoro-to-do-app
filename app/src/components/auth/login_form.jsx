@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
+import ApiSessionUtil from '../../apiutil/api_session_util.js';
+import { removeInvalidClass } from '../../utilities/auth.js';
 
 class LoginForm extends React.Component {
   constructor(props, context) {
@@ -14,11 +16,20 @@ class LoginForm extends React.Component {
   }
 
   handleLoginSubmission (e) {
+    if (e) { e.preventDefault(); }
 
+    $(".submit").addClass("disabled").prop("disabled", true);
+
+    const formData = new FormData();
+
+    formData.append("username", this.state.username);
+    formData.append("password", this.state.password);
+
+    ApiSessionUtil.login(formData, this.props.success, this.props.failure);
   }
 
   handleKeyPress (e) {
-    if (e.charCode === 13) { this.handleSignUpSubmission(); }
+    if (e.charCode === 13) { this.handleLoginSubmission(); }
   }
 
   logIntoDemoAccount (e) {

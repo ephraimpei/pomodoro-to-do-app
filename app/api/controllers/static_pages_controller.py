@@ -9,3 +9,7 @@ def page_not_found(error):
 @app.route("/user/new")
 def index():
     return send_from_directory(app.static_folder, "./views/index.html")
+
+@app.route("/user/<username>")
+def show_user_profile(username):
+    return send_from_directory(app.static_folder, "./views/index.html")

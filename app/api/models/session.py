@@ -1,8 +1,9 @@
 from app import db
+import datetime
 import uuid
-import pdb
 
 class Session(db.EmbeddedDocument):
+    created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     session_token = db.StringField(max_length=255, required=True)
 
     @classmethod
@@ -14,10 +15,7 @@ class Session(db.EmbeddedDocument):
 
     meta = {
         'indexes': [
-            'session_token',
-            {
-                'expireAfterSeconds': 3600
-            }
+            { 'fields': ['session_token'],  'expireAfterSeconds': 3600 }
         ],
-        'max_documents': 4
+        'ordering': ['-created_at']
     }
