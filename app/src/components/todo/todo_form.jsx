@@ -23,7 +23,7 @@ class ToDoForm extends React.Component {
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
 
-    ApiToDoUtil.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm());
+    ApiToDoUtil.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm);
   }
 
   changeTitle (e) {
@@ -44,10 +44,19 @@ class ToDoForm extends React.Component {
 
   clearForm (e) {
     if (e) { e.preventDefault(); }
-    
+
     $(".title-input").val('');
     $(".description-textbox").val('');
+
+    removeInvalidClass("title-input");
+    removeInvalidClass("description-textbox");
+
+    this.props.deleteToDoTitleErrors();
+    this.props.deleteToDoDescriptionErrors();
+
+    this.setState({ title: "", description: "", numPomodoros: 0 });
   }
+
   render () {
     const klass = this.props.visible ? "to-do-form visible" : "to-do-form";
 
@@ -68,6 +77,13 @@ class ToDoForm extends React.Component {
         <label>Description</label>
         <ul className="form-error-wrapper">{ descriptionErrors }</ul>
         <textarea className="description-textbox" onChange={ this.changeDescription }/>
+
+        <label>Pomodoros: { this.state.pomodoros }</label>
+        <div className="pomodoro-counter-wrapper">
+          <button className="remove-pomodoro">−</button>
+          <img src="/images/pomodoro.png"/>
+          <button className="add-pomodoro">+</button>
+        </div>
 
         <div className="to-do-form-options">
           <button className="submit" type="submit">Submit</button>

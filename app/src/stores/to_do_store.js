@@ -23,15 +23,16 @@ class ToDoStore extends EventEmitter {
   }
 
   add (toDo) {
-    const findToDo = this.toDos.find((el) => el === toDo);
+    const findToDo = this.toDos.find((el) => el.to_do_id.$oid === toDo.to_do_id.$oid);
 
-    if (typeof findUser === 'undefined') { this.toDos.push(toDo); }
+    if (typeof(findUser) === 'undefined') { this.toDos.push(toDo); }
 
     this.emit(CHANGE_EVENT);
   }
 
   remove (toDo) {
-    const toDoIdx = this.toDos.indexOf(toDo);
+    debugger;
+    const toDoIdx = this.toDos.findIndex((el) => el.to_do_id.$oid === toDo.to_do_id.$oid);
 
     if (toDoIdx !== -1) { this.toDos.splice(toDoIdx, 1);}
 

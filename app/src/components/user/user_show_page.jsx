@@ -87,7 +87,8 @@ class UserShowPage extends React.Component {
             deleteToDoTitleErrors={ this.deleteToDoTitleErrors }
             deleteToDoDescriptionErrors={ this.deleteToDoDescriptionErrors }/>
 
-          <ToDoIndex toDos={ this.state.toDos }/>
+          <ToDoIndex toDos={ this.state.toDos }
+            username={ this.props.routeParams.username }/>
         </div>
       </div>
     );
