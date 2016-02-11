@@ -1,0 +1,34 @@
+.to-do-form {
+  display: none;
+  margin-top: $to-do-form-margin-top;
+
+  * {
+    margin: $to-do-form-spacing;
+  }
+
+  .title-input {
+    width: $title-input-width;
+  }
+
+  .description-textbox {
+    resize: none;
+    border: $standard-border;
+    border-radius: $base-border-radius;
+    width: $description-textbox-width;
+    height: $description-textbox-height;
+    font-size: $description-textbox-font-size;
+    padding: $description-textbox-padding;
+    vertical-align: top;
+  }
+
+  .submit {
+    padding: 5px;
+    font-size: 1em;
+  }
+}
+
+.to-do-form.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

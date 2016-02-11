@@ -79,6 +79,8 @@ $to-do-index-wrapper-width: 80vw;
 $to-do-index-wrapper-min-height: 50vw;
 $to-do-index-wrapper-margin: 10vh auto;
 $to-do-index-wrapper-padding: 10vh 0;
+$toggle-to-do-form-padding: 5px;
+$toggle-to-do-form-font-size: 1.2em;
 
     /* user show page - to do index */
     $to-do-index-width: 60vw;
@@ -88,3 +90,12 @@ $to-do-index-wrapper-padding: 10vh 0;
         $to-do-item-margin: 10px 0;
         $to-do-item-spacing: 0 1vh;
         $to-do-show-details-button-radius: 3px;
+
+/* to do form */
+$to-do-form-margin-top: 5vh;
+$title-input-width: 30vw;
+$description-textbox-height: 20vh;
+$description-textbox-width: 30vw;
+$description-textbox-font-size: .8em;
+$description-textbox-padding: 10px;
+$to-do-form-spacing: 5px 0;

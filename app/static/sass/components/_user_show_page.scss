@@ -12,6 +12,11 @@
     flex-direction: column;
     align-items: center;
 
+    .toggle-to-do-form {
+      padding: $toggle-to-do-form-padding;
+      font-size: $toggle-to-do-form-font-size;
+    }
+
     .to-do-index {
       width: $to-do-index-width;
       margin: $to-do-index-margin;
