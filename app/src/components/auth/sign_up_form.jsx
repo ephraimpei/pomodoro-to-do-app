@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
 import apiUserUtil from '../../apiutil/api_user_util.js';
+import { removeInvalidClass } from '../../utilities/auth.js';
 
 class SignUpForm extends React.Component {
   constructor(props, context) {
@@ -25,7 +26,7 @@ class SignUpForm extends React.Component {
     formData.append("password", this.state.password);
     formData.append("confirm", this.state.passwordConf);
 
-    apiUserUtil.create(formData, this.success, this.failure);
+    apiUserUtil.create(formData, this.props.success, this.props.failure);
   }
 
   handleKeyPress (e) {
@@ -33,14 +34,26 @@ class SignUpForm extends React.Component {
   }
 
   changeUsername (e) {
+    removeInvalidClass("form-username-input");
+
+    this.props.deleteUsernameErrors();
+
     this.setState({ username: e.currentTarget.value });
   }
 
   changePassword (e) {
+    removeInvalidClass("form-password-input");
+
+    this.props.deletePasswordErrors();
+
     this.setState({ password: e.currentTarget.value });
   }
 
   changePasswordConf (e) {
+    removeInvalidClass("form-password-input");
+
+    this.props.deletePasswordErrors();
+
     this.setState({ passwordConf: e.currentTarget.value });
   }
 

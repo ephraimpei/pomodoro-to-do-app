@@ -35285,6 +35285,8 @@
 	  value: true
 	});
 	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(6);
@@ -35294,6 +35296,10 @@
 	var _sign_up_form = __webpack_require__(226);
 	
 	var _sign_up_form2 = _interopRequireDefault(_sign_up_form);
+	
+	var _flash = __webpack_require__(235);
+	
+	var _auth = __webpack_require__(236);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35313,16 +35319,42 @@
 	
 	    _this.successfulSignUp = _this.successfulSignUp.bind(_this);
 	    _this.failedSignUp = _this.failedSignUp.bind(_this);
+	    _this.deleteUsernameErrors = _this.deleteUsernameErrors.bind(_this);
+	    _this.deletePasswordErrors = _this.deletePasswordErrors.bind(_this);
 	    _this.state = { usernameErrors: [], passwordErrors: [] };
 	    return _this;
 	  }
 	
 	  _createClass(SignUpPage, [{
 	    key: 'successfulSignUp',
-	    value: function successfulSignUp(message, username) {}
+	    value: function successfulSignUp(message, username) {
+	      this.context.router.push('/users/' + username);
+	
+	      (0, _flash.displayFlashMessage)(message);
+	    }
 	  }, {
 	    key: 'failedSignUp',
-	    value: function failedSignUp(errors) {}
+	    value: function failedSignUp(errors) {
+	      var _failedAuthErrors = (0, _auth.failedAuthErrors)(errors);
+	
+	      var _failedAuthErrors2 = _slicedToArray(_failedAuthErrors, 2);
+	
+	      var usernameErrors = _failedAuthErrors2[0];
+	      var passwordErrors = _failedAuthErrors2[1];
+	
+	
+	      this.setState({ usernameErrors: usernameErrors, passwordErrors: passwordErrors });
+	    }
+	  }, {
+	    key: 'deleteUsernameErrors',
+	    value: function deleteUsernameErrors() {
+	      this.setState({ usernameErrors: [] });
+	    }
+	  }, {
+	    key: 'deletePasswordErrors',
+	    value: function deletePasswordErrors() {
+	      this.setState({ passwordErrors: [] });
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -35342,7 +35374,9 @@
 	        _react2.default.createElement(_sign_up_form2.default, { success: this.successfulSignUp,
 	          failure: this.failedSignUp,
 	          usernameErrors: this.state.usernameErrors,
-	          passwordErrors: this.state.passwordErrors })
+	          passwordErrors: this.state.passwordErrors,
+	          deleteUsernameErrors: this.deleteUsernameErrors,
+	          deletePasswordErrors: this.deletePasswordErrors })
 	      );
 	    }
 	  }]);
@@ -35380,6 +35414,8 @@
 	var _api_user_util = __webpack_require__(228);
 	
 	var _api_user_util2 = _interopRequireDefault(_api_user_util);
+	
+	var _auth = __webpack_require__(236);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35421,7 +35457,7 @@
 	      formData.append("password", this.state.password);
 	      formData.append("confirm", this.state.passwordConf);
 	
-	      _api_user_util2.default.create(formData, this.success, this.failure);
+	      _api_user_util2.default.create(formData, this.props.success, this.props.failure);
 	    }
 	  }, {
 	    key: 'handleKeyPress',
@@ -35433,16 +35469,28 @@
 	  }, {
 	    key: 'changeUsername',
 	    value: function changeUsername(e) {
+	      (0, _auth.removeInvalidClass)("form-username-input");
+	
+	      this.props.deleteUsernameErrors();
+	
 	      this.setState({ username: e.currentTarget.value });
 	    }
 	  }, {
 	    key: 'changePassword',
 	    value: function changePassword(e) {
+	      (0, _auth.removeInvalidClass)("form-password-input");
+	
+	      this.props.deletePasswordErrors();
+	
 	      this.setState({ password: e.currentTarget.value });
 	    }
 	  }, {
 	    key: 'changePasswordConf',
 	    value: function changePasswordConf(e) {
+	      (0, _auth.removeInvalidClass)("form-password-input");
+	
+	      this.props.deletePasswordErrors();
+	
 	      this.setState({ passwordConf: e.currentTarget.value });
 	    }
 	  }, {
@@ -35964,6 +36012,84 @@
 	exports.default = {
 	  RECEIVE_CURRENT_USER: "RECEIVE_CURRENT_USER"
 	};
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.displayFlashMessage = undefined;
+	
+	var _jquery = __webpack_require__(5);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var displayFlashMessage = function displayFlashMessage(message) {
+	  (0, _jquery2.default)('#flash').text(message);
+	
+	  (0, _jquery2.default)('#flash').delay(500).fadeIn('normal', function () {
+	    (0, _jquery2.default)(this).delay(2500).fadeOut();
+	  });
+	};
+	
+	exports.displayFlashMessage = displayFlashMessage;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.removeInvalidClass = exports.failedAuthErrors = undefined;
+	
+	var _jquery = __webpack_require__(5);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var failedAuthErrors = function failedAuthErrors(errors) {
+	  (0, _jquery2.default)(".submit").removeClass("disabled").prop("disabled", false);
+	
+	  var usernameErrors = [];
+	  var passwordErrors = [];
+	
+	
+	  errors.forEach(function (err) {
+	    switch (err[0]) {
+	      case "username":
+	        usernameErrors.push(err[1][0]);
+	        (0, _jquery2.default)(".form-username-input").addClass("invalid");
+	        break;
+	      case "password":
+	        passwordErrors.push(err[1][0]);
+	        if (!(0, _jquery2.default)(".login-form-password-input").hasClass("invalid")) {
+	          (0, _jquery2.default)(".form-password-input").addClass("invalid");
+	        }
+	        break;
+	    }
+	  });
+	
+	  return [usernameErrors, passwordErrors];
+	};
+	
+	var removeInvalidClass = function removeInvalidClass(className) {
+	  if ((0, _jquery2.default)("." + className).hasClass("invalid")) {
+	    (0, _jquery2.default)("." + className).removeClass("invalid");
+	  }
+	};
+	
+	exports.failedAuthErrors = failedAuthErrors;
+	exports.removeInvalidClass = removeInvalidClass;
 
 /***/ }
 /******/ ]);
