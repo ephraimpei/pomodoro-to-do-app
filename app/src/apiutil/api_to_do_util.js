@@ -22,16 +22,10 @@ class ApiToDoUtil {
   }
 
   fetch (username, success, failure) {
-    const receiveToDos = (data) => {
-      ToDoActions.receiveToDos(data.to_dos);
-      success(data.message);
-    };
+    const receiveToDos = (data) => ToDoActions.receiveToDos(data.to_dos);
 
-    const receiveError = (data) => failure(data.responseJSON.errors);
-
-    $.get(`/user/${ username }/todo`)
-      .done(receiveToDos)
-      .fail(receiveError);
+    // const receiveError = (data) => failure(data.responseJSON.errors);
+    $.get(`/user/${ username }/todo`).done(receiveToDos);
   }
 }
 
