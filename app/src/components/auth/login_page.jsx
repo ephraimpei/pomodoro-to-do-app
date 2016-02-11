@@ -8,6 +8,8 @@ class LoginPage extends React.Component {
     super(props);
     this.successfulLogin = this.successfulLogin.bind(this);
     this.failedLogin = this.failedLogin.bind(this);
+    this.deleteUsernameErrors = this.deleteUsernameErrors.bind(this);
+    this.deletePasswordErrors = this.deletePasswordErrors.bind(this);
     this.state={ usernameErrors:[], passwordErrors:[] };
   }
 
@@ -29,7 +31,7 @@ class LoginPage extends React.Component {
 
   successfulLogin (message, username) {
     this.context.router.push('/user/' + username);
-    
+
     displayFlashMessage(message);
   }
 
@@ -37,6 +39,14 @@ class LoginPage extends React.Component {
     const [usernameErrors, passwordErrors] = failedAuthErrors(errors);
 
     this.setState({ usernameErrors, passwordErrors });
+  }
+
+  deleteUsernameErrors () {
+    this.setState({ usernameErrors: [] })
+  }
+
+  deletePasswordErrors () {
+    this.setState({ passwordErrors: [] })
   }
 
   render () {
@@ -47,7 +57,9 @@ class LoginPage extends React.Component {
         <LoginForm success={ this.successfulLogin }
           failure={ this.failedLogin }
           usernameErrors={ this.state.usernameErrors }
-          passwordErrors={ this.state.passwordErrors }/>
+          passwordErrors={ this.state.passwordErrors }
+          deleteUsernameErrors={ this.deleteUsernameErrors }
+          deletePasswordErrors={ this.deletePasswordErrors }/>
       </div>
     );
   }

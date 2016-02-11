@@ -1,5 +1,5 @@
 from app import app
-from flask import request, session, jsonify
+from flask import request, jsonify
 from app.api.models import User, Session, RegistrationForm
 from app.api.utilities import user_response_obj
 import pdb
@@ -22,7 +22,7 @@ def __show_user(username):
         return jsonify(error="Could not find user."), 400
 
 @app.route("/user", methods=["POST"])
-def __create_user():
+def create_user():
     form = RegistrationForm(request.form)
 
     if form.validate():

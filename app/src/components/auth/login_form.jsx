@@ -37,10 +37,18 @@ class LoginForm extends React.Component {
   }
 
   changeUsername (e) {
+    removeInvalidClass("form-username-input");
+
+    this.props.deleteUsernameErrors();
+
     this.setState({ username: e.currentTarget.value });
   }
 
   changePassword (e) {
+    removeInvalidClass("form-password-input");
+
+    this.props.deletePasswordErrors();
+    
     this.setState({ password: e.currentTarget.value });
   }
 

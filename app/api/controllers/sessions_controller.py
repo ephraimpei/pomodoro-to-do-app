@@ -1,5 +1,5 @@
 from app import app
-from flask import request, session, jsonify
+from flask import request, jsonify
 from app.api.models import User, Session
 from app.api.models.forms import LoginForm
 from app.api.utilities import user_response_obj
@@ -29,7 +29,7 @@ def __create_session():
     form = LoginForm(request.form)
 
     if form.validate():
-        user = User.find_by_username(form.username.data)[0]
+        user = User.find_by_username(form.username.data)
         session = Session(session_token=Session.generate_session_token())
         user.update(add_to_set__sessions=session)
 
