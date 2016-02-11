@@ -13,9 +13,10 @@ let failedAuthErrors = function (errors) {
         break;
       case "password":
         passwordErrors.push(err[1][0]);
-        if (!$(".login-form-password-input").hasClass("invalid")) {
-          $(".form-password-input").addClass("invalid");
-        }
+        // if (!$(".login-form-password-input").hasClass("invalid")) {
+        //   $(".form-password-input").addClass("invalid");
+        // }
+        $(".form-password-input").addClass("invalid");
         break;
     }
   });

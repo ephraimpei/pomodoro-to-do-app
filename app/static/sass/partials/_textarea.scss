@@ -1,0 +1,12 @@
+textarea {
+  resize: none;
+  border: $standard-border;
+  border-radius: $base-border-radius;
+  font-size: $textarea-font-size;
+  padding: $textarea-padding;
+}
+
+textarea.invalid {
+  border: $failed-validation-input-border;
+  box-shadow: $failed-validation-box-shadow;
+}
