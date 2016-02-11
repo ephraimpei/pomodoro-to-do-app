@@ -3,6 +3,7 @@ from to_do import ToDo
 from session import Session
 import bcrypt
 import uuid
+import pdb
 
 class User(db.Document):
     username = db.StringField(max_length=25, required=True)
@@ -13,7 +14,7 @@ class User(db.Document):
     @classmethod
     def validate_user_credentials(cls, user, password):
         if user:
-            return bcrypt.hashpw(password.encode('utf-8'), \
+            return bcrypt.hashpw(password.encode('utf-8'),
                 user.password_digest.encode('utf-8')) == user.password_digest
         else:
             return False

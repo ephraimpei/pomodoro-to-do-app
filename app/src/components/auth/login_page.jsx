@@ -1,5 +1,7 @@
 import React from 'react';
 import LoginForm from './login_form.jsx';
+import { displayFlashMessage } from '../../utilities/flash.js';
+import { failedAuthErrors } from '../../utilities/auth.js';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -25,14 +27,18 @@ class LoginPage extends React.Component {
 
   }
 
-  successfulLogin () {
-
+  successfulLogin (message, username) {
+    this.context.router.push('/user/' + username);
+    
+    displayFlashMessage(message);
   }
 
-  failedLogin () {
+  failedLogin (errors) {
+    const [usernameErrors, passwordErrors] = failedAuthErrors(errors);
 
+    this.setState({ usernameErrors, passwordErrors });
   }
-  
+
   render () {
     return (
       <div className="login-page">

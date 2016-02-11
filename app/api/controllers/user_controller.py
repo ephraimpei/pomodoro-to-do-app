@@ -1,6 +1,6 @@
 from app import app
 from flask import request, session, jsonify
-from app.api.models import User, RegistrationForm
+from app.api.models import User, Session, RegistrationForm
 from app.api.utilities import user_response_obj
 import pdb
 
@@ -30,6 +30,8 @@ def __create_user():
         new_user.generate_password_digest(form.password.data)
 
         if new_user.save():
+            session = Session(session_token=Session.generate_session_token())
+            new_user.update(add_to_set__sessions=session)
             return jsonify(user = user_response_obj(new_user),
                 message = "User creation successful! Welcome {0}!".format(new_user.username))
         else:

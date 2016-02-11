@@ -12,12 +12,14 @@ import PomodoroToDoApp from './components/main/pomodoro_to_do_app.jsx';
 import Footer from './components/main/footer.jsx';
 import LoginPage from './components/auth/login_page.jsx';
 import SignUpPage from './components/auth/sign_up_page.jsx';
+import UserShowPage from './components/user/user_show_page.jsx';
 
 $(document).ready(function () {
   const routes = (
     <Route path="/" component={ PomodoroToDoApp } >
       <IndexRoute component={ LoginPage } />
       <Route path="/user/new" component={ SignUpPage } />
+      <Route path="/user/:username" component={ UserShowPage } />
     </Route>
   );
 
