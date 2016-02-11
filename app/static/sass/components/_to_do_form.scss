@@ -15,9 +15,13 @@
     height: $description-textbox-height;
   }
 
-  .submit {
-    padding: $to-do-form-submit-padding;
-    font-size: $to-do-form-font-size;
+  .submit, .clear {
+    padding: $to-do-form-button-padding;
+    font-size: $to-do-form-button-font-size;
+  }
+
+  .clear {
+    margin-left: $to-do-form-button-spacing;
   }
 }
 
