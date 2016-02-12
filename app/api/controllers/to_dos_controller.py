@@ -1,6 +1,6 @@
 from app import app
 from flask import request, jsonify
-from app.api.models import User, ToDo, ToDoForm
+from app.api.models import User, ToDo, ToDoForm, Pomodoro
 import pdb
 
 @app.route("/user/<username>/todo", methods=["GET", "POST"])
@@ -15,15 +15,15 @@ def handle_to_do_request(username):
     else:
         return jsonify(error="Could not find user."), 400
 
-@app.route("/user/<username>/todo/<to_do_id>", methods=["PUT", "DELETE"])
-def handle_single_to_do_request(username, to_do_id):
+@app.route("/user/<username>/todo/<id>", methods=["PUT", "DELETE"])
+def handle_single_to_do_request(username, id):
     user = User.find_by_username(username)
 
     if user:
         if request.method == "PUT":
-            return __update_to_do_item(user, to_do_id)
+            return __update_to_do_item(user, id)
         elif request.method == "DELETE":
-            return __delete_to_do_item(user, to_do_id)
+            return __delete_to_do_item(user, id)
     else:
         return jsonify(error="Could not find user."), 400
 
@@ -35,21 +35,32 @@ def __create_to_do_item(user):
     form = ToDoForm(request.form)
 
     if form.validate():
-        new_to_do = ToDo(title=form.title.data, description=form.description.data)
-        if user.update(add_to_set__to_dos=new_to_do):
+        new_to_do = ToDo(title=form.title.data,
+            description=form.description.data,
+            pomodoro_length=form.pomodoro_length.data,
+            break_length=form.break_length.data,
+            long_break_length=form.long_break_length.data)
+
+        user.to_dos.append(new_to_do)
+
+        for i in range(form.num_pomodoros.data):
+            new_pomodoro = Pomodoro(remaining_length=form.pomodoro_length.data)
+            new_to_do.pomodoros.append(new_pomodoro)
+
+        if user.save():
             return jsonify(to_do = new_to_do,
-                message = "To do created successfully! Add some Pomodoros to it!")
+                message = "To do created successfully!")
         else:
             return jsonify(error="Could not create to do item."), 401
     else:
         return jsonify(errors=form.errors.items()), 400
 
-def __update_to_do_item(user, to_do_id):
+def __update_to_do_item(user, id):
     pass
 
-def __delete_to_do_item(user, to_do_id):
-    to_do = User.objects.get(username=user.username).to_dos.filter(to_do_id=to_do_id).first()
+def __delete_to_do_item(user, id):
+    to_do = User.objects.get(username=user.username).to_dos.filter(id=id).first()
 
-    User.objects(username=user.username).update_one(pull__to_dos__to_do_id=to_do_id)
+    User.objects(username=user.username).update_one(pull__to_dos__id=id)
 
     return jsonify(to_do=to_do, message="To do deleted successfully!")

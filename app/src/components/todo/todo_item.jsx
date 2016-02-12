@@ -13,8 +13,8 @@ class ToDoItem extends React.Component {
 
   deleteToDoItem (e) {
     e.preventDefault();
-    
-    ApiToDoUtil.delete(this.props.username, this.props.attr.to_do_id.$oid);
+
+    ApiToDoUtil.delete(this.props.username, this.props.attr.id.$oid);
   }
 
   render () {
