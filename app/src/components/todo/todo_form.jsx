@@ -13,11 +13,14 @@ class ToDoForm extends React.Component {
     this.clearForm = this.clearForm.bind(this);
     this.removePomodoro = this.removePomodoro.bind(this);
     this.addPomodoro = this.addPomodoro.bind(this);
+    this.changePomodoroLength = this.changePomodoroLength.bind(this);
+    this.changeBreakLength = this.changeBreakLength.bind(this);
+    this.changeLongBreakLength = this.changeLongBreakLength.bind(this);
     this.state={ title: "",
       description: "",
-      pomodoros: 0,
+      numPomodoros: 1,
       pomodoroLength: 25,
-      shortBreakLength: 5,
+      breakLength: 5,
       longBreakLength: 15
     };
   }
@@ -31,6 +34,10 @@ class ToDoForm extends React.Component {
 
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
+    formData.append("num_pomodoros", this.state.numPomodoros);
+    formData.append("pomodoro_length", this.state.pomodoroLength);
+    formData.append("break_length", this.state.breakLength);
+    formData.append("long_break_length", this.state.longBreakLength);
 
     ApiToDoUtil.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm);
   }
@@ -63,25 +70,45 @@ class ToDoForm extends React.Component {
     this.props.deleteToDoTitleErrors();
     this.props.deleteToDoDescriptionErrors();
 
-    this.setState({ title: "", description: "", numPomodoros: 0 });
+    this.setState({ title: "",
+      description: "",
+      numPomodoros: 1,
+      pomodoroLength: 25,
+      breakLength: 5,
+      longBreakLength: 15
+    });
   }
 
   removePomodoro (e) {
     e.preventDefault();
 
-    const updatedPomodoroCount = this.state.pomodoros - 1;
+    const updatedPomodoroCount = this.state.numPomodoros - 1;
 
-    if (updatedPomodoroCount >= 0) {
-      this.setState({ pomodoros: updatedPomodoroCount });
+    if (updatedPomodoroCount >= 1) {
+      this.setState({ numPomodoros: updatedPomodoroCount });
     }
   }
 
   addPomodoro (e) {
     e.preventDefault();
 
-    const updatedPomodoroCount = this.state.pomodoros + 1;
+    const updatedPomodoroCount = this.state.numPomodoros + 1;
 
-    this.setState({ pomodoros: updatedPomodoroCount });
+    if (updatedPomodoroCount <= 50) {
+      this.setState({ numPomodoros: updatedPomodoroCount });
+    }
+  }
+
+  changePomodoroLength (e) {
+    this.setState({ pomodoroLength: e });
+  }
+
+  changeBreakLength (e) {
+    this.setState({ breakLength: e });
+  }
+
+  changeLongBreakLength (e) {
+    this.setState({ longBreakLength: e });
   }
 
   render () {
@@ -95,6 +122,24 @@ class ToDoForm extends React.Component {
       <li key={ idx }>{ err }</li>
     );
 
+    const pomodoroLengthSlider = (
+      <Rcslider min={ 1 } max={ 60 } step={ 1 } className="slider pomodoro-length"
+        value={ this.state.pomodoroLength }
+        onChange={ this.changePomodoroLength }/>
+    );
+
+    const breakLengthSlider = (
+      <Rcslider min={ 1 } max={ 60 } step={ 1 } className="slider break-length"
+        value={ this.state.breakLength }
+        onChange={ this.changeBreakLength }/>
+    );
+
+    const longBreakLengthSlider = (
+      <Rcslider min={ 1 } max={ 60 } step={ 1 } className="slider long-break-length"
+        value={ this.state.longBreakLength }
+        onChange={ this.changeLongBreakLength }/>
+    );
+
     return (
       <form className={ klass } onSubmit={ this.handleToDoSubmssion }>
         <label>Title</label>
@@ -105,22 +150,21 @@ class ToDoForm extends React.Component {
         <ul className="form-error-wrapper">{ descriptionErrors }</ul>
         <textarea className="description-textbox" onChange={ this.changeDescription }/>
 
-        <label>Pomodoros: { this.state.pomodoros }</label>
+        <label>Pomodoros: { this.state.numPomodoros }</label>
         <div className="pomodoro-counter-wrapper">
           <button className="remove-pomodoro" onClick={ this.removePomodoro }>−</button>
           <img src="/images/pomodoro.png"/>
           <button className="add-pomodoro" onClick={ this.addPomodoro }>+</button>
         </div>
 
-        <label>Settings (minutes)</label>
-        <label>Pomodoro: { this.state.pomodoroLength }</label>
-        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
+        <label>Pomodoro: { this.state.pomodoroLength } minutes</label>
+        { pomodoroLengthSlider }
 
-        <label>Break: { this.state.shortBreakLength }</label>
-        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
+        <label>Break: { this.state.breakLength } minutes</label>
+        { breakLengthSlider }
 
-        <label>Long Break: { this.state.longBreakLength }</label>
-        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
+        <label>Long Break: { this.state.longBreakLength } minutes</label>
+        { longBreakLengthSlider }
 
         <div className="to-do-form-options">
           <button className="submit" type="submit">Submit</button>

@@ -40,8 +40,8 @@ $failed-validation-input-border: 2px solid red;
 $failed-validation-box-shadow: 0 0 10px red;
 
 /* flash messages */
-$flash-top: 1vh;
-$flash-left: 30vw;
+$flash-top: 20%;
+$flash-left: 40vw;
 $flash-font-size: 1.2em;
 $flash-border: $standard-border;
 $flash-border-radius: $base-border-radius;
@@ -92,7 +92,7 @@ $toggle-to-do-form-font-size: 1.2em;
 
         /* user show page - to do index - to do item */
         $to-do-item-margin: 10px 0;
-        $to-do-item-spacing: 0 1vh;
+        $to-do-item-spacing: 0 1vw;
         $to-do-show-details-button-radius: 3px;
 
 /* to do form */

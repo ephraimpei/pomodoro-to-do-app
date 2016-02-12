@@ -4,15 +4,15 @@ from bson import ObjectId
 import datetime
 
 class ToDo(db.EmbeddedDocument):
-    to_do_id = db.ObjectIdField(default=ObjectId, required=True)
+    id = db.ObjectIdField(default=ObjectId, required=True)
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     title = db.StringField(max_length=255, required=True)
     description = db.StringField(max_length=500, required=True)
     complete = db.BooleanField(default=False, required=True)
+    pomodoro_length = db.IntField(require=True)
+    break_length = db.IntField(require=True)
+    long_break_length = db.IntField(require=True)
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
 
-    meta = {
-        'indexes': [
-            { 'fields': ['to_do_id'] }
-        ]
-    }
+    def num_pomodoros(self):
+        return self.pomodoros.count()
