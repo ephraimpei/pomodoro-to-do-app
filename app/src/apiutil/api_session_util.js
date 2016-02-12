@@ -38,7 +38,7 @@ class ApiSessionUtil {
       success(data.message);
     };
 
-    $.get("/session").done(this.constructor.receiveCurrentUser);
+    $.get("/session").done(receiveCurrentUser);
   }
 }
 
