@@ -3,18 +3,24 @@ import ToDoIndex from '../todo/todo_index.jsx';
 import ToDoForm from '../todo/todo_form.jsx';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
 import ToDoStore from '../../stores/to_do_store.js';
+import CurrentUserStore from '../../stores/current_user_store.js';
 
 class UserShowPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.getStateFromStore = this.getStateFromStore.bind(this);
     this.toggleToDoForm = this.toggleToDoForm.bind(this);
     this._onChange = this._onChange.bind(this);
+    this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
     this.state={
       toDos: this.getStateFromStore(),
       displayToDoForm: false
      };
   }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  };
 
   componentWillMount () {
     ApiToDoUtil.fetch(this.props.routeParams.username);
@@ -22,10 +28,12 @@ class UserShowPage extends React.Component {
 
   componentDidMount () {
     ToDoStore.addChangeListener(this._onChange);
+    CurrentUserStore.addChangeListener(this._ensureLoggedIn);
   }
 
   componentWillUnmount () {
     ToDoStore.removeChangeListener(this._onChange);
+    CurrentUserStore.removeChangeListener(this._ensureLoggedIn);
   }
 
   getStateFromStore () {
@@ -42,6 +50,10 @@ class UserShowPage extends React.Component {
 
   _onChange () {
     this.setState({ toDos: this.getStateFromStore() });
+  }
+
+  _ensureLoggedIn () {
+    if (!CurrentUserStore.isLoggedIn()) { this.context.router.push('/'); }
   }
 
   render () {

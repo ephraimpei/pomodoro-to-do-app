@@ -141,7 +141,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\n/* navigation bar */\n/* user search bar */\n/* user autocomplete list */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 20%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.header {\n  background: lightblue;\n  border-bottom: 1px solid #ccc; }\n  .header .nav-bar {\n    width: 70vw;\n    margin: auto;\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n    .header .nav-bar .logo {\n      width: 75px;\n      height: 75px;\n      cursor: pointer; }\n\n.to-do-search {\n  position: relative; }\n  .to-do-search input {\n    margin: 0 1vw;\n    width: 20vw; }\n  .to-do-search .to-do-search-submit {\n    border: 0;\n    font-size: 1.5em;\n    transition: all .2s ease-in-out; }\n  .to-do-search .to-do-search-submit:hover {\n    transform: scale(1.2); }\n  .to-do-search .to-do-search-autocomplete-list {\n    display: none;\n    position: absolute;\n    width: 20vw;\n    left: calc(61px + 1vw);\n    background: white;\n    border-radius: 10px;\n    border-left: 1px solid #ccc;\n    border-right: 1px solid #ccc;\n    border-bottom: 1px solid #ccc; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item {\n      border-top: 1px solid #ccc;\n      padding: 5px;\n      display: block; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected {\n      border: 1px solid blue; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:first-child {\n      border-top-left-radius: 10px;\n      border-top-right-radius: 10px; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:last-child {\n      border-bottom-left-radius: 10px;\n      border-bottom-right-radius: 10px; }\n  .to-do-search .to-do-search-autocomplete-list.show {\n    display: block; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vw; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
+	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\n/* navigation bar */\n/* user search bar */\n/* user autocomplete list */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 15%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.header {\n  background: lightblue;\n  border-bottom: 1px solid #ccc; }\n  .header .nav-bar {\n    width: 70vw;\n    margin: auto;\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n    .header .nav-bar .logo {\n      width: 75px;\n      height: 75px;\n      cursor: pointer; }\n\n.to-do-search {\n  position: relative; }\n  .to-do-search input {\n    margin: 0 1vw;\n    width: 20vw; }\n  .to-do-search .to-do-search-submit {\n    border: 0;\n    font-size: 1.5em;\n    transition: all .2s ease-in-out; }\n  .to-do-search .to-do-search-submit:hover {\n    transform: scale(1.2); }\n  .to-do-search .to-do-search-autocomplete-list {\n    display: none;\n    position: absolute;\n    width: 20vw;\n    left: calc(61px + 1vw);\n    background: white;\n    border-radius: 10px;\n    border-left: 1px solid #ccc;\n    border-right: 1px solid #ccc;\n    border-bottom: 1px solid #ccc; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item {\n      border-top: 1px solid #ccc;\n      padding: 5px;\n      display: block; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected {\n      border: 1px solid blue; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:first-child {\n      border-top-left-radius: 10px;\n      border-top-right-radius: 10px; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:last-child {\n      border-bottom-left-radius: 10px;\n      border-bottom-right-radius: 10px; }\n  .to-do-search .to-do-search-autocomplete-list.show {\n    display: block; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper .form-avatar-preview {\n      width: 200px;\n      height: 200px; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vw; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
 	
 	// exports
 
@@ -34996,10 +34996,10 @@
 	var PomodoroToDoApp = function (_React$Component) {
 	  _inherits(PomodoroToDoApp, _React$Component);
 	
-	  function PomodoroToDoApp(props) {
+	  function PomodoroToDoApp(props, context) {
 	    _classCallCheck(this, PomodoroToDoApp);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PomodoroToDoApp).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PomodoroToDoApp).call(this, props, context));
 	
 	    _this.navigateToUserHomePage = _this.navigateToUserHomePage.bind(_this);
 	    _this._onChange = _this._onChange.bind(_this);
@@ -35124,7 +35124,9 @@
 	    value: function fetchSession(success) {
 	      var receiveCurrentUser = function receiveCurrentUser(data) {
 	        _current_user_actions2.default.receiveCurrentUser(data.user);
-	        success(data.message);
+	        if (data.message) {
+	          success(data.message);
+	        }
 	      };
 	
 	      _jquery2.default.get("/session").done(receiveCurrentUser);
@@ -36021,10 +36023,10 @@
 	var LoginPage = function (_React$Component) {
 	  _inherits(LoginPage, _React$Component);
 	
-	  function LoginPage(props) {
+	  function LoginPage(props, context) {
 	    _classCallCheck(this, LoginPage);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginPage).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginPage).call(this, props, context));
 	
 	    _this.successfulLogin = _this.successfulLogin.bind(_this);
 	    _this.failedLogin = _this.failedLogin.bind(_this);
@@ -36387,10 +36389,10 @@
 	var SignUpPage = function (_React$Component) {
 	  _inherits(SignUpPage, _React$Component);
 	
-	  function SignUpPage(props) {
+	  function SignUpPage(props, context) {
 	    _classCallCheck(this, SignUpPage);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignUpPage).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignUpPage).call(this, props, context));
 	
 	    _this.successfulSignUp = _this.successfulSignUp.bind(_this);
 	    _this.failedSignUp = _this.failedSignUp.bind(_this);
@@ -36506,14 +36508,20 @@
 	  function SignUpForm(props, context) {
 	    _classCallCheck(this, SignUpForm);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignUpForm).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignUpForm).call(this, props, context));
 	
 	    _this.handleSignUpSubmission = _this.handleSignUpSubmission.bind(_this);
 	    _this.handleKeyPress = _this.handleKeyPress.bind(_this);
 	    _this.changeUsername = _this.changeUsername.bind(_this);
 	    _this.changePassword = _this.changePassword.bind(_this);
 	    _this.changePasswordConf = _this.changePasswordConf.bind(_this);
-	    _this.state = { username: "", password: "", passwordConf: "" };
+	    _this.changeFile = _this.changeFile.bind(_this);
+	    _this.state = { username: "",
+	      password: "",
+	      passwordConf: "",
+	      imageUrl: "/images/avatar_placeholder.png",
+	      imageFile: null
+	    };
 	    return _this;
 	  }
 	
@@ -36531,6 +36539,7 @@
 	      formData.append("username", this.state.username);
 	      formData.append("password", this.state.password);
 	      formData.append("confirm", this.state.passwordConf);
+	      formData.append("avatar", this.state.imageFile);
 	
 	      _api_user_util2.default.create(formData, this.props.success, this.props.failure);
 	    }
@@ -36567,6 +36576,23 @@
 	      this.props.deletePasswordErrors();
 	
 	      this.setState({ passwordConf: e.currentTarget.value });
+	    }
+	  }, {
+	    key: 'changeFile',
+	    value: function changeFile(e) {
+	      var _this2 = this;
+	
+	      var reader = new FileReader();
+	      var file = e.currentTarget.files[0];
+	
+	      reader.onloadend = function (e) {
+	        // this.setState({ imageUrl: reader.result, imageFile: file });
+	        var data = event.target.result.replace("data:" + file.type + ";base64,", '');
+	        debugger;
+	        _this2.setState({ imageUrl: reader.result, imageFile: data });
+	      };
+	
+	      file ? reader.readAsDataURL(file) : this.setState({ imageUrl: "", imageFile: null });
 	    }
 	  }, {
 	    key: 'render',
@@ -36631,6 +36657,16 @@
 	              type: 'password',
 	              onChange: this.changePasswordConf })
 	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Avatar Upload',
+	            _react2.default.createElement('input', {
+	              className: 'form-avatar',
+	              type: 'file',
+	              onChange: this.changeFile })
+	          ),
+	          _react2.default.createElement('img', { className: 'form-avatar-preview', src: this.state.imageUrl }),
 	          _react2.default.createElement(
 	            'button',
 	            { className: 'submit', type: 'submit' },
@@ -36741,6 +36777,10 @@
 	
 	var _to_do_store2 = _interopRequireDefault(_to_do_store);
 	
+	var _current_user_store = __webpack_require__(231);
+	
+	var _current_user_store2 = _interopRequireDefault(_current_user_store);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36752,14 +36792,15 @@
 	var UserShowPage = function (_React$Component) {
 	  _inherits(UserShowPage, _React$Component);
 	
-	  function UserShowPage(props) {
+	  function UserShowPage(props, context) {
 	    _classCallCheck(this, UserShowPage);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserShowPage).call(this, props, context));
 	
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
 	    _this.toggleToDoForm = _this.toggleToDoForm.bind(_this);
 	    _this._onChange = _this._onChange.bind(_this);
+	    _this._ensureLoggedIn = _this._ensureLoggedIn.bind(_this);
 	    _this.state = {
 	      toDos: _this.getStateFromStore(),
 	      displayToDoForm: false
@@ -36776,11 +36817,13 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      _to_do_store2.default.addChangeListener(this._onChange);
+	      _current_user_store2.default.addChangeListener(this._ensureLoggedIn);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      _to_do_store2.default.removeChangeListener(this._onChange);
+	      _current_user_store2.default.removeChangeListener(this._ensureLoggedIn);
 	    }
 	  }, {
 	    key: 'getStateFromStore',
@@ -36800,6 +36843,13 @@
 	    key: '_onChange',
 	    value: function _onChange() {
 	      this.setState({ toDos: this.getStateFromStore() });
+	    }
+	  }, {
+	    key: '_ensureLoggedIn',
+	    value: function _ensureLoggedIn() {
+	      if (!_current_user_store2.default.isLoggedIn()) {
+	        this.context.router.push('/');
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -36831,6 +36881,9 @@
 	  return UserShowPage;
 	}(_react2.default.Component);
 	
+	UserShowPage.contextTypes = {
+	  router: _react2.default.PropTypes.object.isRequired
+	};
 	exports.default = UserShowPage;
 
 /***/ },
@@ -36864,10 +36917,10 @@
 	var ToDoIndex = function (_React$Component) {
 	  _inherits(ToDoIndex, _React$Component);
 	
-	  function ToDoIndex(props) {
+	  function ToDoIndex(props, context) {
 	    _classCallCheck(this, ToDoIndex);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoIndex).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoIndex).call(this, props, context));
 	  }
 	
 	  _createClass(ToDoIndex, [{
@@ -36932,10 +36985,10 @@
 	var ToDoItem = function (_React$Component) {
 	  _inherits(ToDoItem, _React$Component);
 	
-	  function ToDoItem(props) {
+	  function ToDoItem(props, context) {
 	    _classCallCheck(this, ToDoItem);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props, context));
 	
 	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
 	    _this.toggleEditForm = _this.toggleEditForm.bind(_this);
@@ -37271,10 +37324,10 @@
 	var ToDoForm = function (_React$Component) {
 	  _inherits(ToDoForm, _React$Component);
 	
-	  function ToDoForm(props) {
+	  function ToDoForm(props, context) {
 	    _classCallCheck(this, ToDoForm);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoForm).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoForm).call(this, props, context));
 	
 	    _this.handleToDoSubmssion = _this.handleToDoSubmssion.bind(_this);
 	    _this.changeTitle = _this.changeTitle.bind(_this);
@@ -43753,9 +43806,9 @@
 	
 	var _to_do_search2 = _interopRequireDefault(_to_do_search);
 	
-	var _options = __webpack_require__(307);
+	var _api_session_util = __webpack_require__(224);
 	
-	var _options2 = _interopRequireDefault(_options);
+	var _api_session_util2 = _interopRequireDefault(_api_session_util);
 	
 	var _flash = __webpack_require__(233);
 	
@@ -43770,13 +43823,14 @@
 	var NavBar = function (_React$Component) {
 	  _inherits(NavBar, _React$Component);
 	
-	  function NavBar(props) {
+	  function NavBar(props, context) {
 	    _classCallCheck(this, NavBar);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NavBar).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NavBar).call(this, props, context));
 	
 	    _this.successfulToDoSearch = _this.successfulToDoSearch.bind(_this);
 	    _this.failedToDoSearch = _this.failedToDoSearch.bind(_this);
+	    _this.logout = _this.logout.bind(_this);
 	    return _this;
 	  }
 	
@@ -43789,6 +43843,13 @@
 	    key: 'failedToDoSearch',
 	    value: function failedToDoSearch(message) {
 	      (0, _flash.displayFlashMessage)(message);
+	    }
+	  }, {
+	    key: 'logout',
+	    value: function logout(e) {
+	      e.preventDefault();
+	
+	      _api_session_util2.default.logout(_flash.displayFlashMessage);
 	    }
 	  }, {
 	    key: 'render',
@@ -43806,7 +43867,11 @@
 	            'To Do List'
 	          ),
 	          _react2.default.createElement(_to_do_search2.default, { successfulSearch: this.props.successfulUserSearch }),
-	          _react2.default.createElement(_options2.default, { logoutSuccess: this.logoutSuccess })
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'logout', onClick: this.logout },
+	            'Logout'
+	          )
 	        )
 	      );
 	    }
@@ -43815,89 +43880,13 @@
 	  return NavBar;
 	}(_react2.default.Component);
 	
+	NavBar.contextTypes = {
+	  router: _react2.default.PropTypes.object.isRequired
+	};
 	exports.default = NavBar;
 
 /***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(8);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _api_session_util = __webpack_require__(224);
-	
-	var _api_session_util2 = _interopRequireDefault(_api_session_util);
-	
-	var _flash = __webpack_require__(233);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Options = function (_React$Component) {
-	  _inherits(Options, _React$Component);
-	
-	  function Options(props, context) {
-	    _classCallCheck(this, Options);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Options).call(this, props, context));
-	
-	    _this.logoutCurrentUser = _this.logoutCurrentUser.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(Options, [{
-	    key: 'logoutCurrentUser',
-	    value: function logoutCurrentUser(e) {
-	      e.preventDefault();
-	
-	      _api_session_util2.default.logout(_flash.displayFlashMessage);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var options = ["Logout"];
-	
-	      var optionListItems = options.map(function (option, idx) {
-	        return _react2.default.createElement(
-	          'li',
-	          { key: idx },
-	          option
-	        );
-	      });
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'options' },
-	        'Options',
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'options-list' },
-	          optionListItems
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Options;
-	}(_react2.default.Component);
-	
-	exports.default = Options;
-
-/***/ },
+/* 307 */,
 /* 308 */
 /***/ function(module, exports, __webpack_require__) {
 

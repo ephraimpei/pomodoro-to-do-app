@@ -4,8 +4,8 @@ import ToDoForm from './todo_form.jsx';
 import { displayFlashMessage } from '../../utilities/flash.js';
 
 class ToDoItem extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.deleteToDoItem = this.deleteToDoItem.bind(this);
     this.toggleEditForm = this.toggleEditForm.bind(this);
     this.hideForm = this.hideForm.bind(this);

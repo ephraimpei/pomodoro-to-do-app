@@ -35,7 +35,7 @@ class ApiSessionUtil {
   fetchSession (success) {
     const receiveCurrentUser = (data) => {
       CurrentUserActions.receiveCurrentUser(data.user);
-      success(data.message);
+      if (data.message) { success(data.message); }
     };
 
     $.get("/session").done(receiveCurrentUser);
