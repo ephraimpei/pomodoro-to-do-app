@@ -1,5 +1,5 @@
 from app import app
-from flask import request, jsonify
+from flask import request, jsonify, send_from_directory
 from app.api.models import User, ToDo, ToDoForm, Pomodoro
 import pdb
 
@@ -13,7 +13,7 @@ def handle_to_do_request(username):
         elif request.method == "POST":
             return __create_to_do_item(user)
     else:
-        return jsonify(error="Could not find user."), 400
+        return jsonify(error="Could not find user."), 404
 
 @app.route("/user/<username>/todo/<id>", methods=["PUT", "DELETE"])
 def handle_single_to_do_request(username, id):
@@ -25,7 +25,7 @@ def handle_single_to_do_request(username, id):
         elif request.method == "DELETE":
             return __delete_to_do_item(user, id)
     else:
-        return jsonify(error="Could not find user."), 400
+        return jsonify(error="Could not find user."), 404
 
 def __fetch_to_do_items(user):
     to_dos = User.objects.get(username=user.username).to_dos

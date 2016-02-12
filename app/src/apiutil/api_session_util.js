@@ -19,6 +19,27 @@ class ApiSessionUtil {
       data: formData
     }).done(receiveCurrentUser).fail(receiveErrors);
   }
+
+  logout (success) {
+    const receiveCurrentUser = (data) => {
+      CurrentUserActions.receiveCurrentUser({});
+      success(data.message);
+    };
+
+    $.ajax({
+      url: "/session",
+      method: "DELETE"
+    }).done(receiveCurrentUser);
+  }
+
+  fetchSession (success) {
+    const receiveCurrentUser = (data) => {
+      CurrentUserActions.receiveCurrentUser(data.user);
+      success(data.message);
+    };
+
+    $.get("/session").done(this.constructor.receiveCurrentUser);
+  }
 }
 
 const apiSessionUtil = new ApiSessionUtil();
