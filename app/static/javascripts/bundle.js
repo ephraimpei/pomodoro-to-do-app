@@ -36233,8 +36233,6 @@
 	  value: true
 	});
 	
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(8);
@@ -36257,10 +36255,6 @@
 	
 	var _to_do_store2 = _interopRequireDefault(_to_do_store);
 	
-	var _flash = __webpack_require__(235);
-	
-	var _to_do = __webpack_require__(304);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36279,16 +36273,10 @@
 	
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
 	    _this.toggleToDoForm = _this.toggleToDoForm.bind(_this);
-	    _this.successfulToDoCreation = _this.successfulToDoCreation.bind(_this);
-	    _this.failedToDoCreation = _this.failedToDoCreation.bind(_this);
-	    _this.deleteToDoTitleErrors = _this.deleteToDoTitleErrors.bind(_this);
-	    _this.deleteToDoDescriptionErrors = _this.deleteToDoDescriptionErrors.bind(_this);
 	    _this._onChange = _this._onChange.bind(_this);
 	    _this.state = {
 	      toDos: _this.getStateFromStore(),
-	      displayToDoForm: false,
-	      toDoTitleErrors: [],
-	      toDoDescriptionErrors: []
+	      displayToDoForm: false
 	    };
 	    return _this;
 	  }
@@ -36323,34 +36311,6 @@
 	      this.setState({ displayToDoForm: newState });
 	    }
 	  }, {
-	    key: 'successfulToDoCreation',
-	    value: function successfulToDoCreation(message) {
-	      (0, _flash.displayFlashMessage)(message);
-	    }
-	  }, {
-	    key: 'failedToDoCreation',
-	    value: function failedToDoCreation(errors) {
-	      var _failedToDoErrors = (0, _to_do.failedToDoErrors)(errors);
-	
-	      var _failedToDoErrors2 = _slicedToArray(_failedToDoErrors, 2);
-	
-	      var toDoTitleErrors = _failedToDoErrors2[0];
-	      var toDoDescriptionErrors = _failedToDoErrors2[1];
-	
-	
-	      this.setState({ toDoTitleErrors: toDoTitleErrors, toDoDescriptionErrors: toDoDescriptionErrors });
-	    }
-	  }, {
-	    key: 'deleteToDoTitleErrors',
-	    value: function deleteToDoTitleErrors() {
-	      this.setState({ toDoTitleErrors: [] });
-	    }
-	  }, {
-	    key: 'deleteToDoDescriptionErrors',
-	    value: function deleteToDoDescriptionErrors() {
-	      this.setState({ toDoDescriptionErrors: [] });
-	    }
-	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
 	      this.setState({ toDos: this.getStateFromStore() });
@@ -36368,17 +36328,13 @@
 	          { className: 'to-do-list-wrapper' },
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'toggle-to-do-form', onClick: this.toggleToDoForm },
+	            { className: 'toggle-to-do-form',
+	              onClick: this.toggleToDoForm },
 	            buttonText
 	          ),
-	          _react2.default.createElement(_todo_form2.default, { visible: this.state.displayToDoForm,
-	            username: this.props.routeParams.username,
-	            success: this.successfulToDoCreation,
-	            failure: this.failedToDoCreation,
-	            toDoTitleErrors: this.state.toDoTitleErrors,
-	            toDoDescriptionErrors: this.state.toDoDescriptionErrors,
-	            deleteToDoTitleErrors: this.deleteToDoTitleErrors,
-	            deleteToDoDescriptionErrors: this.deleteToDoDescriptionErrors }),
+	          _react2.default.createElement(_todo_form2.default, { mode: "new",
+	            visible: this.state.displayToDoForm,
+	            username: this.props.routeParams.username }),
 	          _react2.default.createElement(_todo_index2.default, { toDos: this.state.toDos,
 	            username: this.props.routeParams.username })
 	        )
@@ -36473,6 +36429,12 @@
 	
 	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
+	var _todo_form = __webpack_require__(245);
+	
+	var _todo_form2 = _interopRequireDefault(_todo_form);
+	
+	var _flash = __webpack_require__(235);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36490,10 +36452,12 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props));
 	
 	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
-	    _this.editToDoItem = _this.editToDoItem.bind(_this);
+	    _this.toggleEditForm = _this.toggleEditForm.bind(_this);
+	    _this.hideForm = _this.hideForm.bind(_this);
 	    _this.state = {
 	      complete: _this.props.attr.complete,
-	      showDetails: false
+	      showDetails: false,
+	      showEditForm: false
 	    };
 	    return _this;
 	  }
@@ -36503,16 +36467,27 @@
 	    value: function deleteToDoItem(e) {
 	      e.preventDefault();
 	
-	      _api_to_do_util2.default.delete(this.props.username, this.props.attr.id.$oid);
+	      _api_to_do_util2.default.delete(this.props.username, this.props.attr.id.$oid, _flash.displayFlashMessage);
 	    }
 	  }, {
-	    key: 'editToDoItem',
-	    value: function editToDoItem(e) {
+	    key: 'toggleEditForm',
+	    value: function toggleEditForm(e) {
 	      e.preventDefault();
+	
+	      var newState = this.state.showEditForm ? false : true;
+	
+	      this.setState({ showEditForm: newState });
+	    }
+	  }, {
+	    key: 'hideForm',
+	    value: function hideForm() {
+	      this.setState({ showEditForm: false });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var buttonText = this.state.showEditForm ? "Cancel" : "Edit";
+	
 	      return _react2.default.createElement(
 	        'li',
 	        { className: 'to-do-item' },
@@ -36544,15 +36519,20 @@
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'edit-to-do-item',
-	            onClick: this.editToDoItem },
-	          'Edit'
+	            onClick: this.toggleEditForm },
+	          buttonText
 	        ),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'delete-to-do-item',
 	            onClick: this.deleteToDoItem },
 	          'Delete'
-	        )
+	        ),
+	        _react2.default.createElement(_todo_form2.default, { mode: "edit",
+	          visible: this.state.showEditForm,
+	          username: this.props.username,
+	          hideForm: this.hideForm,
+	          attr: this.props.attr })
 	      );
 	    }
 	  }]);
@@ -36593,11 +36573,17 @@
 	
 	  _createClass(ApiToDoUtil, [{
 	    key: "create",
-	    value: function create(formData, username, success, failure, clearForm) {
+	    value: function create(formData, username, success, failure) {
+	      for (var _len = arguments.length, callbacks = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
+	        callbacks[_key - 4] = arguments[_key];
+	      }
+	
 	      var receiveToDo = function receiveToDo(data) {
 	        _to_do_actions2.default.receiveToDo(data.to_do);
 	        success(data.message);
-	        clearForm();
+	        callbacks.forEach(function (callback) {
+	          return callback();
+	        });
 	      };
 	
 	      var receiveError = function receiveError(data) {
@@ -36623,15 +36609,43 @@
 	    }
 	  }, {
 	    key: "delete",
-	    value: function _delete(username, toDoId) {
+	    value: function _delete(username, toDoId, success) {
 	      var deleteToDo = function deleteToDo(data) {
 	        _to_do_actions2.default.deleteToDo(data.to_do);
+	        success(data.message);
 	      };
 	
 	      _jquery2.default.ajax({
 	        url: "/user/" + username + "/todo/" + toDoId,
 	        type: 'DELETE'
 	      }).done(deleteToDo);
+	    }
+	  }, {
+	    key: "update",
+	    value: function update(formData, username, toDoId, success, failure) {
+	      for (var _len2 = arguments.length, callbacks = Array(_len2 > 5 ? _len2 - 5 : 0), _key2 = 5; _key2 < _len2; _key2++) {
+	        callbacks[_key2 - 5] = arguments[_key2];
+	      }
+	
+	      var receiveToDo = function receiveToDo(data) {
+	        _to_do_actions2.default.updateToDo(data.to_do);
+	        success(data.message);
+	        callbacks.forEach(function (callback) {
+	          return callback();
+	        });
+	      };
+	
+	      var receiveError = function receiveError(data) {
+	        return failure(data.responseJSON.errors);
+	      };
+	
+	      _jquery2.default.ajax({
+	        url: "/user/" + username + "/todo/" + toDoId,
+	        method: "PUT",
+	        processData: false,
+	        contentType: false,
+	        dataType: "json",
+	        data: formData }).done(receiveToDo).fail(receiveError);
 	    }
 	  }]);
 	
@@ -36695,6 +36709,14 @@
 	        toDo: toDo
 	      });
 	    }
+	  }, {
+	    key: "updateToDo",
+	    value: function updateToDo(toDo) {
+	      _dispatcher2.default.dispatch({
+	        actionType: _to_do_constants2.default.UPDATE_TO_DO,
+	        toDo: toDo
+	      });
+	    }
 	  }]);
 	
 	  return _class;
@@ -36712,7 +36734,8 @@
 	exports.default = {
 	  RECEIVE_TO_DOS: "RECEIVE_TO_DOS",
 	  RECEIVE_TO_DO: "RECEIVE_TO_DO",
-	  DELETE_TO_DO: "DELETE_TO_DO"
+	  DELETE_TO_DO: "DELETE_TO_DO",
+	  UPDATE_TO_DO: "UPDATE_TO_DO"
 	};
 
 /***/ },
@@ -36724,6 +36747,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -36743,7 +36768,11 @@
 	
 	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
+	var _flash = __webpack_require__(235);
+	
 	var _auth = __webpack_require__(234);
+	
+	var _to_do = __webpack_require__(304);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36770,17 +36799,43 @@
 	    _this.changePomodoroLength = _this.changePomodoroLength.bind(_this);
 	    _this.changeBreakLength = _this.changeBreakLength.bind(_this);
 	    _this.changeLongBreakLength = _this.changeLongBreakLength.bind(_this);
-	    _this.state = { title: "",
-	      description: "",
-	      numPomodoros: 1,
-	      pomodoroLength: 25,
-	      breakLength: 5,
-	      longBreakLength: 15
-	    };
+	    _this.success = _this.success.bind(_this);
+	    _this.failure = _this.failure.bind(_this);
+	    _this.deleteTitleErrors = _this.deleteTitleErrors.bind(_this);
+	    _this.deleteDescriptionErrors = _this.deleteDescriptionErrors.bind(_this);
+	    _this.determineInitialState = _this.determineInitialState.bind(_this);
+	    _this.state = _this.determineInitialState();
 	    return _this;
 	  }
 	
 	  _createClass(ToDoForm, [{
+	    key: 'determineInitialState',
+	    value: function determineInitialState() {
+	      if (this.props.mode === "new") {
+	        return {
+	          title: "",
+	          description: "",
+	          numPomodoros: 1,
+	          pomodoroLength: 25,
+	          breakLength: 5,
+	          longBreakLength: 15,
+	          toDoTitleErrors: [],
+	          toDoDescriptionErrors: []
+	        };
+	      } else if (this.props.mode === "edit") {
+	        return {
+	          title: this.props.attr.title,
+	          description: this.props.attr.description,
+	          numPomodoros: this.props.attr.pomodoros.length,
+	          pomodoroLength: this.props.attr.pomodoro_length,
+	          breakLength: this.props.attr.break_length,
+	          longBreakLength: this.props.attr.long_break_length,
+	          toDoTitleErrors: [],
+	          toDoDescriptionErrors: []
+	        };
+	      }
+	    }
+	  }, {
 	    key: 'handleToDoSubmssion',
 	    value: function handleToDoSubmssion(e) {
 	      if (e) {
@@ -36798,14 +36853,18 @@
 	      formData.append("break_length", this.state.breakLength);
 	      formData.append("long_break_length", this.state.longBreakLength);
 	
-	      _api_to_do_util2.default.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm);
+	      if (this.props.mode === "new") {
+	        _api_to_do_util2.default.create(formData, this.props.username, this.success, this.failure, this.clearForm);
+	      } else if (this.props.mode === "edit") {
+	        _api_to_do_util2.default.update(formData, this.props.username, this.props.attr.id.$oid, this.success, this.failure, this.props.hideForm);
+	      }
 	    }
 	  }, {
 	    key: 'changeTitle',
 	    value: function changeTitle(e) {
 	      (0, _auth.removeInvalidClass)("title-input");
 	
-	      this.props.deleteToDoTitleErrors();
+	      this.deleteTitleErrors();
 	
 	      this.setState({ title: e.currentTarget.value });
 	    }
@@ -36814,7 +36873,7 @@
 	    value: function changeDescription(e) {
 	      (0, _auth.removeInvalidClass)("description-textbox");
 	
-	      this.props.deleteToDoDescriptionErrors();
+	      this.deleteDescriptionErrors();
 	
 	      this.setState({ description: e.currentTarget.value });
 	    }
@@ -36831,8 +36890,8 @@
 	      (0, _auth.removeInvalidClass)("title-input");
 	      (0, _auth.removeInvalidClass)("description-textbox");
 	
-	      this.props.deleteToDoTitleErrors();
-	      this.props.deleteToDoDescriptionErrors();
+	      this.deleteTitleErrors();
+	      this.deleteDescriptionErrors();
 	
 	      this.setState({ title: "",
 	        description: "",
@@ -36880,11 +36939,39 @@
 	      this.setState({ longBreakLength: e });
 	    }
 	  }, {
+	    key: 'success',
+	    value: function success(message) {
+	      (0, _flash.displayFlashMessage)(message);
+	    }
+	  }, {
+	    key: 'failure',
+	    value: function failure(errors) {
+	      var _failedToDoErrors = (0, _to_do.failedToDoErrors)(errors);
+	
+	      var _failedToDoErrors2 = _slicedToArray(_failedToDoErrors, 2);
+	
+	      var toDoTitleErrors = _failedToDoErrors2[0];
+	      var toDoDescriptionErrors = _failedToDoErrors2[1];
+	
+	
+	      this.setState({ toDoTitleErrors: toDoTitleErrors, toDoDescriptionErrors: toDoDescriptionErrors });
+	    }
+	  }, {
+	    key: 'deleteTitleErrors',
+	    value: function deleteTitleErrors() {
+	      this.setState({ toDoTitleErrors: [] });
+	    }
+	  }, {
+	    key: 'deleteDescriptionErrors',
+	    value: function deleteDescriptionErrors() {
+	      this.setState({ toDoDescriptionErrors: [] });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var klass = this.props.visible ? "to-do-form visible" : "to-do-form";
 	
-	      var titleErrors = this.props.toDoTitleErrors.map(function (err, idx) {
+	      var titleErrors = this.state.toDoTitleErrors.map(function (err, idx) {
 	        return _react2.default.createElement(
 	          'li',
 	          { key: idx },
@@ -36892,7 +36979,7 @@
 	        );
 	      });
 	
-	      var descriptionErrors = this.props.toDoDescriptionErrors.map(function (err, idx) {
+	      var descriptionErrors = this.state.toDoDescriptionErrors.map(function (err, idx) {
 	        return _react2.default.createElement(
 	          'li',
 	          { key: idx },
@@ -36925,7 +37012,10 @@
 	          { className: 'form-error-wrapper' },
 	          titleErrors
 	        ),
-	        _react2.default.createElement('input', { className: 'title-input', type: 'text', onChange: this.changeTitle }),
+	        _react2.default.createElement('input', { className: 'title-input',
+	          type: 'text',
+	          onChange: this.changeTitle,
+	          value: this.state.title }),
 	        _react2.default.createElement(
 	          'label',
 	          null,
@@ -36936,7 +37026,9 @@
 	          { className: 'form-error-wrapper' },
 	          descriptionErrors
 	        ),
-	        _react2.default.createElement('textarea', { className: 'description-textbox', onChange: this.changeDescription }),
+	        _react2.default.createElement('textarea', { className: 'description-textbox',
+	          onChange: this.changeDescription,
+	          value: this.state.description }),
 	        _react2.default.createElement(
 	          'label',
 	          null,
@@ -43029,13 +43121,25 @@
 	  }, {
 	    key: 'remove',
 	    value: function remove(toDo) {
-	      debugger;
 	      var toDoIdx = this.toDos.findIndex(function (el) {
 	        return el.id.$oid === toDo.id.$oid;
 	      });
 	
 	      if (toDoIdx !== -1) {
 	        this.toDos.splice(toDoIdx, 1);
+	      }
+	
+	      this.emit(CHANGE_EVENT);
+	    }
+	  }, {
+	    key: 'update',
+	    value: function update(toDo) {
+	      var toDoIdx = this.toDos.findIndex(function (el) {
+	        return el.id.$oid === toDo.id.$oid;
+	      });
+	
+	      if (toDoIdx !== -1) {
+	        this.toDos[toDoIdx] = toDo;
 	      }
 	
 	      this.emit(CHANGE_EVENT);
@@ -43064,6 +43168,9 @@
 	      break;
 	    case _to_do_constants2.default.DELETE_TO_DO:
 	      toDoStore.remove(payload.toDo);
+	      break;
+	    case _to_do_constants2.default.UPDATE_TO_DO:
+	      toDoStore.update(payload.toDo);
 	      break;
 	  }
 	});

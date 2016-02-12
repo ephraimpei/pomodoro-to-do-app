@@ -56,7 +56,29 @@ def __create_to_do_item(user):
         return jsonify(errors=form.errors.items()), 400
 
 def __update_to_do_item(user, id):
-    pass
+    form = ToDoForm(request.form)
+
+    # user.update(set__to_dos__title=form.title.data,
+    #     set__to_dos__description=form.description.data,
+    #     set__to_dos__pomodoro_length=form.pomodoro_length.data,
+    #     set__to_dos__break_length=form.break_length.data,
+    #     set__to_dos__long_break_length=form.long_break_length.data):
+
+    if form.validate():
+        to_do = user.to_dos.filter(id=id).first()
+        to_do.title = form.title.data
+        to_do.description = form.description.data
+        to_do.pomodoro_length = form.pomodoro_length.data
+        to_do.break_length = form.break_length.data
+        to_do.long_break_length = form.long_break_length.data
+        if user.save():
+            return jsonify(to_do = to_do,
+                message = "To do updated successfully!")
+        else:
+            return jsonify(error="Could not update to do item."), 401
+
+    else:
+        return jsonify(errors=form.errors.items()), 400
 
 def __delete_to_do_item(user, id):
     to_do = User.objects.get(username=user.username).to_dos.filter(id=id).first()

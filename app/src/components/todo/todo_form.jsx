@@ -2,7 +2,9 @@ import React from 'react';
 import $ from 'jquery';
 import Rcslider from 'rc-slider';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
+import { displayFlashMessage } from '../../utilities/flash.js';
 import { removeInvalidClass } from '../../utilities/auth.js';
+import { failedToDoErrors } from '../../utilities/to_do.js';
 
 class ToDoForm extends React.Component {
   constructor(props) {
@@ -16,13 +18,39 @@ class ToDoForm extends React.Component {
     this.changePomodoroLength = this.changePomodoroLength.bind(this);
     this.changeBreakLength = this.changeBreakLength.bind(this);
     this.changeLongBreakLength = this.changeLongBreakLength.bind(this);
-    this.state={ title: "",
-      description: "",
-      numPomodoros: 1,
-      pomodoroLength: 25,
-      breakLength: 5,
-      longBreakLength: 15
-    };
+    this.success = this.success.bind(this);
+    this.failure = this.failure.bind(this);
+    this.deleteTitleErrors = this.deleteTitleErrors.bind(this);
+    this.deleteDescriptionErrors = this.deleteDescriptionErrors.bind(this);
+    this.determineInitialState = this.determineInitialState.bind(this);
+    this.state=this.determineInitialState();
+  }
+
+  determineInitialState () {
+    if (this.props.mode === "new") {
+      return {
+        title: "",
+        description: "",
+        numPomodoros: 1,
+        pomodoroLength: 25,
+        breakLength: 5,
+        longBreakLength: 15,
+        toDoTitleErrors: [],
+        toDoDescriptionErrors: []
+      };
+    } else if (this.props.mode === "edit") {
+      return {
+        title: this.props.attr.title,
+        description: this.props.attr.description,
+        numPomodoros: this.props.attr.pomodoros.length,
+        pomodoroLength: this.props.attr.pomodoro_length,
+        breakLength: this.props.attr.break_length,
+        longBreakLength: this.props.attr.long_break_length,
+        toDoTitleErrors: [],
+        toDoDescriptionErrors: []
+      };
+    }
+
   }
 
   handleToDoSubmssion (e) {
@@ -39,13 +67,27 @@ class ToDoForm extends React.Component {
     formData.append("break_length", this.state.breakLength);
     formData.append("long_break_length", this.state.longBreakLength);
 
-    ApiToDoUtil.create(formData, this.props.username, this.props.success, this.props.failure, this.clearForm);
+    if (this.props.mode === "new") {
+      ApiToDoUtil.create(formData,
+        this.props.username,
+        this.success,
+        this.failure,
+        this.clearForm);
+    } else if (this.props.mode === "edit") {
+      ApiToDoUtil.update(formData,
+        this.props.username,
+        this.props.attr.id.$oid,
+        this.success,
+        this.failure,
+        this.props.hideForm);
+    }
+
   }
 
   changeTitle (e) {
     removeInvalidClass("title-input");
 
-    this.props.deleteToDoTitleErrors();
+    this.deleteTitleErrors();
 
     this.setState({ title: e.currentTarget.value });
   }
@@ -53,7 +95,7 @@ class ToDoForm extends React.Component {
   changeDescription (e) {
     removeInvalidClass("description-textbox");
 
-    this.props.deleteToDoDescriptionErrors();
+    this.deleteDescriptionErrors();
 
     this.setState({ description: e.currentTarget.value });
   }
@@ -67,8 +109,8 @@ class ToDoForm extends React.Component {
     removeInvalidClass("title-input");
     removeInvalidClass("description-textbox");
 
-    this.props.deleteToDoTitleErrors();
-    this.props.deleteToDoDescriptionErrors();
+    this.deleteTitleErrors();
+    this.deleteDescriptionErrors();
 
     this.setState({ title: "",
       description: "",
@@ -111,14 +153,32 @@ class ToDoForm extends React.Component {
     this.setState({ longBreakLength: e });
   }
 
+  success (message) {
+    displayFlashMessage(message);
+  }
+
+  failure (errors) {
+    const [toDoTitleErrors, toDoDescriptionErrors] = failedToDoErrors(errors);
+
+    this.setState({ toDoTitleErrors, toDoDescriptionErrors });
+  }
+
+  deleteTitleErrors () {
+    this.setState({ toDoTitleErrors: [] });
+  }
+
+  deleteDescriptionErrors () {
+    this.setState({ toDoDescriptionErrors: [] });
+  }
+
   render () {
     const klass = this.props.visible ? "to-do-form visible" : "to-do-form";
 
-    const titleErrors = this.props.toDoTitleErrors.map( (err, idx) =>
+    const titleErrors = this.state.toDoTitleErrors.map( (err, idx) =>
       <li key={ idx }>{ err }</li>
     );
 
-    const descriptionErrors = this.props.toDoDescriptionErrors.map( (err, idx) =>
+    const descriptionErrors = this.state.toDoDescriptionErrors.map( (err, idx) =>
       <li key={ idx }>{ err }</li>
     );
 
@@ -144,11 +204,16 @@ class ToDoForm extends React.Component {
       <form className={ klass } onSubmit={ this.handleToDoSubmssion }>
         <label>Title</label>
         <ul className="form-error-wrapper">{ titleErrors }</ul>
-        <input className="title-input" type="text" onChange={ this.changeTitle }/>
+        <input className="title-input"
+          type="text"
+          onChange={ this.changeTitle }
+          value={ this.state.title }/>
 
         <label>Description</label>
         <ul className="form-error-wrapper">{ descriptionErrors }</ul>
-        <textarea className="description-textbox" onChange={ this.changeDescription }/>
+        <textarea className="description-textbox"
+          onChange={ this.changeDescription }
+          value={ this.state.description }/>
 
         <label>Pomodoros: { this.state.numPomodoros }</label>
         <div className="pomodoro-counter-wrapper">
