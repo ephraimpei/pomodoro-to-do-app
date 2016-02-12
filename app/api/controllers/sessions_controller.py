@@ -53,16 +53,15 @@ def __create_session():
 def __destroy_session():
     cookie = request.cookies.get('pomodoro-to-do')
     session = Session.objects.get(session_token=cookie)
-    user = session.username
+    user = User.objects.get(username=session.username)
 
-    if session.delete():
-        response = jsonify(user={},
-            message="Goodbye {0}!".format(user.username))
-        response.set_cookie('pomodoro-to-do', '', expires=0)
+    session.delete()
 
-        return response
-    else:
-        return jsonify(message="Could not logout for some reason."), 401
+    response = jsonify(user={},
+        message="Goodbye {0}!".format(user.username))
+    response.set_cookie('pomodoro-to-do', '', expires=0)
+
+    return response
 
 def __maintain_max_session_limit(user):
     sessions = Session.objects(username=user.username)

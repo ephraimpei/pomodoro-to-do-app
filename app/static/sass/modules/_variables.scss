@@ -40,7 +40,7 @@ $failed-validation-input-border: 2px solid red;
 $failed-validation-box-shadow: 0 0 10px red;
 
 /* flash messages */
-$flash-top: 20%;
+$flash-top: 15%;
 $flash-left: 40vw;
 $flash-font-size: 1.2em;
 $flash-border: $standard-border;
@@ -76,6 +76,7 @@ $sign-up-form-item-margin: 5px 0;
 $sign-up-form-width: 200px;
 $sign-up-form-margins: 50px 0;
 $sign-up-input-box-width: 100%;
+$avatar-preview-dim: 200px;
 
 /* user show page */
 $to-do-index-wrapper-bg: white;

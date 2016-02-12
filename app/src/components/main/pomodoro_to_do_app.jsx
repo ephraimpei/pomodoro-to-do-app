@@ -5,8 +5,8 @@ import currentUserStore from '../../stores/current_user_store.js';
 import { displayFlashMessage } from '../../utilities/flash.js';
 
 class PomodoroToDoApp extends React.Component {
-  constructor (props) {
-    super(props);
+  constructor (props, context) {
+    super(props, context);
     this.navigateToUserHomePage = this.navigateToUserHomePage.bind(this);
     this._onChange = this._onChange.bind(this);
     this.state = { header: currentUserStore.isLoggedIn() };

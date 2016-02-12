@@ -2,8 +2,8 @@ import React from 'react';
 import ToDoItem from './todo_item.jsx';
 
 class ToDoIndex extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
   }
 
   render () {

@@ -7,8 +7,8 @@ import { removeInvalidClass } from '../../utilities/auth.js';
 import { failedToDoErrors } from '../../utilities/to_do.js';
 
 class ToDoForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.handleToDoSubmssion = this.handleToDoSubmssion.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
     this.changeDescription = this.changeDescription.bind(this);

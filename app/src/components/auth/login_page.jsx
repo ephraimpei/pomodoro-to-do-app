@@ -5,8 +5,8 @@ import { displayFlashMessage } from '../../utilities/flash.js';
 import { failedAuthErrors } from '../../utilities/auth.js';
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.successfulLogin = this.successfulLogin.bind(this);
     this.failedLogin = this.failedLogin.bind(this);
     this.deleteUsernameErrors = this.deleteUsernameErrors.bind(this);

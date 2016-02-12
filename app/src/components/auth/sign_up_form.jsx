@@ -6,13 +6,19 @@ import { removeInvalidClass } from '../../utilities/auth.js';
 
 class SignUpForm extends React.Component {
   constructor(props, context) {
-    super(props);
+    super(props, context);
     this.handleSignUpSubmission = this.handleSignUpSubmission.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.changeUsername = this.changeUsername.bind(this);
     this.changePassword = this.changePassword.bind(this);
     this.changePasswordConf = this.changePasswordConf.bind(this);
-    this.state = { username: "", password: "", passwordConf: "" };
+    this.changeFile = this.changeFile.bind(this);
+    this.state = { username: "",
+      password: "",
+      passwordConf: "",
+      imageUrl: "/images/avatar_placeholder.png",
+      imageFile: null
+    };
   }
 
   handleSignUpSubmission (e) {
@@ -25,6 +31,7 @@ class SignUpForm extends React.Component {
     formData.append("username", this.state.username);
     formData.append("password", this.state.password);
     formData.append("confirm", this.state.passwordConf);
+    formData.append("avatar", this.state.imageFile);
 
     apiUserUtil.create(formData, this.props.success, this.props.failure);
   }
@@ -55,6 +62,20 @@ class SignUpForm extends React.Component {
     this.props.deletePasswordErrors();
 
     this.setState({ passwordConf: e.currentTarget.value });
+  }
+
+  changeFile (e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+
+    reader.onloadend = (e) => {
+      // this.setState({ imageUrl: reader.result, imageFile: file });
+      const data = event.target.result.replace("data:"+ file.type +";base64,", '');
+      debugger;
+      this.setState({ imageUrl: reader.result, imageFile: data });
+    };
+
+    file ? reader.readAsDataURL(file) : this.setState({ imageUrl: "", imageFile: null });
   }
 
   render() {
@@ -97,6 +118,15 @@ class SignUpForm extends React.Component {
             type="password"
             onChange={ this.changePasswordConf }/>
           </label>
+
+          <label>Avatar Upload
+          <input
+            className="form-avatar"
+            type="file"
+            onChange={ this.changeFile }/>
+          </label>
+
+          <img className="form-avatar-preview" src={ this.state.imageUrl } />
 
           <button className="submit" type="submit">Sign Up!</button>
           <Link to={ `/` }>Already have an account?</Link>
