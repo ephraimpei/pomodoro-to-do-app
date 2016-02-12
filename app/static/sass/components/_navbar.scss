@@ -9,14 +9,14 @@
     align-items: center;
     justify-content: space-between;
 
-    button:not(.to-do-search-submit) {
+    button {
       border: $nav-bar-button-border;
       border-radius: $nav-bar-button-border-radius;
       background: $nav-bar-button-background;
       color: $nav-bar-button-color;
     }
 
-    button:not(.to-do-search-submit):hover {
+    button:hover {
       background: #bc3315;
     }
 
@@ -28,4 +28,4 @@
   }
 }
 
-@import "user_search";
+@import "to_do_search";

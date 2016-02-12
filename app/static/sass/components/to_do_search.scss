@@ -1,0 +1,12 @@
+.to-do-search {
+  position: relative;
+
+  input {
+    margin: $to-do-search-input-margin;
+    width: $to-do-search-input-width;
+  }
+
+  .to-do-search-label {
+    font-size: $search-label-font-size;
+  }
+}

@@ -6,7 +6,6 @@ class ToDoSearch extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.handleSearchSubmission = this.handleSearchSubmission.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.changeSearchInput = this.changeSearchInput.bind(this);
     this.state = { title: "" };
   }
@@ -21,13 +20,6 @@ class ToDoSearch extends React.Component {
     ApiSearchUtil.searchToDos(this.props.username, title);
   }
 
-  handleKeyDown (e) {
-    if (e.charCode === 13) {
-      e.preventDefault();
-      this.handleSearchSubmission(this.state.title);
-    }
-  }
-
   changeSearchInput (e) {
     const title = e.currentTarget.value;
 
@@ -38,17 +30,16 @@ class ToDoSearch extends React.Component {
 
   render () {
     return (
-      <div className="to-do-search" onKeyDown={ this.handleKeyDown }>
-        <label>Find</label>
+      <div className="to-do-search">
+        <label className="to-do-search-label">🔍</label>
 
         <input className="to-do-search-bar"
           type="text"
           value={ this.state.title }
-          placeholder="Search to do items by title"
+          placeholder="Filter to do items by title."
           onChange={ this.changeSearchInput }/>
 
-        <button className="to-do-search-submit"
-          onClick={ this.handleSearchSubmission }>🔍</button>
+        <label className="to-do-search-label">🔍</label>
       </div>
      );
   }

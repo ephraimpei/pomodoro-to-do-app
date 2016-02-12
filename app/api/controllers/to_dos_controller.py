@@ -27,12 +27,13 @@ def handle_single_to_do_request(username, id):
     else:
         return jsonify(error="Could not find user."), 404
 
-@app.route("/user/<username>/todos/<query>", methods=["GET"])
-def handle_to_do_search(username, query):
+@app.route("/user/<username>/todos/search", methods=["GET"])
+def handle_to_do_search(username):
     user = User.find_by_username(username)
     title = request.args.get('title')
+
     if user:
-        to_dos = user.to_dos.filter(title__icontains=title)
+        to_dos = ToDo.objects.filter(title__icontains=title, author=user)
         return jsonify(to_dos=to_dos)
     else:
         return jsonify(error="Could not find user."), 404
