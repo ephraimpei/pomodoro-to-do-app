@@ -28,12 +28,12 @@ def handle_single_to_do_request(username, id):
         return jsonify(error="Could not find user."), 404
 
 @app.route("/user/<username>/todos/<query>", methods=["GET"])
-def handle_to_do_auto_complete_search(username, query):
+def handle_to_do_search(username, query):
+    pdb.set_trace()
     user = User.find_by_username(username)
     title = ""
-    pdb.set_trace()
     if user:
-        to_dos = user.to_dos.filter(title__icontains=title).only('title')[:5]
+        to_dos = user.to_dos.filter(title__icontains=title)
         return jsonify(to_dos=to_dos)
     else:
         return jsonify(error="Could not find user."), 404

@@ -13,10 +13,10 @@ button:focus {
 }
 
 button:active, button.disabled, button.pressed {
-  text-shadow: 1px 1px 2px black;
-  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047;
+  text-shadow: $button-text-shadow;
+  box-shadow: $button-box-shadow;
 }
 
 button:hover {
-  background: darken($button-background, 10%);
+  background: $button-hover-background;
 }
