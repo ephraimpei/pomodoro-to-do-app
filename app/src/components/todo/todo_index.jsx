@@ -9,7 +9,7 @@ class ToDoIndex extends React.Component {
   render () {
     const toDos = this.props.toDos.map( (toDo, idx) => {
       return <ToDoItem key={ idx }
-        id={ idx + 1 }
+        idx={ idx + 1 }
         attr={ toDo }
         username={ this.props.username }/>;
     });

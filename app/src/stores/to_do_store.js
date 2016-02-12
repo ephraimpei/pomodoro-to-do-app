@@ -23,7 +23,7 @@ class ToDoStore extends EventEmitter {
   }
 
   add (toDo) {
-    const findToDo = this.toDos.find((el) => el.id.$oid === toDo.id.$oid);
+    const findToDo = this.toDos.find((el) => el._id.$oid === toDo._id.$oid);
 
     if (typeof(findUser) === 'undefined') { this.toDos.push(toDo); }
 
@@ -31,7 +31,7 @@ class ToDoStore extends EventEmitter {
   }
 
   remove (toDo) {
-    const toDoIdx = this.toDos.findIndex((el) => el.id.$oid === toDo.id.$oid);
+    const toDoIdx = this.toDos.findIndex((el) => el._id.$oid === toDo._id.$oid);
 
     if (toDoIdx !== -1) { this.toDos.splice(toDoIdx, 1);}
 
@@ -39,7 +39,7 @@ class ToDoStore extends EventEmitter {
   }
 
   update (toDo) {
-    const toDoIdx = this.toDos.findIndex((el) => el.id.$oid === toDo.id.$oid);
+    const toDoIdx = this.toDos.findIndex((el) => el._id.$oid === toDo._id.$oid);
 
     if (toDoIdx !== -1) { this.toDos[toDoIdx] = toDo; }
 

@@ -71,7 +71,7 @@ class SignUpForm extends React.Component {
     reader.onloadend = (e) => {
       // this.setState({ imageUrl: reader.result, imageFile: file });
       const data = event.target.result.replace("data:"+ file.type +";base64,", '');
-      debugger;
+
       this.setState({ imageUrl: reader.result, imageFile: data });
     };
 

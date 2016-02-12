@@ -78,7 +78,7 @@ class ToDoForm extends React.Component {
     } else if (this.props.mode === "edit") {
       ApiToDoUtil.update(formData,
         this.props.username,
-        this.props.attr.id.$oid,
+        this.props.attr._id.$oid,
         this.success,
         this.failure,
         this.props.hideForm);
@@ -104,7 +104,7 @@ class ToDoForm extends React.Component {
 
   clearForm (e) {
     if (e) { e.preventDefault(); }
-    
+
     $(".title-input").val('');
     $(".description-textbox").val('');
 

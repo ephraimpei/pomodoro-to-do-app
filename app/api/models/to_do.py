@@ -1,11 +1,12 @@
 from app import db
+from user import User
 from pomodoro import Pomodoro
 from bson import ObjectId
 import datetime
 
-class ToDo(db.EmbeddedDocument):
-    id = db.ObjectIdField(default=ObjectId, required=True)
+class ToDo(db.Document):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
+    author = db.ReferenceField(User, required=True)
     title = db.StringField(max_length=255, required=True)
     description = db.StringField(max_length=500, required=True)
     complete = db.BooleanField(default=False, required=True)
@@ -13,3 +14,7 @@ class ToDo(db.EmbeddedDocument):
     break_length = db.IntField(require=True)
     long_break_length = db.IntField(require=True)
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
+
+    meta = {
+        'ordering': ['-created_at']
+    }

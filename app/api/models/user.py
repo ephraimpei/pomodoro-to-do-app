@@ -1,5 +1,4 @@
 from app import db
-from to_do import ToDo
 import bcrypt
 import uuid
 import pdb
@@ -7,7 +6,6 @@ import pdb
 class User(db.Document):
     username = db.StringField(max_length=25, required=True)
     password_digest = db.StringField(max_length=255, required=True)
-    to_dos = db.EmbeddedDocumentListField(ToDo)
 
     @classmethod
     def validate_user_credentials(cls, user, password):
