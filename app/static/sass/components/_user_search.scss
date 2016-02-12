@@ -1,0 +1,54 @@
+.to-do-search {
+  position: relative;
+
+  input {
+    margin: $to-do-search-input-margin;
+    width: $to-do-search-input-width;
+  }
+
+  .to-do-search-submit {
+    border: 0;
+    font-size: $search-button-font-size;
+    transition: all .2s ease-in-out;
+  }
+
+  .to-do-search-submit:hover {
+    transform: scale(1.2);
+  }
+
+  .to-do-search-autocomplete-list {
+    display: none;
+    position: absolute;
+    width: $to-do-autocomplete-list-width;
+    left: $to-do-autocomplete-list-left;
+    background: $to-do-autocomplete-list-background;
+    border-radius: $to-do-autocomplete-list-border-radius;
+    border-left: $to-do-autocomplete-list-border-left;
+    border-right: $to-do-autocomplete-list-border-right;
+    border-bottom: $to-do-autocomplete-list-border-bottom;
+
+    to-do-autocomplete-item {
+      border-top: $to-do-autocomplete-list-item-border-top;
+      padding: $to-do-autocomplete-list-item-padding;
+      display: block;
+    }
+
+    to-do-autocomplete-item.selected {
+      border: $selected-border;
+    }
+
+    to-do-autocomplete-item.selected:first-child {
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+    }
+
+    to-do-autocomplete-item.selected:last-child {
+      border-bottom-left-radius: $base-border-radius;
+      border-bottom-right-radius: $base-border-radius;
+    }
+  }
+
+  .to-do-search-autocomplete-list.show {
+    display: block;
+  }
+}

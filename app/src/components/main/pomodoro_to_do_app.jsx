@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../nav-bar/nav_bar.jsx';
 import ApiSessionUtil from '../../apiutil/api_session_util.js';
 import currentUserStore from '../../stores/current_user_store.js';
 import { displayFlashMessage } from '../../utilities/flash.js';
@@ -27,8 +28,10 @@ class PomodoroToDoApp extends React.Component {
     currentUserStore.removeChangeListener(this._onChange);
   }
 
-  navigateToUserHomePage () {
-    this.context.router.push('/user/' + currentUserStore.get().username);
+  navigateToUserHomePage (e) {
+    e.preventDefault();
+
+    this.context.router.push(`/user/${ currentUserStore.get().username }`);
   }
 
   _onChange () {
@@ -36,11 +39,12 @@ class PomodoroToDoApp extends React.Component {
   }
 
   render () {
-    console.log(currentUserStore.get().username);
-    const headerClass = this.state.header ? "header" : "header not-visible";
+    const navBar = this.state.header ?
+      ( <NavBar goHome={ this.navigateToUserHomePage } router={ this.context.router }/> ) : ""
 
     return (
         <div className="main-app">
+          { navBar }
           { this.props.children }
         </div>
      );

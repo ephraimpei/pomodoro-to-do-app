@@ -110,3 +110,25 @@ $to-do-options-wrapper-margin-top: 30px;
     $to-do-form-button-padding: 5px;
     $to-do-form-button-font-size: 1em;
     $to-do-form-button-spacing: 10px;
+
+/* navigation bar */
+$header-background: lightblue;
+$header-bottom-border: $standard-border;
+$nav-bar-width: 70vw;
+$logo-dimension: 75px;
+$search-button-font-size: 1.5em;
+
+    /* user search bar */
+    $to-do-search-input-margin: 0 1vw;
+    $to-do-search-input-width: 20vw;
+
+    /* user autocomplete list */
+    $to-do-autocomplete-list-left: calc(61px + 1vw);
+    $to-do-autocomplete-list-background: white;
+    $to-do-autocomplete-list-width: $to-do-search-input-width;
+    $to-do-autocomplete-list-border-radius: $base-border-radius;
+    $to-do-autocomplete-list-border-left: $standard-border;
+    $to-do-autocomplete-list-border-right: $standard-border;
+    $to-do-autocomplete-list-border-bottom: $standard-border;
+    $to-do-autocomplete-list-item-border-top: $standard-border;
+    $to-do-autocomplete-list-item-padding: 5px;
