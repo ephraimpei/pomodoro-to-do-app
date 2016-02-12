@@ -31,10 +31,17 @@ class ToDoStore extends EventEmitter {
   }
 
   remove (toDo) {
-    debugger;
     const toDoIdx = this.toDos.findIndex((el) => el.id.$oid === toDo.id.$oid);
 
     if (toDoIdx !== -1) { this.toDos.splice(toDoIdx, 1);}
+
+    this.emit(CHANGE_EVENT);
+  }
+
+  update (toDo) {
+    const toDoIdx = this.toDos.findIndex((el) => el.id.$oid === toDo.id.$oid);
+
+    if (toDoIdx !== -1) { this.toDos[toDoIdx] = toDo; }
 
     this.emit(CHANGE_EVENT);
   }
@@ -58,6 +65,9 @@ AppDispatcher.register(function (payload) {
       break;
     case ToDoConstants.DELETE_TO_DO:
       toDoStore.remove(payload.toDo);
+      break;
+    case ToDoConstants.UPDATE_TO_DO:
+      toDoStore.update(payload.toDo);
       break;
   }
 });

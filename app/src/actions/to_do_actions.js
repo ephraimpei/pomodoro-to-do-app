@@ -22,4 +22,11 @@ export default new class {
       toDo: toDo
     });
   }
+
+  updateToDo (toDo) {
+    AppDispatcher.dispatch({
+      actionType: ToDoConstants.UPDATE_TO_DO,
+      toDo: toDo
+    });
+  }
 }();
