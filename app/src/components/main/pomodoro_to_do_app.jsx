@@ -36,6 +36,7 @@ class PomodoroToDoApp extends React.Component {
   }
 
   render () {
+    console.log(currentUserStore.get().username);
     const headerClass = this.state.header ? "header" : "header not-visible";
 
     return (

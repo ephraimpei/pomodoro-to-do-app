@@ -23,7 +23,8 @@ def __fetch_session():
         if session:
             username = session[0].username
             user = User.objects.get(username=username)
-            return jsonify(user=user_response_obj(user))
+            return jsonify(user=user_response_obj(user),
+                message = "Welcome back {0}!".format(user.username))
         else:
             return jsonify(user={})
     else:

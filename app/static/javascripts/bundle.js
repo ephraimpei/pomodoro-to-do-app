@@ -35031,6 +35031,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(_current_user_store2.default.get().username);
 	      var headerClass = this.state.header ? "header" : "header not-visible";
 	
 	      return _react2.default.createElement(
@@ -35120,7 +35121,7 @@
 	        success(data.message);
 	      };
 	
-	      _jquery2.default.get("/session").done(this.constructor.receiveCurrentUser);
+	      _jquery2.default.get("/session").done(receiveCurrentUser);
 	    }
 	  }]);
 	
@@ -35995,6 +35996,10 @@
 	
 	var _login_form2 = _interopRequireDefault(_login_form);
 	
+	var _current_user_store = __webpack_require__(231);
+	
+	var _current_user_store2 = _interopRequireDefault(_current_user_store);
+	
 	var _flash = __webpack_require__(233);
 	
 	var _auth = __webpack_require__(237);
@@ -36019,6 +36024,7 @@
 	    _this.failedLogin = _this.failedLogin.bind(_this);
 	    _this.deleteUsernameErrors = _this.deleteUsernameErrors.bind(_this);
 	    _this.deletePasswordErrors = _this.deletePasswordErrors.bind(_this);
+	    _this._ensureNotAlrdyLoggedIn = _this._ensureNotAlrdyLoggedIn.bind(_this);
 	    _this.state = { usernameErrors: [], passwordErrors: [] };
 	    return _this;
 	  }
@@ -36028,10 +36034,14 @@
 	    value: function componentWillMount() {}
 	  }, {
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	    value: function componentDidMount() {
+	      _current_user_store2.default.addChangeListener(this._ensureNotAlrdyLoggedIn);
+	    }
 	  }, {
 	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {}
+	    value: function componentWillUnmount() {
+	      _current_user_store2.default.removeChangeListener(this._ensureNotAlrdyLoggedIn);
+	    }
 	  }, {
 	    key: 'successfulLogin',
 	    value: function successfulLogin(message, username) {
@@ -36061,6 +36071,13 @@
 	    key: 'deletePasswordErrors',
 	    value: function deletePasswordErrors() {
 	      this.setState({ passwordErrors: [] });
+	    }
+	  }, {
+	    key: '_ensureNotAlrdyLoggedIn',
+	    value: function _ensureNotAlrdyLoggedIn() {
+	      if (_current_user_store2.default.isLoggedIn()) {
+	        this.context.router.push('/user/' + _current_user_store2.default.get().username);
+	      }
 	    }
 	  }, {
 	    key: 'render',

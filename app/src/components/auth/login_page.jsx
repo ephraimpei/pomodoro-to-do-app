@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from './login_form.jsx';
+import currentUserStore from '../../stores/current_user_store.js';
 import { displayFlashMessage } from '../../utilities/flash.js';
 import { failedAuthErrors } from '../../utilities/auth.js';
 
@@ -10,6 +11,7 @@ class LoginPage extends React.Component {
     this.failedLogin = this.failedLogin.bind(this);
     this.deleteUsernameErrors = this.deleteUsernameErrors.bind(this);
     this.deletePasswordErrors = this.deletePasswordErrors.bind(this);
+    this._ensureNotAlrdyLoggedIn = this._ensureNotAlrdyLoggedIn.bind(this);
     this.state={ usernameErrors:[], passwordErrors:[] };
   }
 
@@ -22,11 +24,11 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount () {
-
+    currentUserStore.addChangeListener(this._ensureNotAlrdyLoggedIn);
   }
 
   componentWillUnmount () {
-
+    currentUserStore.removeChangeListener(this._ensureNotAlrdyLoggedIn);
   }
 
   successfulLogin (message, username) {
@@ -47,6 +49,12 @@ class LoginPage extends React.Component {
 
   deletePasswordErrors () {
     this.setState({ passwordErrors: [] })
+  }
+
+  _ensureNotAlrdyLoggedIn () {
+    if (currentUserStore.isLoggedIn()) {
+      this.context.router.push('/user/' + currentUserStore.get().username);
+    }
   }
 
   render () {
