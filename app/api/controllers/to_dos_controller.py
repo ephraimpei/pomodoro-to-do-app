@@ -71,6 +71,39 @@ def __update_to_do_item(user, id):
         to_do.pomodoro_length = form.pomodoro_length.data
         to_do.break_length = form.break_length.data
         to_do.long_break_length = form.long_break_length.data
+
+        prev_num_pomodoros = to_do.pomodoros.count()
+
+        # adding pomodoros
+        if form.num_pomodoros.data > prev_num_pomodoros:
+            # update remaining length of already existing pomodoros,
+            # skipping ones that are complete or in progress
+            for i in range(prev_num_pomodoros):
+                pomodoro = to_do.pomodoros[i]
+                if pomodoro.status == "not_started":
+                    pomodoro.remaining_length = form.pomodoro_length.data
+
+            # append additional pomodoros
+            diff = form.num_pomodoros.data - prev_num_pomodoros
+
+            for i in range(diff):
+                new_pomodoro = Pomodoro(remaining_length=form.pomodoro_length.data)
+                to_do.pomodoros.append(new_pomodoro)
+
+        # removing pomodoros
+        elif form.num_pomodoros.data < prev_num_pomodoros:
+            # remove difference in prev vs updated number of pomodoros
+            for i in range(prev_num_pomodoros - form.num_pomodoros.data):
+                to_do.pomodoros.pop()
+
+            # update remaining length of already existing pomodoros,
+            # skipping ones that are complete or in progress
+            for i in range(form.num_pomodoros.data):
+                pomodoro = to_do.pomodoros[i]
+
+                if pomodoro.status == "not_started":
+                    pomodoro.remaining_length = form.pomodoro_length.data
+
         if user.save():
             return jsonify(to_do = to_do,
                 message = "To do updated successfully!")
@@ -81,7 +114,7 @@ def __update_to_do_item(user, id):
         return jsonify(errors=form.errors.items()), 400
 
 def __delete_to_do_item(user, id):
-    to_do = User.objects.get(username=user.username).to_dos.filter(id=id).first()
+    to_do = User.objects.get(username=user.username).to_dos.first()
 
     User.objects(username=user.username).update_one(pull__to_dos__id=id)
 

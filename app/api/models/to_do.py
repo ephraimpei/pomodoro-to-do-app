@@ -13,6 +13,3 @@ class ToDo(db.EmbeddedDocument):
     break_length = db.IntField(require=True)
     long_break_length = db.IntField(require=True)
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
-
-    def num_pomodoros(self):
-        return self.pomodoros.count()
