@@ -7,16 +7,32 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$|\.jsx$/,
-      exclude: /node_modules/,
+      exclude: /(node_modules|venv)/,
       loader: 'babel',
       query: {
         presets: [ 'es2015', 'react', 'stage-0' ]
       }
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      loaders: ["style", "css", "sass"]
-    }]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /(node_modules|venv)/,
+        loaders: ["style", "css", "sass"]
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules|venv)/,
+        loaders: ["style", "css"]
+      },
+      { test: /\.png$/,
+        exclude: /(node_modules|venv)/,
+        loader: "url-loader?mimetype=image/png"
+      },
+      {
+        test: /\.less?$/,
+        exclude: /(node_modules|venv)/,
+        loaders: ["style", "css", "less"]
+      }
+  ]
   },
   devtool: 'source-maps',
   resolve: {

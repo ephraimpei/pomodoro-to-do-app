@@ -1,6 +1,9 @@
 // main sass file
 import "../static/sass/main.scss";
 
+// vendor stylesheets
+import "../static/vendor/rcslider.css";
+
 // core modules
 import $ from 'jquery';
 import React from 'react';
