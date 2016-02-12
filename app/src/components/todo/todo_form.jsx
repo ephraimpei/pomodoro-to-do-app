@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import Rcslider from 'rc-slider';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
 import { removeInvalidClass } from '../../utilities/auth.js';
 
@@ -10,7 +11,15 @@ class ToDoForm extends React.Component {
     this.changeTitle = this.changeTitle.bind(this);
     this.changeDescription = this.changeDescription.bind(this);
     this.clearForm = this.clearForm.bind(this);
-    this.state={ title: "", description: "", numPomodoros: 0 };
+    this.removePomodoro = this.removePomodoro.bind(this);
+    this.addPomodoro = this.addPomodoro.bind(this);
+    this.state={ title: "",
+      description: "",
+      pomodoros: 0,
+      pomodoroLength: 25,
+      shortBreakLength: 5,
+      longBreakLength: 15
+    };
   }
 
   handleToDoSubmssion (e) {
@@ -57,6 +66,24 @@ class ToDoForm extends React.Component {
     this.setState({ title: "", description: "", numPomodoros: 0 });
   }
 
+  removePomodoro (e) {
+    e.preventDefault();
+
+    const updatedPomodoroCount = this.state.pomodoros - 1;
+
+    if (updatedPomodoroCount >= 0) {
+      this.setState({ pomodoros: updatedPomodoroCount });
+    }
+  }
+
+  addPomodoro (e) {
+    e.preventDefault();
+
+    const updatedPomodoroCount = this.state.pomodoros + 1;
+
+    this.setState({ pomodoros: updatedPomodoroCount });
+  }
+
   render () {
     const klass = this.props.visible ? "to-do-form visible" : "to-do-form";
 
@@ -80,10 +107,20 @@ class ToDoForm extends React.Component {
 
         <label>Pomodoros: { this.state.pomodoros }</label>
         <div className="pomodoro-counter-wrapper">
-          <button className="remove-pomodoro">−</button>
+          <button className="remove-pomodoro" onClick={ this.removePomodoro }>−</button>
           <img src="/images/pomodoro.png"/>
-          <button className="add-pomodoro">+</button>
+          <button className="add-pomodoro" onClick={ this.addPomodoro }>+</button>
         </div>
+
+        <label>Settings (minutes)</label>
+        <label>Pomodoro: { this.state.pomodoroLength }</label>
+        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
+
+        <label>Break: { this.state.shortBreakLength }</label>
+        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
+
+        <label>Long Break: { this.state.longBreakLength }</label>
+        <Rcslider min={ 0 } max={ 60 } defaultValue={ 25 } step={ 1 } />
 
         <div className="to-do-form-options">
           <button className="submit" type="submit">Submit</button>
