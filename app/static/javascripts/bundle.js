@@ -141,7 +141,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 20%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vw; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
+	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* user show page - to do index */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\n/* navigation bar */\n/* user search bar */\n/* user autocomplete list */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 20%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.header {\n  background: lightblue;\n  border-bottom: 1px solid #ccc; }\n  .header .nav-bar {\n    width: 70vw;\n    margin: auto;\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n    .header .nav-bar .logo {\n      width: 75px;\n      height: 75px;\n      cursor: pointer; }\n\n.to-do-search {\n  position: relative; }\n  .to-do-search input {\n    margin: 0 1vw;\n    width: 20vw; }\n  .to-do-search .to-do-search-submit {\n    border: 0;\n    font-size: 1.5em;\n    transition: all .2s ease-in-out; }\n  .to-do-search .to-do-search-submit:hover {\n    transform: scale(1.2); }\n  .to-do-search .to-do-search-autocomplete-list {\n    display: none;\n    position: absolute;\n    width: 20vw;\n    left: calc(61px + 1vw);\n    background: white;\n    border-radius: 10px;\n    border-left: 1px solid #ccc;\n    border-right: 1px solid #ccc;\n    border-bottom: 1px solid #ccc; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item {\n      border-top: 1px solid #ccc;\n      padding: 5px;\n      display: block; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected {\n      border: 1px solid blue; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:first-child {\n      border-top-left-radius: 10px;\n      border-top-right-radius: 10px; }\n    .to-do-search .to-do-search-autocomplete-list to-do-autocomplete-item.selected:last-child {\n      border-bottom-left-radius: 10px;\n      border-bottom-right-radius: 10px; }\n  .to-do-search .to-do-search-autocomplete-list.show {\n    display: block; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-item {\n  margin: 10px 0; }\n  .to-do-item label, .to-do-item button {\n    margin: 0 1vw; }\n  .to-do-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
 	
 	// exports
 
@@ -34971,6 +34971,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _nav_bar = __webpack_require__(306);
+	
+	var _nav_bar2 = _interopRequireDefault(_nav_bar);
+	
 	var _api_session_util = __webpack_require__(224);
 	
 	var _api_session_util2 = _interopRequireDefault(_api_session_util);
@@ -35020,7 +35024,9 @@
 	    }
 	  }, {
 	    key: 'navigateToUserHomePage',
-	    value: function navigateToUserHomePage() {
+	    value: function navigateToUserHomePage(e) {
+	      e.preventDefault();
+	
 	      this.context.router.push('/user/' + _current_user_store2.default.get().username);
 	    }
 	  }, {
@@ -35031,12 +35037,12 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(_current_user_store2.default.get().username);
-	      var headerClass = this.state.header ? "header" : "header not-visible";
+	      var navBar = this.state.header ? _react2.default.createElement(_nav_bar2.default, { goHome: this.navigateToUserHomePage, router: this.context.router }) : "";
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main-app' },
+	        navBar,
 	        this.props.children
 	      );
 	    }
@@ -43726,6 +43732,524 @@
 	});
 	
 	exports.default = toDoStore;
+
+/***/ },
+/* 306 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _to_do_search = __webpack_require__(308);
+	
+	var _to_do_search2 = _interopRequireDefault(_to_do_search);
+	
+	var _options = __webpack_require__(307);
+	
+	var _options2 = _interopRequireDefault(_options);
+	
+	var _flash = __webpack_require__(233);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NavBar = function (_React$Component) {
+	  _inherits(NavBar, _React$Component);
+	
+	  function NavBar(props) {
+	    _classCallCheck(this, NavBar);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NavBar).call(this, props));
+	
+	    _this.successfulToDoSearch = _this.successfulToDoSearch.bind(_this);
+	    _this.failedToDoSearch = _this.failedToDoSearch.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(NavBar, [{
+	    key: 'successfulToDoSearch',
+	    value: function successfulToDoSearch(toDoId) {
+	      this.props.router.push('/user/' + currentUserStore.get().username + '/todo/' + toDoId);
+	    }
+	  }, {
+	    key: 'failedToDoSearch',
+	    value: function failedToDoSearch(message) {
+	      (0, _flash.displayFlashMessage)(message);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'header' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'nav-bar' },
+	          _react2.default.createElement('img', { className: 'logo', src: '/images/pomodoro.png' }),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'user-home-page', onClick: this.props.goHome },
+	            'To Do List'
+	          ),
+	          _react2.default.createElement(_to_do_search2.default, { successfulSearch: this.props.successfulUserSearch }),
+	          _react2.default.createElement(_options2.default, { logoutSuccess: this.logoutSuccess })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NavBar;
+	}(_react2.default.Component);
+	
+	exports.default = NavBar;
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _api_session_util = __webpack_require__(224);
+	
+	var _api_session_util2 = _interopRequireDefault(_api_session_util);
+	
+	var _flash = __webpack_require__(233);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Options = function (_React$Component) {
+	  _inherits(Options, _React$Component);
+	
+	  function Options(props, context) {
+	    _classCallCheck(this, Options);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Options).call(this, props, context));
+	
+	    _this.logoutCurrentUser = _this.logoutCurrentUser.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(Options, [{
+	    key: 'logoutCurrentUser',
+	    value: function logoutCurrentUser(e) {
+	      e.preventDefault();
+	
+	      _api_session_util2.default.logout(_flash.displayFlashMessage);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var options = ["Logout"];
+	
+	      var optionListItems = options.map(function (option, idx) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx },
+	          option
+	        );
+	      });
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'options' },
+	        'Options',
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'options-list' },
+	          optionListItems
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Options;
+	}(_react2.default.Component);
+	
+	exports.default = Options;
+
+/***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _jquery = __webpack_require__(7);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _to_do_autocomplete_store = __webpack_require__(309);
+	
+	var _to_do_autocomplete_store2 = _interopRequireDefault(_to_do_autocomplete_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ToDoSearch = function (_React$Component) {
+	  _inherits(ToDoSearch, _React$Component);
+	
+	  function ToDoSearch(props, context) {
+	    _classCallCheck(this, ToDoSearch);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoSearch).call(this, props, context));
+	
+	    _this.handleToDoSearchInput = _this.handleToDoSearchInput.bind(_this);
+	    _this.handleToDoSearchAutoComplete = _this.handleToDoSearchAutoComplete.bind(_this);
+	    _this.handleToDoSearchSubmission = _this.handleToDoSearchSubmission.bind(_this);
+	    _this.handleKeyDown = _this.handleKeyDown.bind(_this);
+	    _this.selectToDo = _this.selectToDo.bind(_this);
+	    _this.handleToDoSearchInputFocus = _this.handleToDoSearchInputFocus.bind(_this);
+	    _this.addDOMListeners = _this.addDOMListeners.bind(_this);
+	    _this.removeDOMListeners = _this.removeDOMListeners.bind(_this);
+	    _this.moveUp = _this.moveUp.bind(_this);
+	    _this.moveDown = _this.moveDown.bind(_this);
+	    _this.highlightToDo = _this.highlightToDo.bind(_this);
+	    _this.unhighlightToDo = _this.unhighlightToDo.bind(_this);
+	    _this._onChange = _this._onChange.bind(_this);
+	    _this.state = { to_do: "", showToDoAutoComplete: false };
+	    return _this;
+	  }
+	
+	  _createClass(ToDoSearch, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.addDOMListeners();
+	      _to_do_autocomplete_store2.default.addChangeListener(this._onChange);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.removeDOMListeners();
+	      _to_do_autocomplete_store2.default.removeChangeListener(this._onChange);
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({ to_do: "", showToDoAutoComplete: false });
+	    }
+	  }, {
+	    key: 'addDOMListeners',
+	    value: function addDOMListeners() {
+	      var _this2 = this;
+	
+	      (0, _jquery2.default)("#content").on("click", function (e) {
+	        (0, _jquery2.default)(".selected").removeClass("selected");
+	        _this2.setState({ showToDoAutoComplete: false });
+	      });
+	
+	      (0, _jquery2.default)(".toDo-search-bar").on("click", function (e) {
+	        return e.stopPropagation();
+	      });
+	    }
+	  }, {
+	    key: 'removeDOMListeners',
+	    value: function removeDOMListeners() {
+	      (0, _jquery2.default)("#content").off();
+	      (0, _jquery2.default)(".to-do-search-bar").off();
+	    }
+	  }, {
+	    key: 'handleToDoSearchInput',
+	    value: function handleToDoSearchInput(e, mode) {
+	      var to_do = e.currentTarget.value || e.currentTarget.textContent;
+	
+	      if (typeof mode === "undefined") {
+	        mode = "autocomplete-input";
+	      }
+	
+	      this.setState({ to_do: to_do });
+	
+	      this.handleToDoSearchAutoComplete(toDoTitle, mode);
+	    }
+	  }, {
+	    key: 'handleToDoSearchAutoComplete',
+	    value: function handleToDoSearchAutoComplete(toDoTitle, mode) {
+	      if (this.toDonameInBounds(toDoname)) {
+	        ApiSearchUtil.fetchToDos(toDoname, mode);
+	      } else {
+	        this.setState({ showToDoAutoComplete: false });
+	      }
+	    }
+	  }, {
+	    key: 'handleToDoSearchSubmission',
+	    value: function handleToDoSearchSubmission() {
+	      (0, _jquery2.default)(".to-do-search-submit").removeClass("pressed");
+	      this.props.successfulToDoSearch(this.state.toDoname);
+	    }
+	  }, {
+	    key: 'selectToDo',
+	    value: function selectToDo(e) {
+	      this.handleToDoSearchInput(e, "autocomplete-selection");
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(e) {
+	      switch (e.keyCode) {
+	        // Enter
+	        case 13:
+	          if ((0, _jquery2.default)(".to-do-search-autocomplete-list-item.selected").length > 0) {
+	            (0, _jquery2.default)(".to-do-search-autocomplete-list-item.selected")[0].click();
+	          } else if ((0, _jquery2.default)(".toDo-search-bar").is(":focus")) {
+	            (0, _jquery2.default)(".to-do-search-submit").addClass("pressed");
+	            this.handleToDoSearchSubmission();
+	          }
+	          break;
+	        // Arrow Up Key
+	        case 38:
+	          e.preventDefault();
+	          this.moveUp();
+	          break;
+	        // Arrow Down Key
+	        case 40:
+	          e.preventDefault();
+	          this.moveDown();
+	          break;
+	      }
+	    }
+	  }, {
+	    key: 'moveUp',
+	    value: function moveUp() {
+	      if ((0, _jquery2.default)(".selected").prev(".to-do-search-autocomplete-list-item").length > 0) {
+	        (0, _jquery2.default)(".selected").removeClass("selected").prev(".to-do-search-autocomplete-list-item").addClass("selected").focus();
+	      } else {
+	        (0, _jquery2.default)(".selected").removeClass("selected");
+	        (0, _jquery2.default)(".to-do-search-autocomplete-list-item").last().addClass("selected").focus();
+	      }
+	    }
+	  }, {
+	    key: 'moveDown',
+	    value: function moveDown() {
+	      if ((0, _jquery2.default)(".selected").next(".to-do-search-autocomplete-list-item").length > 0) {
+	        (0, _jquery2.default)(".selected").removeClass("selected").next(".toDo-search-autocomplete-list-item").addClass("selected").focus();
+	      } else {
+	        (0, _jquery2.default)(".selected").removeClass("selected");
+	        (0, _jquery2.default)(".to-do-search-autocomplete-list-item").first().addClass("selected").focus();
+	      }
+	    }
+	  }, {
+	    key: 'highlightToDo',
+	    value: function highlightToDo(e) {
+	      (0, _jquery2.default)(e.currentTarget).addClass("selected");
+	    }
+	  }, {
+	    key: 'unhighlightToDo',
+	    value: function unhighlightToDo(e) {
+	      (0, _jquery2.default)(e.currentTarget).removeClass("selected");
+	    }
+	  }, {
+	    key: 'handleToDoSearchInputFocus',
+	    value: function handleToDoSearchInputFocus(e) {
+	      if (typeof e === "undefined") {
+	        this.setState({ showToDoAutoComplete: false });
+	      } else {
+	        if (this.toDonameInBounds(this.state.toDoname)) {
+	          this.setState({ showToDoAutoComplete: true });
+	        }
+	      }
+	    }
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange() {
+	      this.setState({ showToDoAutoComplete: true });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+	
+	      var toDos = _to_do_autocomplete_store2.default.get();
+	
+	      var toDoAutoCompleteLinks = toDos.map(function (toDo, idx) {
+	        return _react2.default.createElement(
+	          'a',
+	          { key: idx,
+	            className: 'to-do-autocomplete-item',
+	            onClick: _this3.selectToDo,
+	            onMouseOver: _this3.highlightToDo,
+	            onMouseOut: _this3.unhighlightToDo },
+	          toDo.title
+	        );
+	      });
+	
+	      var toDoAutoCompleteClass = "to-do-search-autocomplete-list ";
+	
+	      if (this.state.showToDoAutoComplete) {
+	        toDoAutoCompleteClass += "show";
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'to-do-search', onKeyDown: this.handleKeyDown },
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Find to do item'
+	        ),
+	        _react2.default.createElement('input', { className: 'to-do-search-bar',
+	          type: 'text',
+	          value: this.state.toDoname,
+	          placeholder: 'Search for to do title',
+	          onChange: this.handleToDoSearchInput,
+	          onFocus: this.handleToDoSearchInputFocus
+	        }),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'to-do-search-submit',
+	            onClick: this.handleToDoSearchSubmission },
+	          '🔍'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: toDoAutoCompleteClass },
+	          toDoAutoCompleteLinks
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ToDoSearch;
+	}(_react2.default.Component);
+	
+	exports.default = ToDoSearch;
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dispatcher = __webpack_require__(226);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	var _search_constants = __webpack_require__(310);
+	
+	var _search_constants2 = _interopRequireDefault(_search_constants);
+	
+	var _eventemitter = __webpack_require__(232);
+	
+	var _eventemitter2 = _interopRequireDefault(_eventemitter);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CHANGE_EVENT = "change";
+	
+	var ToDoAutoCompleteStore = function (_EventEmitter) {
+	  _inherits(ToDoAutoCompleteStore, _EventEmitter);
+	
+	  function ToDoAutoCompleteStore() {
+	    _classCallCheck(this, ToDoAutoCompleteStore);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoAutoCompleteStore).call(this));
+	
+	    _this.toDos = [];
+	    return _this;
+	  }
+	
+	  _createClass(ToDoAutoCompleteStore, [{
+	    key: 'addChangeListener',
+	    value: function addChangeListener(callback) {
+	      this.on(CHANGE_EVENT, callback);
+	    }
+	  }, {
+	    key: 'removeChangeListener',
+	    value: function removeChangeListener(callback) {
+	      this.removeListener(CHANGE_EVENT, callback);
+	    }
+	  }, {
+	    key: 'get',
+	    value: function get() {
+	      return this.toDos.slice();
+	    }
+	  }, {
+	    key: 'set',
+	    value: function set(toDos) {
+	      this.toDos = toDos;
+	    }
+	  }]);
+	
+	  return ToDoAutoCompleteStore;
+	}(_eventemitter2.default);
+	
+	var toDoAutoCompleteStore = new ToDoAutoCompleteStore();
+	
+	_dispatcher2.default.register(function (payload) {
+	  switch (payload.actionType) {
+	    case _search_constants2.default.RECEIVE_TO_DOS:
+	      toDoAutoCompleteStore.set(payload.toDos);
+	      break;
+	  }
+	});
+	
+	exports.default = toDoAutoCompleteStore;
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  RECEIVE_TO_DOS: "RECEIVE_TO_DOS"
+	};
 
 /***/ }
 /******/ ]);
