@@ -36,8 +36,8 @@ class ApiToDoUtil {
     $.ajax({
       url: `/user/${ username }/todo/${ toDoId }`,
       type: 'DELETE'
-    }).done(deleteToDo)
-;  }
+    }).done(deleteToDo);
+  }
 }
 
 const apiToDoUtil = new ApiToDoUtil();
