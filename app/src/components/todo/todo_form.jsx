@@ -23,6 +23,8 @@ class ToDoForm extends React.Component {
     this.deleteTitleErrors = this.deleteTitleErrors.bind(this);
     this.deleteDescriptionErrors = this.deleteDescriptionErrors.bind(this);
     this.determineInitialState = this.determineInitialState.bind(this);
+    this.resetErrors = this.resetErrors.bind(this);
+    this.resetForm = this.resetForm.bind(this);
     this.state=this.determineInitialState();
   }
 
@@ -101,16 +103,12 @@ class ToDoForm extends React.Component {
   }
 
   clearForm (e) {
-    if (e) { e.preventDefault(); }
+    e.preventDefault();
 
-    $(".title-input").val('');
-    $(".description-textbox").val('');
+    // $(".title-input").val('');
+    // $(".description-textbox").val('');
 
-    removeInvalidClass("title-input");
-    removeInvalidClass("description-textbox");
-
-    this.deleteTitleErrors();
-    this.deleteDescriptionErrors();
+    this.resetErrors();
 
     this.setState({ title: "",
       description: "",
@@ -118,6 +116,29 @@ class ToDoForm extends React.Component {
       pomodoroLength: 25,
       breakLength: 5,
       longBreakLength: 15
+    });
+  }
+
+  resetErrors () {
+    removeInvalidClass("title-input");
+    removeInvalidClass("description-textbox");
+
+    this.deleteTitleErrors();
+    this.deleteDescriptionErrors();
+  }
+
+  resetForm (e) {
+    e.preventDefault();
+
+    this.resetErrors();
+
+    this.setState({
+      title: this.props.attr.title,
+      description: this.props.attr.description,
+      numPomodoros: this.props.attr.pomodoros.length,
+      pomodoroLength: this.props.attr.pomodoro_length,
+      breakLength: this.props.attr.break_length,
+      longBreakLength: this.props.attr.long_break_length
     });
   }
 
@@ -200,6 +221,9 @@ class ToDoForm extends React.Component {
         onChange={ this.changeLongBreakLength }/>
     );
 
+    const resetButton = this.props.mode === "edit" ?
+      <button className="reset" onClick={ this.resetForm }>Reset</button> : "";
+
     return (
       <form className={ klass } onSubmit={ this.handleToDoSubmssion }>
         <label>Title</label>
@@ -233,6 +257,7 @@ class ToDoForm extends React.Component {
 
         <div className="to-do-form-options">
           <button className="submit" type="submit">Submit</button>
+          { resetButton }
           <button className="clear" onClick={ this.clearForm }>Clear</button>
         </div>
       </form>

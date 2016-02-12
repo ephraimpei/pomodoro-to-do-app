@@ -16,12 +16,16 @@ def handle_session_request():
 
 def __fetch_session():
     cookie = request.cookies.get('pomodoro-to-do')
-    session = User.objects.get().sessions.filter(session_token=cookie)
 
-    if session:
-        user = session._instance
+    if cookie:
+        session = Session.objects(session_token=cookie)
 
-        return jsonify(user=user_response_obj(user))
+        if session:
+            username = session[0].username
+            user = User.objects.get(username=username)
+            return jsonify(user=user_response_obj(user))
+        else:
+            return jsonify(user={})
     else:
         return jsonify(user={})
 
@@ -30,8 +34,10 @@ def __create_session():
 
     if form.validate():
         user = User.find_by_username(form.username.data)
-        session = Session(session_token=Session.generate_session_token())
-        user.update(add_to_set__sessions=session)
+        session = Session(session_token=Session.generate_session_token(),
+            username=user.username)
+
+        session.save()
 
         __maintain_max_session_limit(user)
 
@@ -41,26 +47,26 @@ def __create_session():
 
         return response
     else:
-        return jsonify(errors=form.errors.items()), 401
+        return jsonify(errors=form.errors.items()), 400
 
 def __destroy_session():
     cookie = request.cookies.get('pomodoro-to-do')
-    session = User.objects.get().sessions.filter(session_token=cookie)
-    user = session._instance
+    session = Session.objects.get(session_token=cookie)
+    user = session.username
 
-    User.objects(username=user.username).update_one(pull__sessions__session_token=cookie)
+    if session.delete():
+        response = jsonify(user={},
+            message="Goodbye {0}!".format(user.username))
+        response.set_cookie('pomodoro-to-do', '', expires=0)
 
-    response = jsonify(user=user_response_obj(user),
-        message="Goodbye {0}!".format(user.username))
-    response.set_cookie('pomodoro-to-do', '', expires=0)
-
-    return response
+        return response
+    else:
+        return jsonify(message="Could not logout for some reason."), 401
 
 def __maintain_max_session_limit(user):
-    sessions = User.objects.get(username=user.username).sessions
+    sessions = Session.objects(username=user.username)
     num_sessions = sessions.count()
 
     if num_sessions > 5:
         oldest_session = sessions[0]
-        User.objects(username=user.username)\
-            .update_one(pull__sessions__session_token=oldest_session.session_token)
+        oldest_session.delete()

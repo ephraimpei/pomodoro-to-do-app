@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleLoginSubmission = this.handleLoginSubmission.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.logIntoDemoAccount = this.logIntoDemoAccount.bind(this);
     this.changeUsername = this.changeUsername.bind(this);
     this.changePassword = this.changePassword.bind(this);
@@ -28,8 +28,11 @@ class LoginForm extends React.Component {
     ApiSessionUtil.login(formData, this.props.success, this.props.failure);
   }
 
-  handleKeyPress (e) {
-    if (e.charCode === 13) { this.handleLoginSubmission(); }
+  handleKeyDown (e) {
+    if (e.charCode === 13) {
+      e.preventDefault();
+      this.handleLoginSubmission();
+    }
   }
 
   logIntoDemoAccount (e) {
@@ -48,7 +51,7 @@ class LoginForm extends React.Component {
     removeInvalidClass("form-password-input");
 
     this.props.deletePasswordErrors();
-    
+
     this.setState({ password: e.currentTarget.value });
   }
 
@@ -63,7 +66,7 @@ class LoginForm extends React.Component {
 
     return (
       <form className="login-form"
-        onKeyPress={ this.handleKeyPress }
+        onKeyDown={ this.handleKeyDown }
         onSubmit={ this.handleLoginSubmission }>
         <div className="login-form-wrapper">
           <button className="login-form-demo-account"
