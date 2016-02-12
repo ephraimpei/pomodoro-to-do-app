@@ -11,5 +11,9 @@ def index():
     return send_from_directory(app.static_folder, "./templates/index.html")
 
 @app.route("/user/<username>")
-def show_user_profile(username):
+def show_user_page(username):
+    return send_from_directory(app.static_folder, "./templates/index.html")
+
+@app.route("/user/<username>/todo/<id>")
+def show_to_do_id(username, id):
     return send_from_directory(app.static_folder, "./templates/index.html")

@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDoItem from './todo_item.jsx';
+import ToDoIndexItem from './todo_index_item.jsx';
 
 class ToDoIndex extends React.Component {
   constructor(props, context) {
@@ -8,10 +8,11 @@ class ToDoIndex extends React.Component {
 
   render () {
     const toDos = this.props.toDos.map( (toDo, idx) => {
-      return <ToDoItem key={ idx }
+      return <ToDoIndexItem key={ idx }
         idx={ idx + 1 }
         attr={ toDo }
-        username={ this.props.username }/>;
+        username={ this.props.username }
+        goToShowPage={ this.props.goToShowPage }/>;
     });
 
     return (

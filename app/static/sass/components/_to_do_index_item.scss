@@ -1,8 +1,12 @@
-.to-do-item {
+.to-do-index-item {
   margin: $to-do-item-margin;
 
   label, button {
     margin: $to-do-item-spacing;
+  }
+
+  .to-do-title-index-item {
+    cursor: pointer;
   }
 
   .show-to-do-details {

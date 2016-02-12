@@ -15,12 +15,14 @@ def handle_to_do_request(username):
     else:
         return jsonify(error="Could not find user."), 404
 
-@app.route("/user/<username>/todo/<id>", methods=["PUT", "DELETE"])
+@app.route("/user/<username>/todo/<id>", methods=["GET", "PUT", "DELETE"])
 def handle_single_to_do_request(username, id):
     user = User.find_by_username(username)
 
     if user:
-        if request.method == "PUT":
+        if request.method == "GET":
+            return __fetch_single_to_do_item(user, id)
+        elif request.method == "PUT":
             return __update_to_do_item(user, id)
         elif request.method == "DELETE":
             return __delete_to_do_item(user, id)
@@ -65,6 +67,11 @@ def __create_to_do_item(user):
             return jsonify(error="Could not create to do item."), 401
     else:
         return jsonify(errors=form.errors.items()), 400
+
+def __fetch_single_to_do_item(user, id):
+    to_dos = ToDo.objects.get(author=user, id=id)
+    pdb.set_trace()
+    return jsonify(to_do=to_do)
 
 def __update_to_do_item(user, id):
     form = ToDoForm(request.form)

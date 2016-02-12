@@ -1,5 +1,5 @@
-.user-show-page {
-  .to-do-list-wrapper {
+.to-do-show-page {
+  .to-do-show-item-wrapper {
     border: $standard-border;
     border-radius: $base-border-radius;
     width: $to-do-index-wrapper-width;
@@ -8,19 +8,9 @@
     margin: $to-do-index-wrapper-margin;
     padding: $to-do-index-wrapper-padding;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .toggle-to-do-form {
-      padding: $toggle-to-do-form-padding;
-      font-size: $toggle-to-do-form-font-size;
-    }
-
-    .to-do-index {
+    .to-do-show-item {
       width: $to-do-index-width;
-      margin: $to-do-index-margin;
-
+      margin: $to-do-show-item-margin;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -28,4 +18,4 @@
   }
 }
 
-@import './to_do_index_item';
+@import './to_do_show_item';

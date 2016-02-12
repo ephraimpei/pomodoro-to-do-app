@@ -10,6 +10,7 @@ class UserShowPage extends React.Component {
     super(props, context);
     this.getStateFromStore = this.getStateFromStore.bind(this);
     this.toggleToDoForm = this.toggleToDoForm.bind(this);
+    this.goToToDoShowPage = this.goToToDoShowPage.bind(this);
     this._onChange = this._onChange.bind(this);
     this._ensureLoggedIn = this._ensureLoggedIn.bind(this);
     this.state={
@@ -48,6 +49,16 @@ class UserShowPage extends React.Component {
     this.setState({ displayToDoForm: newState });
   }
 
+  goToToDoShowPage (e) {
+    const id = e.currentTarget.dataset.id;
+    const toDo = ToDoStore.findById(id);
+
+    this.context.router.push({
+      pathname: `/user/${ CurrentUserStore.get().username }/todo/${ id }`,
+      state: { toDo }
+    })
+  }
+
   _onChange () {
     this.setState({ toDos: this.getStateFromStore() });
   }
@@ -70,7 +81,8 @@ class UserShowPage extends React.Component {
             username={ this.props.routeParams.username }/>
 
           <ToDoIndex toDos={ this.state.toDos }
-            username={ this.props.routeParams.username }/>
+            username={ this.props.routeParams.username }
+            goToShowPage={ this.goToToDoShowPage }/>
         </div>
       </div>
     );

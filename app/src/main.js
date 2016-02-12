@@ -16,6 +16,7 @@ import Footer from './components/main/footer.jsx';
 import LoginPage from './components/auth/login_page.jsx';
 import SignUpPage from './components/auth/sign_up_page.jsx';
 import UserShowPage from './components/user/user_show_page.jsx';
+import ToDoShowPage from './components/todo/todo_show_page.jsx';
 
 $(document).ready(function () {
   const routes = (
@@ -23,6 +24,7 @@ $(document).ready(function () {
       <IndexRoute component={ LoginPage } />
       <Route path="/user/new" component={ SignUpPage } />
       <Route path="/user/:username" component={ UserShowPage } />
+      <Route path="/user/:username/todo/:id" component={ ToDoShowPage } />
     </Route>
   );
 

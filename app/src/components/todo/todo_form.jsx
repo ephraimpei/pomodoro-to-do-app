@@ -242,7 +242,7 @@ class ToDoForm extends React.Component {
         <label>Pomodoros: { this.state.numPomodoros }</label>
         <div className="pomodoro-counter-wrapper">
           <button className="remove-pomodoro" onClick={ this.removePomodoro }>−</button>
-          <img src="/images/pomodoro.png"/>
+          <img src="/images/logo/pomodoro.png"/>
           <button className="add-pomodoro" onClick={ this.addPomodoro }>+</button>
         </div>
 

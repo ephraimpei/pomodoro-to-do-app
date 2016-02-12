@@ -38,18 +38,24 @@ class ToDoItem extends React.Component {
     const buttonText = this.state.showEditForm ? "Cancel" : "Edit";
 
     return (
-      <li className="to-do-item">
-        <label>#{ this.props.idx }</label>
+      <div className="to-do-index-item">
+        <label className="to-do-id">#{ this.props.idx }</label>
 
-        <label>Complete?
+        <label className="to-do-index-item-complete">Complete?
           <input type="checkbox"
             id="complete"
             checked={ this.state.complete }
             disabled/></label>
 
-        <label>{ this.props.attr.title }</label>
+        <label className="to-do-title-index-item"
+          data-id={ this.props.attr._id.$oid }
+          onClick={ this.props.goToShowPage }>{ this.props.attr.title }</label>
 
         <button className="show-to-do-details">▼</button>
+
+        <button className="show-to-do-item"
+          data-id={ this.props.attr._id.$oid }
+          onClick={ this.props.goToShowPage }>Show</button>
 
         <button className="edit-to-do-item"
           onClick={ this.toggleEditForm }>{ buttonText }</button>
@@ -62,7 +68,7 @@ class ToDoItem extends React.Component {
           username={ this.props.username }
           hideForm={ this.hideForm }
           attr={ this.props.attr }/>
-      </li>
+      </div>
     );
   }
 }

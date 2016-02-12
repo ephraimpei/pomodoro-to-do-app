@@ -51,6 +51,10 @@ class ToDoStore extends EventEmitter {
 
     this.emit(CHANGE_EVENT);
   }
+
+  findById (id) {
+    return this.toDos.find((el) => el._id.$oid === id);
+  }
 }
 
 const toDoStore = new ToDoStore();

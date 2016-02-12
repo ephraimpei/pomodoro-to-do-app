@@ -28,6 +28,12 @@ class ApiToDoUtil {
     $.get(`/user/${ username }/todo`).done(receiveToDos);
   }
 
+  fetchById (username, id) {
+    const receiveToDo = (data) => ToDoActions.receiveToDo(data.to_do);
+
+    $.get(`/user/${ username }/todo/${ id }`).done(receiveToDo);
+  }
+
   delete (username, toDoId, success) {
     const deleteToDo = (data) => {
       ToDoActions.deleteToDo(data.to_do);

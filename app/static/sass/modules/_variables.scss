@@ -86,6 +86,7 @@ $sign-up-input-box-width: 100%;
 $avatar-preview-dim: 200px;
 
 /* user show page */
+/* to do show page */
 $to-do-index-wrapper-bg: white;
 $to-do-index-wrapper-width: 80vw;
 $to-do-index-wrapper-min-height: 50vw;
@@ -95,8 +96,12 @@ $toggle-to-do-form-padding: 5px;
 $toggle-to-do-form-font-size: 1.2em;
 
     /* user show page - to do index */
+    /* to do show page - to do show item */
     $to-do-index-width: 60vw;
     $to-do-index-margin: 5vh 0;
+
+    /* to do show page - to do show item */
+    $to-do-show-item-margin: 5vh auto;
 
         /* user show page - to do index - to do item */
         $to-do-item-margin: 10px 0;
@@ -135,3 +140,8 @@ $search-label-font-size: 1.5em;
     /* user search bar */
     $to-do-search-input-margin: 0 1vw;
     $to-do-search-input-width: 20vw;
+
+/* pomodoro index */
+
+    /* pomodoro index item */
+    $pomodoro-index-item-dim: 2em;

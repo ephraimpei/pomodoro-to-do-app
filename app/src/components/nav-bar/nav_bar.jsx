@@ -31,10 +31,11 @@ class NavBar extends React.Component {
     return (
       <div className="header">
         <div className="nav-bar">
-          <img className="logo" onClick={ this.goHome } src="/images/pomodoro.png"/>
+          <img className="logo" onClick={ this.goHome } src="/images/logo/pomodoro.png"/>
+          <button className="user-home-page" onClick={ this.goHome }>To Do List</button>
           <ToDoSearch username={ CurrentUserStore.get().username }/>
-          <button className="user-home-page" onClick={ this.props.goHome }>To Do List</button>
           <button className="logout" onClick={ this.logout }>Logout</button>
+          <img className="logo" onClick={ this.goHome } src="/images/logo/pomodoro.png"/>
         </div>
       </div>
      );
