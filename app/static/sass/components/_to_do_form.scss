@@ -33,6 +33,10 @@
     width: 60%;
   }
 
+  .to-do-form-options {
+    margin-top: $to-do-options-wrapper-margin-top;
+  }
+
   .submit, .clear {
     padding: $to-do-form-button-padding;
     font-size: $to-do-form-button-font-size;
