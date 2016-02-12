@@ -29,6 +29,13 @@ $button-border: 1px solid darkgrey;
 $button-border-radius: 10px;
 $button-background: lightblue;
 
+    /* buttons - active, disabled, or pressed */
+    $button-text-shadow: 1px 1px 2px black;
+    $button-box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047;
+
+    /* buttons - hover */
+    $button-hover-background: darken($button-background, 10%);
+
 /* headers */
 $h1-font-size: 36px;
 $h2-font-size: 24px;
@@ -118,6 +125,12 @@ $header-bottom-border: $standard-border;
 $nav-bar-width: 70vw;
 $logo-dimension: 75px;
 $search-button-font-size: 1.5em;
+
+    /* navigation bar - buttons */
+    $nav-bar-button-border-radius: 5px;
+    $nav-bar-button-background: #b20000;
+    $nav-bar-button-border: 1px solid darkgrey;
+    $nav-bar-button-color: white;
 
     /* user search bar */
     $to-do-search-input-margin: 0 1vw;

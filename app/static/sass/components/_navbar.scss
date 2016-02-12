@@ -9,6 +9,17 @@
     align-items: center;
     justify-content: space-between;
 
+    button:not(.to-do-search-submit) {
+      border: $nav-bar-button-border;
+      border-radius: $nav-bar-button-border-radius;
+      background: $nav-bar-button-background;
+      color: $nav-bar-button-color;
+    }
+
+    button:not(.to-do-search-submit):hover {
+      background: #bc3315;
+    }
+
     .logo {
       width: $logo-dimension;
       height: $logo-dimension;

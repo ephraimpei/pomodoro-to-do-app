@@ -103,10 +103,10 @@ class ToDoForm extends React.Component {
   }
 
   clearForm (e) {
-    e.preventDefault();
-
-    // $(".title-input").val('');
-    // $(".description-textbox").val('');
+    if (e) { e.preventDefault(); }
+    
+    $(".title-input").val('');
+    $(".description-textbox").val('');
 
     this.resetErrors();
 

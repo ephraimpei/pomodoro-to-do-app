@@ -2,25 +2,23 @@ import React from 'react';
 import ToDoSearch from './to_do_search.jsx';
 import ApiSessionUtil from '../../apiutil/api_session_util.js';
 import { displayFlashMessage } from '../../utilities/flash.js';
+import CurrentUserStore from '../../stores/current_user_store.js';
 
 class NavBar extends React.Component {
   constructor (props, context) {
     super(props, context);
-    this.successfulToDoSearch = this.successfulToDoSearch.bind(this);
-    this.failedToDoSearch = this.failedToDoSearch.bind(this);
+    this.goHome = this.goHome.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   static contextTypes = {
     router: React.PropTypes.object.isRequired
   };
-  
-  successfulToDoSearch (toDoId) {
-    this.props.router.push(`/user/${ currentUserStore.get().username }/todo/${ toDoId }`);
-  }
 
-  failedToDoSearch (message) {
-    displayFlashMessage(message);
+  goHome (e) {
+    e.preventDefault();
+
+    this.props.router.push(`/user/${ CurrentUserStore.get().username }`);
   }
 
   logout (e) {
@@ -33,9 +31,9 @@ class NavBar extends React.Component {
     return (
       <div className="header">
         <div className="nav-bar">
-          <img className="logo" src="/images/pomodoro.png"/>
+          <img className="logo" onClick={ this.goHome } src="/images/pomodoro.png"/>
           <button className="user-home-page" onClick={ this.props.goHome }>To Do List</button>
-          <ToDoSearch successfulSearch={ this.props.successfulUserSearch }/>
+          <ToDoSearch username={ CurrentUserStore.get().username }/>
           <button className="logout" onClick={ this.logout }>Logout</button>
         </div>
       </div>

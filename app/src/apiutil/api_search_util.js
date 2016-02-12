@@ -1,12 +1,12 @@
 import $ from 'jquery';
-import SearchActions from "../actions/search_actions.js";
+import ToDoActions from "../actions/to_do_actions.js";
 
 class ApiSearchUtil {
   searchToDos (username, title) {
-    const receiveToDos = (data) => SearchActions.receiveToDos(data.to_dos);
-    const query = `title=%${ title }`;
+    const receiveToDos = (data) => ToDoActions.receiveToDos(data.to_dos);
+    const query = `title=${ title }`;
 
-    $.get(`/user/${ username }/todos/search?${ query }`, title).done(receiveToDos);
+    $.get(`/user/${ username }/todos/search?${ query }`).done(receiveToDos);
   }
 }
 
