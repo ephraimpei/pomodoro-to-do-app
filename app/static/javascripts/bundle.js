@@ -36580,7 +36580,7 @@
 	      reader.onloadend = function (e) {
 	        // this.setState({ imageUrl: reader.result, imageFile: file });
 	        var data = event.target.result.replace("data:" + file.type + ";base64,", '');
-	        debugger;
+	
 	        _this2.setState({ imageUrl: reader.result, imageFile: data });
 	      };
 	
@@ -36922,7 +36922,7 @@
 	
 	      var toDos = this.props.toDos.map(function (toDo, idx) {
 	        return _react2.default.createElement(_todo_item2.default, { key: idx,
-	          id: idx + 1,
+	          idx: idx + 1,
 	          attr: toDo,
 	          username: _this2.props.username });
 	      });
@@ -36998,7 +36998,7 @@
 	    value: function deleteToDoItem(e) {
 	      e.preventDefault();
 	
-	      _api_to_do_util2.default.delete(this.props.username, this.props.attr.id.$oid, _flash.displayFlashMessage);
+	      _api_to_do_util2.default.delete(this.props.username, this.props.attr._id.$oid, _flash.displayFlashMessage);
 	    }
 	  }, {
 	    key: 'toggleEditForm',
@@ -37026,7 +37026,7 @@
 	          'label',
 	          null,
 	          '#',
-	          this.props.id
+	          this.props.idx
 	        ),
 	        _react2.default.createElement(
 	          'label',
@@ -37219,7 +37219,6 @@
 	  _createClass(_class, [{
 	    key: "receiveToDos",
 	    value: function receiveToDos(toDos) {
-	      debugger;
 	      _dispatcher2.default.dispatch({
 	        actionType: _to_do_constants2.default.RECEIVE_TO_DOS,
 	        toDos: toDos
@@ -37390,7 +37389,7 @@
 	      if (this.props.mode === "new") {
 	        _api_to_do_util2.default.create(formData, this.props.username, this.success, this.failure, this.clearForm);
 	      } else if (this.props.mode === "edit") {
-	        _api_to_do_util2.default.update(formData, this.props.username, this.props.attr.id.$oid, this.success, this.failure, this.props.hideForm);
+	        _api_to_do_util2.default.update(formData, this.props.username, this.props.attr._id.$oid, this.success, this.failure, this.props.hideForm);
 	      }
 	    }
 	  }, {
@@ -43713,7 +43712,7 @@
 	    key: 'add',
 	    value: function add(toDo) {
 	      var findToDo = this.toDos.find(function (el) {
-	        return el.id.$oid === toDo.id.$oid;
+	        return el._id.$oid === toDo._id.$oid;
 	      });
 	
 	      if (typeof findUser === 'undefined') {
@@ -43726,7 +43725,7 @@
 	    key: 'remove',
 	    value: function remove(toDo) {
 	      var toDoIdx = this.toDos.findIndex(function (el) {
-	        return el.id.$oid === toDo.id.$oid;
+	        return el._id.$oid === toDo._id.$oid;
 	      });
 	
 	      if (toDoIdx !== -1) {
@@ -43739,7 +43738,7 @@
 	    key: 'update',
 	    value: function update(toDo) {
 	      var toDoIdx = this.toDos.findIndex(function (el) {
-	        return el.id.$oid === toDo.id.$oid;
+	        return el._id.$oid === toDo._id.$oid;
 	      });
 	
 	      if (toDoIdx !== -1) {

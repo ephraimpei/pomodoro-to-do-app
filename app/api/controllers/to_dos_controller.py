@@ -29,9 +29,8 @@ def handle_single_to_do_request(username, id):
 
 @app.route("/user/<username>/todos/<query>", methods=["GET"])
 def handle_to_do_search(username, query):
-    pdb.set_trace()
     user = User.find_by_username(username)
-    title = ""
+    title = request.args.get('title')
     if user:
         to_dos = user.to_dos.filter(title__icontains=title)
         return jsonify(to_dos=to_dos)
@@ -39,7 +38,7 @@ def handle_to_do_search(username, query):
         return jsonify(error="Could not find user."), 404
 
 def __fetch_to_do_items(user):
-    to_dos = User.objects.get(username=user.username).to_dos
+    to_dos = ToDo.objects(author=user)
     return jsonify(to_dos=to_dos)
 
 def __create_to_do_item(user):
@@ -52,13 +51,13 @@ def __create_to_do_item(user):
             break_length=form.break_length.data,
             long_break_length=form.long_break_length.data)
 
-        user.to_dos.append(new_to_do)
+        new_to_do.author = user
 
         for i in range(form.num_pomodoros.data):
             new_pomodoro = Pomodoro(remaining_length=form.pomodoro_length.data)
             new_to_do.pomodoros.append(new_pomodoro)
 
-        if user.save():
+        if new_to_do.save():
             return jsonify(to_do = new_to_do,
                 message = "To do created successfully!")
         else:
@@ -69,14 +68,8 @@ def __create_to_do_item(user):
 def __update_to_do_item(user, id):
     form = ToDoForm(request.form)
 
-    # user.update(set__to_dos__title=form.title.data,
-    #     set__to_dos__description=form.description.data,
-    #     set__to_dos__pomodoro_length=form.pomodoro_length.data,
-    #     set__to_dos__break_length=form.break_length.data,
-    #     set__to_dos__long_break_length=form.long_break_length.data):
-
     if form.validate():
-        to_do = user.to_dos.filter(id=id).first()
+        to_do = ToDo.objects.get(id=id)
         to_do.title = form.title.data
         to_do.description = form.description.data
         to_do.pomodoro_length = form.pomodoro_length.data
@@ -115,7 +108,7 @@ def __update_to_do_item(user, id):
                 if pomodoro.status == "not_started":
                     pomodoro.remaining_length = form.pomodoro_length.data
 
-        if user.save():
+        if to_do.save():
             return jsonify(to_do = to_do,
                 message = "To do updated successfully!")
         else:
@@ -125,8 +118,8 @@ def __update_to_do_item(user, id):
         return jsonify(errors=form.errors.items()), 400
 
 def __delete_to_do_item(user, id):
-    to_do = User.objects.get(username=user.username).to_dos.first()
+    to_do = ToDo.objects.get(id=id)
 
-    User.objects(username=user.username).update_one(pull__to_dos__id=id)
+    to_do.delete()
 
     return jsonify(to_do=to_do, message="To do deleted successfully!")

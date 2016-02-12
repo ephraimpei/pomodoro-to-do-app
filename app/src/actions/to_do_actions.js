@@ -3,7 +3,6 @@ import ToDoConstants from "../constants/to_do_constants.js";
 
 export default new class {
   receiveToDos (toDos) {
-    debugger;
     AppDispatcher.dispatch({
       actionType: ToDoConstants.RECEIVE_TO_DOS,
       toDos: toDos

@@ -19,7 +19,7 @@ class ToDoItem extends React.Component {
   deleteToDoItem (e) {
     e.preventDefault();
 
-    ApiToDoUtil.delete(this.props.username, this.props.attr.id.$oid, displayFlashMessage);
+    ApiToDoUtil.delete(this.props.username, this.props.attr._id.$oid, displayFlashMessage);
   }
 
   toggleEditForm (e) {
@@ -39,7 +39,7 @@ class ToDoItem extends React.Component {
 
     return (
       <li className="to-do-item">
-        <label>#{ this.props.id }</label>
+        <label>#{ this.props.idx }</label>
 
         <label>Complete?
           <input type="checkbox"

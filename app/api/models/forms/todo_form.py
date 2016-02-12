@@ -5,7 +5,7 @@ class ToDoForm(Form):
     title = StringField('title', [
         validators.Required()
     ])
-    description = PasswordField('description', [
+    description = StringField('description', [
         validators.Required()
     ])
     num_pomodoros = IntegerField('num_pomodoros', [
