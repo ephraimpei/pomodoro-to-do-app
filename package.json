@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "WIP - Live Site coming",
   "main": "index.js",
-  "scripts": {
-    "start": "./run_app"
-  },
   "author": "Ephraim Pei",
   "license": "ISC",
   "jshintConfig": {
