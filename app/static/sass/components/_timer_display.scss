@@ -1,8 +1,7 @@
-.pomodoro-index {
+.timer-display {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-@import './pomodoro_index_item';
+@import "./timer";

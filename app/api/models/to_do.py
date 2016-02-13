@@ -16,5 +16,5 @@ class ToDo(db.Document):
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
 
     meta = {
-        'ordering': ['-created_at']
+        'ordering': ['+created_at']
     }

@@ -6,16 +6,8 @@
     min-height: $to-do-index-wrapper-min-height;
     background: $to-do-index-wrapper-bg;
     margin: $to-do-index-wrapper-margin;
-    padding: $to-do-index-wrapper-padding;
-
-    .to-do-show-item {
-      width: $to-do-index-width;
-      margin: $to-do-show-item-margin;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
   }
 }
 
 @import './to_do_show_item';
+@import './timer_display';

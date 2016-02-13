@@ -49,6 +49,7 @@ def handle_complete_pomodoro(username, id):
 
         if num_complete + 1 == len(pomodoros):
             to_do.complete = True
+            message = "To do is COMPLETE! Woo hoo!"
 
         if to_do.save():
             return jsonify(to_do = to_do, message = message)

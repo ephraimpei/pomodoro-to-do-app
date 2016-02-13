@@ -10,9 +10,7 @@ class ToDoShowItem extends React.Component {
     super(props, context);
     this.state = {
       complete: this.props.attr.complete,
-      showDetails: false,
-      showEditForm: false
-     };
+    };
   }
 
   componentWillReceiveProps (nextProps) {
@@ -43,7 +41,7 @@ class ToDoShowItem extends React.Component {
     let completeCounter = 0;
 
     this.props.attr.pomodoros.forEach( (pomodoro) => {
-      if (pomodoro.status === "complete") { completeCounter += 1; }
+      if (pomodoro.complete) { completeCounter += 1; }
     });
 
     return (
@@ -60,15 +58,17 @@ class ToDoShowItem extends React.Component {
         <textarea className="description"
           disabled value={ this.props.attr.description}></textarea>
 
-        <label className="pomodoro-counter">Pomodoros: { this.props.attr.pomodoros.length }</label>
-
-        <label className="complete-counter">Complete: { completeCounter }</label>
+        <div className="stats-wrapper">
+          <label className="complete-counter">Complete: { completeCounter }</label>
+          <label className="pomodoro-counter">Pomodoros: { this.props.attr.pomodoros.length }</label>
+        </div>
 
         <PomodoroIndex pomodoros={ this.props.attr.pomodoros } />
 
         <TimerDisplay toDo={ this.props.attr }
-          numCompleted= { completeCounter }
-          finish={ this.props.finish }/>
+          numCompleted={ completeCounter }
+          complete={ this.state.complete }
+          finishPomodoro={ this.props.finishPomodoro }/>
       </div>
     );
   }

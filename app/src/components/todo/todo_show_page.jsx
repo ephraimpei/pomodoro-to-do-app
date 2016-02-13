@@ -44,7 +44,7 @@ class ToDoShowPage extends React.Component {
 
   render () {
     const toDoShowItem = typeof this.state.toDo !== "undefined" ?
-      <ToDoShowItem attr={ this.state.toDo } finish={ this.finishPomodoro }/> : ""
+      <ToDoShowItem attr={ this.state.toDo } finishPomodoro={ this.finishPomodoro }/> : ""
 
     return (
       <div className="to-do-show-page">

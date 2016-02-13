@@ -1,1 +1,29 @@
+.to-do-show-item {
+  width: $to-do-index-width;
+  margin: $to-do-show-item-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  * {
+    margin: $to-do-show-item-children-spacing;
+  }
+
+  header {
+    font-size: $to-do-show-item-header;
+    font-weight: $bold;
+  }
+
+  .description {
+    width: $to-do-show-item-desc-width;
+    height: $to-do-show-item-desc-height;
+  }
+
+  .stats-wrapper {
+    label {
+      margin: $stats-wrapper-child-spacing;
+    }
+  }
+}
+
 @import './pomodoro_index';

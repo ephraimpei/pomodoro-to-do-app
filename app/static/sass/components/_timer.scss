@@ -1,0 +1,14 @@
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .timer-label {
+    text-align: center;
+  }
+
+  .timer-countdown {
+    text-align: center;
+    font-size: $timer-font-size;
+  }
+}

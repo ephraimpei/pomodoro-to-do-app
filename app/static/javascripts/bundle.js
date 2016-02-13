@@ -146,7 +146,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* buttons - active, disabled, or pressed */\n/* buttons - hover */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* to do show page */\n/* user show page - to do index */\n/* to do show page - to do show item */\n/* to do show page - to do show item */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\n/* navigation bar */\n/* navigation bar - buttons */\n/* user search bar */\n/* pomodoro index */\n/* pomodoro index item */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 15%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.header {\n  background: lightblue;\n  border-bottom: 1px solid #ccc; }\n  .header .nav-bar {\n    width: 70vw;\n    margin: auto;\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n    .header .nav-bar button {\n      border: 1px solid darkgrey;\n      border-radius: 5px;\n      background: #b20000;\n      color: white; }\n    .header .nav-bar button:hover {\n      background: #bc3315; }\n    .header .nav-bar .logo {\n      width: 75px;\n      height: 75px;\n      cursor: pointer; }\n\n.to-do-search {\n  position: relative; }\n  .to-do-search input {\n    margin: 0 1vw;\n    width: 20vw; }\n  .to-do-search .to-do-search-label {\n    font-size: 1.5em; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper .form-avatar-preview {\n      width: 200px;\n      height: 200px; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-index-item {\n  margin: 10px 0; }\n  .to-do-index-item label, .to-do-index-item button {\n    margin: 0 1vw; }\n  .to-do-index-item .to-do-title-index-item {\n    cursor: pointer; }\n  .to-do-index-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-show-page .to-do-show-item-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0; }\n  .to-do-show-page .to-do-show-item-wrapper .to-do-show-item {\n    width: 60vw;\n    margin: 5vh auto;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.pomodoro-index {\n  display: flex;\n  flex-direction: row;\n  justify-content: center; }\n\n.pomodoro-index-item {\n  width: 2em;\n  height: 2em; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
+	exports.push([module.id, ".group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n/* font weights */\n/* base background */\n/* base font */\n/* icons */\n/* borders */\n/* buttons */\n/* buttons - active, disabled, or pressed */\n/* buttons - hover */\n/* headers */\n/* input boxes */\n/* flash messages */\n/* text area */\n/* footer */\n/* login page */\n/* sign up page */\n/* user show page */\n/* to do show page */\n/* user show page - to do index */\n/* to do show page - to do show item */\n/* to do show page - to do show item */\n/* to do show page - stats wrapper */\n/* user show page - to do index - to do item */\n/* to do form */\n/* to do form - buttons */\n/* navigation bar */\n/* navigation bar - buttons */\n/* user search bar */\n/* pomodoro index */\n/* pomodoro index item */\n/* timer display */\n/* timer display - timer */\nhtml, body, h1, h2, h3, div, footer, ul, li, a, figure, button, textarea, form, label {\n  padding: 0;\n  border: 0;\n  margin: 0;\n  font: inherit;\n  vertical-align: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  color: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\ninput, textarea {\n  outline: 0; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\nbody {\n  font-family: sans-serif;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 1.4;\n  background: #eee;\n  height: 100%; }\n\nbutton {\n  padding: 3px;\n  background: lightblue;\n  font-size: 0.8em;\n  border: 1px solid darkgrey;\n  border-radius: 10px;\n  text-align: center;\n  cursor: pointer; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton:active, button.disabled, button.pressed {\n  text-shadow: 1px 1px 2px black;\n  box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047; }\n\nbutton:hover {\n  background: #86c5da; }\n\nh1 {\n  font-size: 36px;\n  font-weight: 700; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 700; }\n\n#flash {\n  display: none;\n  position: absolute;\n  top: 15%;\n  left: 40vw;\n  font-size: 1.2em;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: yellow;\n  padding: 5px;\n  z-index: 1; }\n\n.social-media-icon {\n  width: 32px;\n  height: 32px;\n  border-radius: 10px; }\n\ninput {\n  padding: 5px 2.5px;\n  border-radius: 0.6em;\n  font-size: 16px; }\n\ninput.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\na {\n  cursor: pointer; }\n\ntextarea {\n  resize: none;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  font-size: 0.8em;\n  padding: 10px; }\n\ntextarea.invalid {\n  border: 2px solid red;\n  box-shadow: 0 0 10px red; }\n\n#footer-wrapper {\n  background: #ffab62;\n  border-top: 1px solid #ccc;\n  height: 72px;\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n  #footer-wrapper .footer {\n    width: 70vw;\n    margin: auto;\n    padding: 17px 0;\n    font-size: 1em;\n    color: #fff; }\n    #footer-wrapper .footer .about {\n      margin-top: 5px;\n      opacity: 0.7;\n      float: left; }\n    #footer-wrapper .footer .links {\n      float: right; }\n      #footer-wrapper .footer .links a {\n        margin-left: 10px;\n        display: inline-block; }\n\n.login-page h1, .login-page h2 {\n  text-align: center; }\n\n.login-page .login-form {\n  width: 200px;\n  margin: auto; }\n  .login-page .login-form .login-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 100px 0; }\n    .login-page .login-form .login-form-wrapper button, .login-page .login-form .login-form-wrapper label, .login-page .login-form .login-form-wrapper input {\n      margin: 5px 0; }\n    .login-page .login-form .login-form-wrapper a {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .login-page .login-form .login-form-wrapper label {\n      text-align: center; }\n    .login-page .login-form .login-form-wrapper input {\n      width: 100%; }\n\n#wrapper {\n  min-height: 100vh;\n  position: relative; }\n\n#content {\n  padding-bottom: 73px; }\n\n.header {\n  background: lightblue;\n  border-bottom: 1px solid #ccc; }\n  .header .nav-bar {\n    width: 70vw;\n    margin: auto;\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n    .header .nav-bar button {\n      border: 1px solid darkgrey;\n      border-radius: 5px;\n      background: #b20000;\n      color: white; }\n    .header .nav-bar button:hover {\n      background: #bc3315; }\n    .header .nav-bar .logo {\n      width: 75px;\n      height: 75px;\n      cursor: pointer; }\n\n.to-do-search {\n  position: relative; }\n  .to-do-search input {\n    margin: 0 1vw;\n    width: 20vw; }\n  .to-do-search .to-do-search-label {\n    font-size: 1.5em; }\n\n.sign-up-page h1, .sign-up-page h2 {\n  text-align: center; }\n\n.sign-up-page .sign-up-form {\n  width: 200px;\n  margin: auto; }\n  .sign-up-page .sign-up-form .sign-up-form-wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin: 50px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper * {\n      margin: 5px 0; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper label, .sign-up-page .sign-up-form .sign-up-form-wrapper a {\n      text-align: center; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper a:hover {\n      color: blue;\n      text-decoration: underline; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper input {\n      width: 100%; }\n    .sign-up-page .sign-up-form .sign-up-form-wrapper .form-avatar-preview {\n      width: 200px;\n      height: 200px; }\n\n.user-show-page .to-do-list-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto;\n  padding: 10vh 0;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .user-show-page .to-do-list-wrapper .toggle-to-do-form {\n    padding: 5px;\n    font-size: 1.2em; }\n  .user-show-page .to-do-list-wrapper .to-do-index {\n    width: 60vw;\n    margin: 5vh 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n\n.to-do-index-item {\n  margin: 10px 0; }\n  .to-do-index-item label, .to-do-index-item button {\n    margin: 0 1vw; }\n  .to-do-index-item .to-do-title-index-item {\n    cursor: pointer; }\n  .to-do-index-item .show-to-do-details {\n    border-radius: 3px; }\n\n.to-do-show-page .to-do-show-item-wrapper {\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 80vw;\n  min-height: 50vw;\n  background: white;\n  margin: 10vh auto; }\n\n.to-do-show-item {\n  width: 60vw;\n  margin: 5vh auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n  .to-do-show-item * {\n    margin: 1vh; }\n  .to-do-show-item header {\n    font-size: 3em;\n    font-weight: 700; }\n  .to-do-show-item .description {\n    width: 30vw;\n    height: 30vh; }\n  .to-do-show-item .stats-wrapper label {\n    margin: 0 2vw; }\n\n.pomodoro-index {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  flex-wrap: wrap; }\n\n.pomodoro-index-item {\n  width: 2em;\n  height: 2em; }\n\n.timer-display {\n  display: flex;\n  flex-direction: row;\n  justify-content: center; }\n\n.timer {\n  display: flex;\n  flex-direction: column;\n  justify-content: center; }\n  .timer .timer-label {\n    text-align: center; }\n  .timer .timer-countdown {\n    text-align: center;\n    font-size: 4em; }\n\n.to-do-form {\n  display: none;\n  margin-top: 5vh; }\n  .to-do-form * {\n    margin: 5px 0; }\n  .to-do-form .title-input {\n    width: 30vw; }\n  .to-do-form .description-textbox {\n    width: 30vw;\n    height: 20vh; }\n  .to-do-form .pomodoro-counter-wrapper button {\n    border-radius: 0; }\n  .to-do-form .pomodoro-counter-wrapper img {\n    width: 2em;\n    height: 2em;\n    margin: 0 1vw;\n    display: inline-block;\n    vertical-align: middle; }\n  .to-do-form .slider {\n    width: 60%; }\n  .to-do-form .to-do-form-options {\n    margin-top: 30px; }\n  .to-do-form button {\n    padding: 5px;\n    font-size: 1em;\n    margin: 0 1vw; }\n\n.to-do-form.visible {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n", ""]);
 	
 	// exports
 
@@ -44170,7 +44170,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo, finish: this.finishPomodoro }) : "";
+	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo, finishPomodoro: this.finishPomodoro }) : "";
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -44243,9 +44243,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoShowItem).call(this, props, context));
 	
 	    _this.state = {
-	      complete: _this.props.attr.complete,
-	      showDetails: false,
-	      showEditForm: false
+	      complete: _this.props.attr.complete
 	    };
 	    return _this;
 	  }
@@ -44284,7 +44282,7 @@
 	      var completeCounter = 0;
 	
 	      this.props.attr.pomodoros.forEach(function (pomodoro) {
-	        if (pomodoro.status === "complete") {
+	        if (pomodoro.complete) {
 	          completeCounter += 1;
 	        }
 	      });
@@ -44309,21 +44307,26 @@
 	        _react2.default.createElement('textarea', { className: 'description',
 	          disabled: true, value: this.props.attr.description }),
 	        _react2.default.createElement(
-	          'label',
-	          { className: 'pomodoro-counter' },
-	          'Pomodoros: ',
-	          this.props.attr.pomodoros.length
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          { className: 'complete-counter' },
-	          'Complete: ',
-	          completeCounter
+	          'div',
+	          { className: 'stats-wrapper' },
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'complete-counter' },
+	            'Complete: ',
+	            completeCounter
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'pomodoro-counter' },
+	            'Pomodoros: ',
+	            this.props.attr.pomodoros.length
+	          )
 	        ),
 	        _react2.default.createElement(_pomodoro_index2.default, { pomodoros: this.props.attr.pomodoros }),
 	        _react2.default.createElement(_timer_display2.default, { toDo: this.props.attr,
 	          numCompleted: completeCounter,
-	          finish: this.props.finish })
+	          complete: this.state.complete,
+	          finishPomodoro: this.props.finishPomodoro })
 	      );
 	    }
 	  }]);
@@ -44465,6 +44468,8 @@
 	
 	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
+	var _flash = __webpack_require__(236);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44484,38 +44489,93 @@
 	    _this.pomodoroTimerFinished = _this.pomodoroTimerFinished.bind(_this);
 	    _this.breakTimerFinished = _this.breakTimerFinished.bind(_this);
 	    _this.longBreakTimerFinished = _this.longBreakTimerFinished.bind(_this);
+	    _this.state = { turn: "pomodoro" };
 	    return _this;
 	  }
 	
 	  _createClass(TimerDisplay, [{
 	    key: 'pomodoroTimerFinished',
 	    value: function pomodoroTimerFinished() {
-	      this.props.finish(this.props.numCompleted);
+	      this.props.finishPomodoro(this.props.numCompleted);
+	
+	      if ((this.props.numCompleted + 1) % 4 !== 0) {
+	        this.setState({ turn: "break" });
+	      } else {
+	        this.setState({ turn: "longbreak" });
+	      }
 	    }
 	  }, {
 	    key: 'breakTimerFinished',
-	    value: function breakTimerFinished() {}
+	    value: function breakTimerFinished() {
+	      (0, _flash.displayFlashMessage)("Break time's over!");
+	
+	      this.setState({ turn: "pomodoro" });
+	    }
 	  }, {
 	    key: 'longBreakTimerFinished',
-	    value: function longBreakTimerFinished() {}
+	    value: function longBreakTimerFinished() {
+	      (0, _flash.displayFlashMessage)("Long break time's over!");
+	
+	      this.setState({ turn: "pomodoro" });
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var pomodoroDisabled = undefined,
+	          breakDisabled = undefined,
+	          longBreakDisabled = undefined;
+	
+	      if (this.props.complete) {
+	        pomodoroDisabled = true;
+	        breakDisabled = true;
+	        longBreakDisabled = true;
+	      } else {
+	        switch (this.state.turn) {
+	          case "pomodoro":
+	            pomodoroDisabled = false;
+	            breakDisabled = true;
+	            longBreakDisabled = true;
+	
+	            break;
+	          case "break":
+	            pomodoroDisabled = true;
+	            breakDisabled = false;
+	            longBreakDisabled = true;
+	
+	            break;
+	          case "longbreak":
+	            pomodoroDisabled = true;
+	            breakDisabled = true;
+	            longBreakDisabled = false;
+	
+	            break;
+	        }
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'timer-display' },
 	        _react2.default.createElement(_timer2.default, { klass: 'pomodoro',
 	          imgUrl: '',
 	          timerLength: this.props.toDo.pomodoro_length,
-	          timerFinished: this.pomodoroTimerFinished }),
-	        _react2.default.createElement(_timer2.default, { klass: 'break',
+	          timerFinished: this.pomodoroTimerFinished,
+	          done: this.props.complete,
+	          turn: this.state.turn,
+	          disabled: pomodoroDisabled }),
+	        _react2.default.createElement(_timer2.default, { klass: 'short-break',
 	          imgUrl: '',
 	          timerLength: this.props.toDo.break_length,
-	          timerFinished: this.breakTimerFinished }),
+	          timerFinished: this.breakTimerFinished,
+	          done: this.props.complete,
+	          turn: this.state.turn,
+	          disabled: breakDisabled }),
 	        _react2.default.createElement(_timer2.default, { klass: 'long-break',
 	          imgUrl: '',
 	          timerLength: this.props.toDo.long_break_length,
-	          timerFinished: this.longBreakTimerFinished })
+	          timerFinished: this.longBreakTimerFinished,
+	          done: this.props.complete,
+	          turn: this.state.turn,
+	          disabled: longBreakDisabled })
 	      );
 	    }
 	  }]);
@@ -44562,6 +44622,7 @@
 	    _this.handleController = _this.handleController.bind(_this);
 	    _this.tickInterval = _this.tickInterval.bind(_this);
 	    _this.resetTimer = _this.resetTimer.bind(_this);
+	    _this.performAction = _this.performAction.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
 	      // remainingTime: this.props.timerLength * 60000,
@@ -44574,6 +44635,22 @@
 	  }
 	
 	  _createClass(Timer, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      // if (!nextProps.disabled && !nextProps.done && this.props.klass !== "pomodoro") {
+	      //   this.performAction("Start");
+	      // } else if (nextProps.done) {
+	      //   this.performAction("Stop");
+	      // }
+	      if (this.props.klass !== "pomodoro" && nextProps.turn === "pomodoro" || nextProps.disabled) {
+	        this.performAction("Stop");
+	      } else if (nextProps.done) {
+	        this.performAction("Stop");
+	      } else if (this.props.klass !== "pomodoro" && !nextProps.disabled) {
+	        // this.performAction("Start");
+	      }
+	    }
+	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      clearInterval(this.interval);
@@ -44581,8 +44658,6 @@
 	  }, {
 	    key: 'resetTimer',
 	    value: function resetTimer() {
-	      clearInterval(this.interval);
-	
 	      this.setState({
 	        start: new Date().getTime(),
 	        elapsedTime: 0,
@@ -44594,6 +44669,7 @@
 	    key: 'tickInterval',
 	    value: function tickInterval() {
 	      if (this.state.elapsedTime >= this.state.remainingTime) {
+	        clearInterval(this.interval);
 	        this.props.timerFinished();
 	        this.resetTimer();
 	      }
@@ -44607,6 +44683,11 @@
 	
 	      var option = e.currentTarget.textContent;
 	
+	      this.performAction(option);
+	    }
+	  }, {
+	    key: 'performAction',
+	    value: function performAction(option) {
 	      switch (option) {
 	        case "Start":
 	          this.setState({ start: new Date().getTime(), started: true });
@@ -44615,23 +44696,31 @@
 	        case "Pause":
 	          clearInterval(this.interval);
 	          this.setState({ paused: true });
-	          this.props.update("Pause");
 	          break;
 	        case "Resume":
 	          this.setState({ start: new Date().getTime() - this.state.elapsedTime, paused: false });
 	          this.interval = window.setInterval(this.tickInterval, 100);
 	          break;
+	        case "Stop":
+	          clearInterval(this.interval);
 	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var klass = this.props.klass + '-timer';
+	      var klass = 'timer ' + this.props.klass;
 	      var labelText = this.props.klass.charAt(0).toUpperCase() + this.props.klass.slice(1);
 	      var remainingTime = this.state.remainingTime - this.state.elapsedTime;
 	      var timerText = (0, _timer.timeFormatConverter)(remainingTime);
 	
-	      var buttonText = undefined;
+	      var buttonText = undefined,
+	          buttonClass = undefined;
+	
+	      if (this.props.disabled) {
+	        buttonClass = "timer-controller disabled";
+	      } else {
+	        buttonClass = "timer-controller";
+	      }
 	
 	      if (!this.state.started && this.props.klass === "pomodoro") {
 	        buttonText = "Start";
@@ -44651,8 +44740,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'timer-controller',
-	            onClick: this.handleController },
+	          { className: buttonClass,
+	            onClick: this.handleController,
+	            disabled: this.props.disabled },
 	          buttonText
 	        ),
 	        _react2.default.createElement(

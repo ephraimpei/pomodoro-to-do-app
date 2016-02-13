@@ -102,6 +102,13 @@ $toggle-to-do-form-font-size: 1.2em;
 
     /* to do show page - to do show item */
     $to-do-show-item-margin: 5vh auto;
+    $to-do-show-item-header: 3em;
+    $to-do-show-item-children-spacing: 1vh;
+    $to-do-show-item-desc-width: 30vw;
+    $to-do-show-item-desc-height: 30vh;
+
+        /* to do show page - stats wrapper */
+        $stats-wrapper-child-spacing: 0 2vw;
 
         /* user show page - to do index - to do item */
         $to-do-item-margin: 10px 0;
@@ -145,3 +152,8 @@ $search-label-font-size: 1.5em;
 
     /* pomodoro index item */
     $pomodoro-index-item-dim: 2em;
+
+/* timer display */
+
+    /* timer display - timer */
+    $timer-font-size: 4em;
