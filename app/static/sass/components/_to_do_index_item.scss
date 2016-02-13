@@ -1,5 +1,10 @@
 .to-do-index-item {
   margin: $to-do-item-margin;
+  border-bottom: $standard-border;
+  padding: 5px 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
 
   label, button {
     margin: $to-do-item-spacing;

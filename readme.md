@@ -31,7 +31,7 @@ Pomodoro To-Do List is a single page application that allows users to create, up
   + Flask-WTForms - Great flask add on for providing form validation support.  Very easy to use and provides good support for custom validations.
 
 * DB technologies
-  + MongoDB - In general, MongoDB is better to use when you know you aren't going need to do a lot of querying or calculations for deeply nested/joined data.  I also find myself getting more comfortable querying for documents instead of inputting a SQL query.  These reasons, especially knowing that my data requirements weren't going to be very heavy I decided to go with MongoDB. 
+  + MongoDB - In general, MongoDB is better to use when you know you aren't going need to do a lot of querying or calculations for deeply nested/joined data.  I also find myself getting more comfortable querying for documents instead of inputting a SQL query.  Because of these reasons and especially knowing that my data requirements weren't going to be very heavy I decided to go with MongoDB.
 
 ### App features
 - Hand rolled user authentication (up to 5 session support)
@@ -40,3 +40,10 @@ Pomodoro To-Do List is a single page application that allows users to create, up
 - Webpack used to manage JavaScript module dependencies and to load ES6 and SASS files
 - RESTful API for retrieving to-do list items
 - CRUD operations for to do items supported
+
+### Product trade-off decisions
+- I thought through possible scenarios of what a user would expect when he/she added or removed pomodoros when editing them.  What about the
+
+
+### Technical trade-off decisions
+- One thing I attempted to implement was adding a status tracker for each pomodoro (ie: "not_started", "in_progress", "complete") that would get updated whenever the user starts, pauses, or resumes a pomodoro. I also wanted to

@@ -118,10 +118,10 @@ def __update_to_do_item(user, id):
         # adding pomodoros
         if form.num_pomodoros.data > prev_num_pomodoros:
             # update remaining length of already existing pomodoros,
-            # skipping ones that are complete or in progress
+            # skipping ones that are complete
             for i in range(prev_num_pomodoros):
                 pomodoro = to_do.pomodoros[i]
-                if pomodoro.status == "not_started":
+                if not pomodoro.complete:
                     pomodoro.remaining_length = form.pomodoro_length.data
 
             # append additional pomodoros
@@ -142,7 +142,7 @@ def __update_to_do_item(user, id):
             for i in range(form.num_pomodoros.data):
                 pomodoro = to_do.pomodoros[i]
 
-                if pomodoro.status == "not_started":
+                if not pomodoro.complete:
                     pomodoro.remaining_length = form.pomodoro_length.data
 
         if to_do.save():
