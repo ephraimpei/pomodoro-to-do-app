@@ -11,7 +11,7 @@ class TimerDisplay extends React.Component {
   }
 
   pomodoroTimerFinished () {
-
+    this.props.finish(this.props.numCompleted);
   }
 
   breakTimerFinished () {
@@ -28,8 +28,7 @@ class TimerDisplay extends React.Component {
         <Timer klass="pomodoro"
           imgUrl=""
           timerLength={ this.props.toDo.pomodoro_length }
-          timerFinished={ this.pomodoroTimerFinished }
-          updateToDo={ this.props.updateToDo } />
+          timerFinished={ this.pomodoroTimerFinished }/>
 
         <Timer klass="break"
           imgUrl=""

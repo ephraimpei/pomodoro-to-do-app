@@ -29,6 +29,34 @@ def handle_single_to_do_request(username, id):
     else:
         return jsonify(error="Could not find user."), 404
 
+@app.route("/user/<username>/todo/<id>/finish", methods=["PUT"])
+def handle_complete_pomodoro(username, id):
+    user = User.find_by_username(username)
+
+    if user:
+        to_do = ToDo.objects.get(author=user, id=id)
+        pomodoros = to_do.pomodoros
+        num_complete = int(request.form['num_complete'])
+
+        pomodoros[num_complete].complete = True
+
+        message = "Pomodoro completed!"
+
+        if ((num_complete + 1) % 4) == 0:
+            message += " Long break time!"
+        else:
+            message += " Break time!"
+
+        if num_complete + 1 == len(pomodoros):
+            to_do.complete = True
+
+        if to_do.save():
+            return jsonify(to_do = to_do, message = message)
+        else:
+            return jsonify(error="Could not update to do item."), 401
+    else:
+        return jsonify(error="Could not find user."), 404
+
 @app.route("/user/<username>/todos/search", methods=["GET"])
 def handle_to_do_search(username):
     user = User.find_by_username(username)

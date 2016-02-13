@@ -6,19 +6,9 @@ class PomodoroIndexItem extends React.Component {
   }
 
   render () {
-    let imgUrl;
-
-    switch (this.props.attr.status) {
-      case "not_started":
-        imgUrl = "/images/pomodoros/not_started_pomodoro.png";
-        break;
-      case "in_progress":
-        imgUrl = "/images/pomodoros/in_progress_pomodoro.png";
-        break;
-      case "complete":
-        imgUrl = "/images/pomodoros/complete_pomodoro.png";
-        break;
-    }
+    const imgUrl = this.props.attr.complete ?
+      "/images/pomodoros/complete_pomodoro.png" :
+      "/images/pomodoros/incomplete_pomodoro.png";
 
     return (
       <div className="pomodoro-index-item">

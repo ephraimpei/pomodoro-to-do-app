@@ -2,14 +2,14 @@ import React from 'react';
 import ToDoShowItem from './todo_show_item.jsx';
 import ToDoStore from '../../stores/to_do_store.js';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
-import CurrentUserStore from '../../stores/current_user_store.js';
+import { displayFlashMessage } from '../../utilities/flash.js';
 
 class ToDoShowPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this._onChange = this._onChange.bind(this);
     this.getStateFromStore = this.getStateFromStore.bind(this);
-    this.updateToDoPomodoro = this.updateToDoPomodoro.bind(this);
+    this.finishPomodoro = this.finishPomodoro.bind(this);
     this.state={ toDo: this.getStateFromStore() }
   }
 
@@ -37,22 +37,14 @@ class ToDoShowPage extends React.Component {
     this.setState({ toDo: this.getStateFromStore() });
   }
 
-  updateToDoPomodoro (mode, remainingLength) {
-    switch (mode) {
-      case "Start":
-        
-        break;
-      case "Pause":
-        break;
-
-      case "Finished":
-        break;
-    }
+  finishPomodoro (numCompleted) {
+    ApiToDoUtil.updateToDoPomodoro(this.props.params.username,
+      this.props.params.id, numCompleted, displayFlashMessage)
   }
 
   render () {
     const toDoShowItem = typeof this.state.toDo !== "undefined" ?
-      <ToDoShowItem attr={ this.state.toDo } updateToDo={ this.updateToDoPomodoro }/> : ""
+      <ToDoShowItem attr={ this.state.toDo } finish={ this.finishPomodoro }/> : ""
 
     return (
       <div className="to-do-show-page">

@@ -15,6 +15,10 @@ class ToDoShowItem extends React.Component {
      };
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({ complete: nextProps.attr.complete });
+  }
+
   deleteToDoItem (e) {
     e.preventDefault();
 
@@ -63,7 +67,8 @@ class ToDoShowItem extends React.Component {
         <PomodoroIndex pomodoros={ this.props.attr.pomodoros } />
 
         <TimerDisplay toDo={ this.props.attr }
-          updateToDoPomodoro={ this.props.updateToDoPomodoro }/>
+          numCompleted= { completeCounter }
+          finish={ this.props.finish }/>
       </div>
     );
   }

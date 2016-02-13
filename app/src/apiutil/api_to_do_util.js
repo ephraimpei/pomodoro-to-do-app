@@ -65,6 +65,20 @@ class ApiToDoUtil {
       .done(receiveToDo)
       .fail(receiveError);
   }
+
+  updateToDoPomodoro (username, toDoId, numCompleted, success) {
+    const receiveToDo = (data) => {
+      ToDoActions.updateToDo(data.to_do);
+      success(data.message);
+    };
+
+    $.ajax({
+      url: `/user/${ username }/todo/${ toDoId }/finish`,
+      method: "PUT",
+      dataType: "json",
+      data: { num_complete: numCompleted }
+    }).done(receiveToDo);
+  }
 }
 
 const apiToDoUtil = new ApiToDoUtil();

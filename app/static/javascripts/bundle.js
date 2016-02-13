@@ -37239,7 +37239,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _todo_index_item = __webpack_require__(310);
+	var _todo_index_item = __webpack_require__(248);
 	
 	var _todo_index_item2 = _interopRequireDefault(_todo_index_item);
 	
@@ -37287,7 +37287,148 @@
 	exports.default = ToDoIndex;
 
 /***/ },
-/* 248 */,
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _api_to_do_util = __webpack_require__(249);
+	
+	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
+	
+	var _todo_form = __webpack_require__(250);
+	
+	var _todo_form2 = _interopRequireDefault(_todo_form);
+	
+	var _flash = __webpack_require__(236);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ToDoItem = function (_React$Component) {
+	  _inherits(ToDoItem, _React$Component);
+	
+	  function ToDoItem(props, context) {
+	    _classCallCheck(this, ToDoItem);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props, context));
+	
+	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
+	    _this.toggleEditForm = _this.toggleEditForm.bind(_this);
+	    _this.hideForm = _this.hideForm.bind(_this);
+	    _this.state = {
+	      complete: _this.props.attr.complete,
+	      showDetails: false,
+	      showEditForm: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(ToDoItem, [{
+	    key: 'deleteToDoItem',
+	    value: function deleteToDoItem(e) {
+	      e.preventDefault();
+	
+	      _api_to_do_util2.default.delete(this.props.username, this.props.attr._id.$oid, _flash.displayFlashMessage);
+	    }
+	  }, {
+	    key: 'toggleEditForm',
+	    value: function toggleEditForm(e) {
+	      e.preventDefault();
+	
+	      var newState = this.state.showEditForm ? false : true;
+	
+	      this.setState({ showEditForm: newState });
+	    }
+	  }, {
+	    key: 'hideForm',
+	    value: function hideForm() {
+	      this.setState({ showEditForm: false });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var buttonText = this.state.showEditForm ? "Cancel" : "Edit";
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'to-do-index-item' },
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'to-do-id' },
+	          '#',
+	          this.props.idx
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'to-do-index-item-complete' },
+	          'Complete?',
+	          _react2.default.createElement('input', { type: 'checkbox',
+	            id: 'complete',
+	            checked: this.state.complete,
+	            disabled: true })
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'to-do-title-index-item',
+	            'data-id': this.props.attr._id.$oid,
+	            onClick: this.props.goToShowPage },
+	          this.props.attr.title
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'show-to-do-details' },
+	          '▼'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'show-to-do-item',
+	            'data-id': this.props.attr._id.$oid,
+	            onClick: this.props.goToShowPage },
+	          'Show'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'edit-to-do-item',
+	            onClick: this.toggleEditForm },
+	          buttonText
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'delete-to-do-item',
+	            onClick: this.deleteToDoItem },
+	          'Delete'
+	        ),
+	        _react2.default.createElement(_todo_form2.default, { mode: "edit",
+	          visible: this.state.showEditForm,
+	          username: this.props.username,
+	          hideForm: this.hideForm,
+	          attr: this.props.attr })
+	      );
+	    }
+	  }]);
+	
+	  return ToDoItem;
+	}(_react2.default.Component);
+	
+	exports.default = ToDoItem;
+
+/***/ },
 /* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -37400,6 +37541,21 @@
 	        contentType: false,
 	        dataType: "json",
 	        data: formData }).done(receiveToDo).fail(receiveError);
+	    }
+	  }, {
+	    key: "updateToDoPomodoro",
+	    value: function updateToDoPomodoro(username, toDoId, numCompleted, success) {
+	      var receiveToDo = function receiveToDo(data) {
+	        _to_do_actions2.default.updateToDo(data.to_do);
+	        success(data.message);
+	      };
+	
+	      _jquery2.default.ajax({
+	        url: "/user/" + username + "/todo/" + toDoId + "/finish",
+	        method: "PUT",
+	        dataType: "json",
+	        data: { num_complete: numCompleted }
+	      }).done(receiveToDo);
 	    }
 	  }]);
 	
@@ -43944,7 +44100,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _todo_show_item = __webpack_require__(311);
+	var _todo_show_item = __webpack_require__(310);
 	
 	var _todo_show_item2 = _interopRequireDefault(_todo_show_item);
 	
@@ -43956,9 +44112,7 @@
 	
 	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
-	var _current_user_store = __webpack_require__(237);
-	
-	var _current_user_store2 = _interopRequireDefault(_current_user_store);
+	var _flash = __webpack_require__(236);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43978,7 +44132,7 @@
 	
 	    _this._onChange = _this._onChange.bind(_this);
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
-	    _this.updateToDoPomodoro = _this.updateToDoPomodoro.bind(_this);
+	    _this.finishPomodoro = _this.finishPomodoro.bind(_this);
 	    _this.state = { toDo: _this.getStateFromStore() };
 	    return _this;
 	  }
@@ -44009,23 +44163,14 @@
 	      this.setState({ toDo: this.getStateFromStore() });
 	    }
 	  }, {
-	    key: 'updateToDoPomodoro',
-	    value: function updateToDoPomodoro(mode, remainingLength) {
-	      switch (mode) {
-	        case "Start":
-	
-	          break;
-	        case "Pause":
-	          break;
-	
-	        case "Finished":
-	          break;
-	      }
+	    key: 'finishPomodoro',
+	    value: function finishPomodoro(numCompleted) {
+	      _api_to_do_util2.default.updateToDoPomodoro(this.props.params.username, this.props.params.id, numCompleted, _flash.displayFlashMessage);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo, updateToDo: this.updateToDoPomodoro }) : "";
+	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo, finish: this.finishPomodoro }) : "";
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -44063,153 +44208,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _api_to_do_util = __webpack_require__(249);
-	
-	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
-	
-	var _todo_form = __webpack_require__(250);
-	
-	var _todo_form2 = _interopRequireDefault(_todo_form);
-	
-	var _flash = __webpack_require__(236);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var ToDoItem = function (_React$Component) {
-	  _inherits(ToDoItem, _React$Component);
-	
-	  function ToDoItem(props, context) {
-	    _classCallCheck(this, ToDoItem);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoItem).call(this, props, context));
-	
-	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
-	    _this.toggleEditForm = _this.toggleEditForm.bind(_this);
-	    _this.hideForm = _this.hideForm.bind(_this);
-	    _this.state = {
-	      complete: _this.props.attr.complete,
-	      showDetails: false,
-	      showEditForm: false
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(ToDoItem, [{
-	    key: 'deleteToDoItem',
-	    value: function deleteToDoItem(e) {
-	      e.preventDefault();
-	
-	      _api_to_do_util2.default.delete(this.props.username, this.props.attr._id.$oid, _flash.displayFlashMessage);
-	    }
-	  }, {
-	    key: 'toggleEditForm',
-	    value: function toggleEditForm(e) {
-	      e.preventDefault();
-	
-	      var newState = this.state.showEditForm ? false : true;
-	
-	      this.setState({ showEditForm: newState });
-	    }
-	  }, {
-	    key: 'hideForm',
-	    value: function hideForm() {
-	      this.setState({ showEditForm: false });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var buttonText = this.state.showEditForm ? "Cancel" : "Edit";
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'to-do-index-item' },
-	        _react2.default.createElement(
-	          'label',
-	          { className: 'to-do-id' },
-	          '#',
-	          this.props.idx
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          { className: 'to-do-index-item-complete' },
-	          'Complete?',
-	          _react2.default.createElement('input', { type: 'checkbox',
-	            id: 'complete',
-	            checked: this.state.complete,
-	            disabled: true })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          { className: 'to-do-title-index-item',
-	            'data-id': this.props.attr._id.$oid,
-	            onClick: this.props.goToShowPage },
-	          this.props.attr.title
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'show-to-do-details' },
-	          '▼'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'show-to-do-item',
-	            'data-id': this.props.attr._id.$oid,
-	            onClick: this.props.goToShowPage },
-	          'Show'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'edit-to-do-item',
-	            onClick: this.toggleEditForm },
-	          buttonText
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'delete-to-do-item',
-	            onClick: this.deleteToDoItem },
-	          'Delete'
-	        ),
-	        _react2.default.createElement(_todo_form2.default, { mode: "edit",
-	          visible: this.state.showEditForm,
-	          username: this.props.username,
-	          hideForm: this.hideForm,
-	          attr: this.props.attr })
-	      );
-	    }
-	  }]);
-	
-	  return ToDoItem;
-	}(_react2.default.Component);
-	
-	exports.default = ToDoItem;
-
-/***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(8);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _pomodoro_index = __webpack_require__(313);
+	var _pomodoro_index = __webpack_require__(311);
 	
 	var _pomodoro_index2 = _interopRequireDefault(_pomodoro_index);
 	
-	var _timer_display = __webpack_require__(315);
+	var _timer_display = __webpack_require__(313);
 	
 	var _timer_display2 = _interopRequireDefault(_timer_display);
 	
@@ -44248,6 +44251,11 @@
 	  }
 	
 	  _createClass(ToDoShowItem, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({ complete: nextProps.attr.complete });
+	    }
+	  }, {
 	    key: 'deleteToDoItem',
 	    value: function deleteToDoItem(e) {
 	      e.preventDefault();
@@ -44314,7 +44322,8 @@
 	        ),
 	        _react2.default.createElement(_pomodoro_index2.default, { pomodoros: this.props.attr.pomodoros }),
 	        _react2.default.createElement(_timer_display2.default, { toDo: this.props.attr,
-	          updateToDoPomodoro: this.props.updateToDoPomodoro })
+	          numCompleted: completeCounter,
+	          finish: this.props.finish })
 	      );
 	    }
 	  }]);
@@ -44325,70 +44334,7 @@
 	exports.default = ToDoShowItem;
 
 /***/ },
-/* 312 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(8);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PomodoroIndexItem = function (_React$Component) {
-	  _inherits(PomodoroIndexItem, _React$Component);
-	
-	  function PomodoroIndexItem(props, context) {
-	    _classCallCheck(this, PomodoroIndexItem);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PomodoroIndexItem).call(this, props, context));
-	  }
-	
-	  _createClass(PomodoroIndexItem, [{
-	    key: "render",
-	    value: function render() {
-	      var imgUrl = undefined;
-	
-	      switch (this.props.attr.status) {
-	        case "not_started":
-	          imgUrl = "/images/pomodoros/not_started_pomodoro.png";
-	          break;
-	        case "in_progress":
-	          imgUrl = "/images/pomodoros/in_progress_pomodoro.png";
-	          break;
-	        case "complete":
-	          imgUrl = "/images/pomodoros/complete_pomodoro.png";
-	          break;
-	      }
-	
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "pomodoro-index-item" },
-	        _react2.default.createElement("img", { className: "pomodoro-index-item-img", src: imgUrl })
-	      );
-	    }
-	  }]);
-	
-	  return PomodoroIndexItem;
-	}(_react2.default.Component);
-	
-	exports.default = PomodoroIndexItem;
-
-/***/ },
-/* 313 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44445,8 +44391,58 @@
 	exports.default = PomodoroIndex;
 
 /***/ },
-/* 314 */,
-/* 315 */
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PomodoroIndexItem = function (_React$Component) {
+	  _inherits(PomodoroIndexItem, _React$Component);
+	
+	  function PomodoroIndexItem(props, context) {
+	    _classCallCheck(this, PomodoroIndexItem);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PomodoroIndexItem).call(this, props, context));
+	  }
+	
+	  _createClass(PomodoroIndexItem, [{
+	    key: "render",
+	    value: function render() {
+	      var imgUrl = this.props.attr.complete ? "/images/pomodoros/complete_pomodoro.png" : "/images/pomodoros/incomplete_pomodoro.png";
+	
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "pomodoro-index-item" },
+	        _react2.default.createElement("img", { className: "pomodoro-index-item-img", src: imgUrl })
+	      );
+	    }
+	  }]);
+	
+	  return PomodoroIndexItem;
+	}(_react2.default.Component);
+	
+	exports.default = PomodoroIndexItem;
+
+/***/ },
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44461,7 +44457,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _timer = __webpack_require__(316);
+	var _timer = __webpack_require__(314);
 	
 	var _timer2 = _interopRequireDefault(_timer);
 	
@@ -44493,7 +44489,9 @@
 	
 	  _createClass(TimerDisplay, [{
 	    key: 'pomodoroTimerFinished',
-	    value: function pomodoroTimerFinished() {}
+	    value: function pomodoroTimerFinished() {
+	      this.props.finish(this.props.numCompleted);
+	    }
 	  }, {
 	    key: 'breakTimerFinished',
 	    value: function breakTimerFinished() {}
@@ -44509,8 +44507,7 @@
 	        _react2.default.createElement(_timer2.default, { klass: 'pomodoro',
 	          imgUrl: '',
 	          timerLength: this.props.toDo.pomodoro_length,
-	          timerFinished: this.pomodoroTimerFinished,
-	          updateToDo: this.props.updateToDo }),
+	          timerFinished: this.pomodoroTimerFinished }),
 	        _react2.default.createElement(_timer2.default, { klass: 'break',
 	          imgUrl: '',
 	          timerLength: this.props.toDo.break_length,
@@ -44529,7 +44526,7 @@
 	exports.default = TimerDisplay;
 
 /***/ },
-/* 316 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44544,7 +44541,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _timer = __webpack_require__(317);
+	var _timer = __webpack_require__(315);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44563,9 +44560,12 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Timer).call(this, props, context));
 	
 	    _this.handleController = _this.handleController.bind(_this);
+	    _this.tickInterval = _this.tickInterval.bind(_this);
+	    _this.resetTimer = _this.resetTimer.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
-	      remainingTime: _this.props.timerLength * 60000,
+	      // remainingTime: this.props.timerLength * 60000,
+	      remainingTime: 10000,
 	      elapsedTime: 0,
 	      started: false,
 	      paused: false
@@ -44579,10 +44579,30 @@
 	      clearInterval(this.interval);
 	    }
 	  }, {
+	    key: 'resetTimer',
+	    value: function resetTimer() {
+	      clearInterval(this.interval);
+	
+	      this.setState({
+	        start: new Date().getTime(),
+	        elapsedTime: 0,
+	        started: false,
+	        paused: false
+	      });
+	    }
+	  }, {
+	    key: 'tickInterval',
+	    value: function tickInterval() {
+	      if (this.state.elapsedTime >= this.state.remainingTime) {
+	        this.props.timerFinished();
+	        this.resetTimer();
+	      }
+	
+	      this.setState({ elapsedTime: new Date().getTime() - this.state.start });
+	    }
+	  }, {
 	    key: 'handleController',
 	    value: function handleController(e) {
-	      var _this2 = this;
-	
 	      e.preventDefault();
 	
 	      var option = e.currentTarget.textContent;
@@ -44590,21 +44610,16 @@
 	      switch (option) {
 	        case "Start":
 	          this.setState({ start: new Date().getTime(), started: true });
-	          this.interval = window.setInterval(function () {
-	            _this2.setState({ elapsedTime: new Date().getTime() - _this2.state.start });
-	          }, 100);
-	          this.props.updateToDoPomodoro("Start");
+	          this.interval = window.setInterval(this.tickInterval, 100);
 	          break;
 	        case "Pause":
 	          clearInterval(this.interval);
 	          this.setState({ paused: true });
-	          this.props.updateToDoPomodoro("Pause", Math.floor(this.state.remainingTime / 60000));
+	          this.props.update("Pause");
 	          break;
 	        case "Resume":
 	          this.setState({ start: new Date().getTime() - this.state.elapsedTime, paused: false });
-	          this.interval = window.setInterval(function () {
-	            _this2.setState({ elapsedTime: new Date().getTime() - _this2.state.start });
-	          }, 100);
+	          this.interval = window.setInterval(this.tickInterval, 100);
 	          break;
 	      }
 	    }
@@ -44618,7 +44633,7 @@
 	
 	      var buttonText = undefined;
 	
-	      if (!this.state.started) {
+	      if (!this.state.started && this.props.klass === "pomodoro") {
 	        buttonText = "Start";
 	      } else if (this.state.started && this.state.paused) {
 	        buttonText = "Resume";
@@ -44655,7 +44670,7 @@
 	exports.default = Timer;
 
 /***/ },
-/* 317 */
+/* 315 */
 /***/ function(module, exports) {
 
 	"use strict";

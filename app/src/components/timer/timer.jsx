@@ -5,9 +5,12 @@ class Timer extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.handleController = this.handleController.bind(this);
+    this.tickInterval = this.tickInterval.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
     this.state={
       start: new Date().getTime(),
-      remainingTime: this.props.timerLength * 60000,
+      // remainingTime: this.props.timerLength * 60000,
+      remainingTime: 10000,
       elapsedTime: 0,
       started: false,
       paused: false
@@ -18,6 +21,26 @@ class Timer extends React.Component {
     clearInterval(this.interval);
   }
 
+  resetTimer () {
+    clearInterval(this.interval);
+
+    this.setState({
+      start: new Date().getTime(),
+      elapsedTime: 0,
+      started: false,
+      paused: false
+    });
+  }
+
+  tickInterval () {
+    if (this.state.elapsedTime >= this.state.remainingTime) {
+      this.props.timerFinished();
+      this.resetTimer();
+    }
+
+    this.setState({ elapsedTime: new Date().getTime() - this.state.start });
+  }
+
   handleController (e) {
     e.preventDefault();
 
@@ -26,21 +49,16 @@ class Timer extends React.Component {
     switch (option) {
       case "Start":
         this.setState({ start: new Date().getTime(), started: true });
-        this.interval = window.setInterval( () => {
-          this.setState({ elapsedTime: new Date().getTime() - this.state.start });
-        }, 100);
-        this.props.updateToDoPomodoro("Start");
+        this.interval = window.setInterval(this.tickInterval, 100);
         break;
       case "Pause":
         clearInterval(this.interval);
         this.setState({ paused: true });
-        this.props.updateToDoPomodoro("Pause", Math.floor(this.state.remainingTime / 60000));
+        this.props.update("Pause");
         break;
       case "Resume":
         this.setState({ start: new Date().getTime() - this.state.elapsedTime, paused: false });
-        this.interval = window.setInterval( () => {
-          this.setState({ elapsedTime: new Date().getTime() - this.state.start });
-        }, 100);
+        this.interval = window.setInterval(this.tickInterval, 100);
         break;
     }
   }
@@ -53,7 +71,7 @@ class Timer extends React.Component {
 
     let buttonText;
 
-    if (!this.state.started) {
+    if (!this.state.started && this.props.klass === "pomodoro") {
       buttonText = "Start";
     } else if (this.state.started && this.state.paused) {
       buttonText = "Resume";
