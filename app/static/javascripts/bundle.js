@@ -43978,6 +43978,7 @@
 	
 	    _this._onChange = _this._onChange.bind(_this);
 	    _this.getStateFromStore = _this.getStateFromStore.bind(_this);
+	    _this.updateToDoPomodoro = _this.updateToDoPomodoro.bind(_this);
 	    _this.state = { toDo: _this.getStateFromStore() };
 	    return _this;
 	  }
@@ -44008,9 +44009,23 @@
 	      this.setState({ toDo: this.getStateFromStore() });
 	    }
 	  }, {
+	    key: 'updateToDoPomodoro',
+	    value: function updateToDoPomodoro(mode, remainingLength) {
+	      switch (mode) {
+	        case "Start":
+	
+	          break;
+	        case "Pause":
+	          break;
+	
+	        case "Finished":
+	          break;
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo }) : "";
+	      var toDoShowItem = typeof this.state.toDo !== "undefined" ? _react2.default.createElement(_todo_show_item2.default, { attr: this.state.toDo, updateToDo: this.updateToDoPomodoro }) : "";
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -44194,10 +44209,6 @@
 	
 	var _pomodoro_index2 = _interopRequireDefault(_pomodoro_index);
 	
-	var _timer_options = __webpack_require__(314);
-	
-	var _timer_options2 = _interopRequireDefault(_timer_options);
-	
 	var _timer_display = __webpack_require__(315);
 	
 	var _timer_display2 = _interopRequireDefault(_timer_display);
@@ -44228,9 +44239,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoShowItem).call(this, props, context));
 	
-	    _this.deleteToDoItem = _this.deleteToDoItem.bind(_this);
-	    _this.toggleEditForm = _this.toggleEditForm.bind(_this);
-	    _this.hideForm = _this.hideForm.bind(_this);
 	    _this.state = {
 	      complete: _this.props.attr.complete,
 	      showDetails: false,
@@ -44282,27 +44290,6 @@
 	          this.props.attr.title
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'button-options' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'edit-to-do-item',
-	              onClick: this.toggleEditForm },
-	            buttonText
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'delete-to-do-item',
-	              onClick: this.deleteToDoItem },
-	            'Delete'
-	          )
-	        ),
-	        _react2.default.createElement(_todo_form2.default, { mode: "edit",
-	          visible: this.state.showEditForm,
-	          username: this.props.username,
-	          hideForm: this.hideForm,
-	          attr: this.props.attr }),
-	        _react2.default.createElement(
 	          'label',
 	          { className: 'complete' },
 	          'Complete?',
@@ -44319,15 +44306,15 @@
 	          'Pomodoros: ',
 	          this.props.attr.pomodoros.length
 	        ),
-	        _react2.default.createElement(_pomodoro_index2.default, { pomodoros: this.props.attr.pomodoros }),
 	        _react2.default.createElement(
 	          'label',
 	          { className: 'complete-counter' },
 	          'Complete: ',
 	          completeCounter
 	        ),
-	        _react2.default.createElement(_timer_options2.default, null),
-	        _react2.default.createElement(_timer_display2.default, null)
+	        _react2.default.createElement(_pomodoro_index2.default, { pomodoros: this.props.attr.pomodoros }),
+	        _react2.default.createElement(_timer_display2.default, { toDo: this.props.attr,
+	          updateToDoPomodoro: this.props.updateToDoPomodoro })
 	      );
 	    }
 	  }]);
@@ -44458,68 +44445,11 @@
 	exports.default = PomodoroIndex;
 
 /***/ },
-/* 314 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(8);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var TimerOptions = function (_React$Component) {
-	  _inherits(TimerOptions, _React$Component);
-	
-	  function TimerOptions(props, context) {
-	    _classCallCheck(this, TimerOptions);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TimerOptions).call(this, props, context));
-	  }
-	
-	  _createClass(TimerOptions, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "timer-options" },
-	        _react2.default.createElement(
-	          "button",
-	          { className: "start-timer" },
-	          "Start"
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { className: "pause-timer" },
-	          "Pause"
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TimerOptions;
-	}(_react2.default.Component);
-	
-	exports.default = TimerOptions;
-
-/***/ },
+/* 314 */,
 /* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -44530,6 +44460,14 @@
 	var _react = __webpack_require__(8);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _timer = __webpack_require__(316);
+	
+	var _timer2 = _interopRequireDefault(_timer);
+	
+	var _api_to_do_util = __webpack_require__(249);
+	
+	var _api_to_do_util2 = _interopRequireDefault(_api_to_do_util);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -44545,46 +44483,42 @@
 	  function TimerDisplay(props, context) {
 	    _classCallCheck(this, TimerDisplay);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TimerDisplay).call(this, props, context));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TimerDisplay).call(this, props, context));
+	
+	    _this.pomodoroTimerFinished = _this.pomodoroTimerFinished.bind(_this);
+	    _this.breakTimerFinished = _this.breakTimerFinished.bind(_this);
+	    _this.longBreakTimerFinished = _this.longBreakTimerFinished.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(TimerDisplay, [{
-	    key: "render",
+	    key: 'pomodoroTimerFinished',
+	    value: function pomodoroTimerFinished() {}
+	  }, {
+	    key: 'breakTimerFinished',
+	    value: function breakTimerFinished() {}
+	  }, {
+	    key: 'longBreakTimerFinished',
+	    value: function longBreakTimerFinished() {}
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      // <Timer length={ this.props.timerLength }
-	      //   finished={ this.props.timerFinished }
-	      //   updatePomodoro={ this.props.updatePomodoro }/>
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "timer-display" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "pomodoro-timer" },
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            "Pomodoro Timer"
-	          ),
-	          _react2.default.createElement("div", { className: "timer-display" })
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "break-timer" },
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            "Break Timer"
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "long-break-timer" },
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            "Long Break Timer"
-	          )
-	        )
+	        'div',
+	        { className: 'timer-display' },
+	        _react2.default.createElement(_timer2.default, { klass: 'pomodoro',
+	          imgUrl: '',
+	          timerLength: this.props.toDo.pomodoro_length,
+	          timerFinished: this.pomodoroTimerFinished,
+	          updateToDo: this.props.updateToDo }),
+	        _react2.default.createElement(_timer2.default, { klass: 'break',
+	          imgUrl: '',
+	          timerLength: this.props.toDo.break_length,
+	          timerFinished: this.breakTimerFinished }),
+	        _react2.default.createElement(_timer2.default, { klass: 'long-break',
+	          imgUrl: '',
+	          timerLength: this.props.toDo.long_break_length,
+	          timerFinished: this.longBreakTimerFinished })
 	      );
 	    }
 	  }]);
@@ -44593,6 +44527,154 @@
 	}(_react2.default.Component);
 	
 	exports.default = TimerDisplay;
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _timer = __webpack_require__(317);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Timer = function (_React$Component) {
+	  _inherits(Timer, _React$Component);
+	
+	  function Timer(props, context) {
+	    _classCallCheck(this, Timer);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Timer).call(this, props, context));
+	
+	    _this.handleController = _this.handleController.bind(_this);
+	    _this.state = {
+	      start: new Date().getTime(),
+	      remainingTime: _this.props.timerLength * 60000,
+	      elapsedTime: 0,
+	      started: false,
+	      paused: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Timer, [{
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.interval);
+	    }
+	  }, {
+	    key: 'handleController',
+	    value: function handleController(e) {
+	      var _this2 = this;
+	
+	      e.preventDefault();
+	
+	      var option = e.currentTarget.textContent;
+	
+	      switch (option) {
+	        case "Start":
+	          this.setState({ start: new Date().getTime(), started: true });
+	          this.interval = window.setInterval(function () {
+	            _this2.setState({ elapsedTime: new Date().getTime() - _this2.state.start });
+	          }, 100);
+	          this.props.updateToDoPomodoro("Start");
+	          break;
+	        case "Pause":
+	          clearInterval(this.interval);
+	          this.setState({ paused: true });
+	          this.props.updateToDoPomodoro("Pause", Math.floor(this.state.remainingTime / 60000));
+	          break;
+	        case "Resume":
+	          this.setState({ start: new Date().getTime() - this.state.elapsedTime, paused: false });
+	          this.interval = window.setInterval(function () {
+	            _this2.setState({ elapsedTime: new Date().getTime() - _this2.state.start });
+	          }, 100);
+	          break;
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var klass = this.props.klass + '-timer';
+	      var labelText = this.props.klass.charAt(0).toUpperCase() + this.props.klass.slice(1);
+	      var remainingTime = this.state.remainingTime - this.state.elapsedTime;
+	      var timerText = (0, _timer.timeFormatConverter)(remainingTime);
+	
+	      var buttonText = undefined;
+	
+	      if (!this.state.started) {
+	        buttonText = "Start";
+	      } else if (this.state.started && this.state.paused) {
+	        buttonText = "Resume";
+	      } else {
+	        buttonText = "Pause";
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: klass },
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'timer-label' },
+	          labelText
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'timer-controller',
+	            onClick: this.handleController },
+	          buttonText
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'timer-countdown' },
+	          timerText
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Timer;
+	}(_react2.default.Component);
+	
+	exports.default = Timer;
+
+/***/ },
+/* 317 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// used to convert from number of seconds to MM:SS format
+	var timeFormatConverter = function timeFormatConverter(ms) {
+	  var min = parseInt(ms / 60000);
+	  var sec = Math.floor(ms % 60000 / 1000);
+	
+	  var minStr = min >= 10 ? min.toString() : "0" + min.toString();
+	  var secStr = sec >= 10 ? sec.toString() : "0" + sec.toString();
+	
+	  return minStr + ":" + secStr;
+	};
+	
+	exports.timeFormatConverter = timeFormatConverter;
 
 /***/ }
 /******/ ]);

@@ -9,6 +9,7 @@ class ToDoShowPage extends React.Component {
     super(props, context);
     this._onChange = this._onChange.bind(this);
     this.getStateFromStore = this.getStateFromStore.bind(this);
+    this.updateToDoPomodoro = this.updateToDoPomodoro.bind(this);
     this.state={ toDo: this.getStateFromStore() }
   }
 
@@ -36,9 +37,22 @@ class ToDoShowPage extends React.Component {
     this.setState({ toDo: this.getStateFromStore() });
   }
 
+  updateToDoPomodoro (mode, remainingLength) {
+    switch (mode) {
+      case "Start":
+        
+        break;
+      case "Pause":
+        break;
+
+      case "Finished":
+        break;
+    }
+  }
+
   render () {
     const toDoShowItem = typeof this.state.toDo !== "undefined" ?
-      <ToDoShowItem attr={ this.state.toDo }/> : ""
+      <ToDoShowItem attr={ this.state.toDo } updateToDo={ this.updateToDoPomodoro }/> : ""
 
     return (
       <div className="to-do-show-page">
