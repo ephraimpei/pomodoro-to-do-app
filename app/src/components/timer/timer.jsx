@@ -8,6 +8,7 @@ class Timer extends React.Component {
     this.tickInterval = this.tickInterval.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
     this.performAction = this.performAction.bind(this);
+    this.endTimer = this.endTimer.bind(this);
     this.state={
       start: new Date().getTime(),
       remainingTime: this.props.timerLength * 60000,
@@ -37,13 +38,15 @@ class Timer extends React.Component {
   }
 
   tickInterval () {
-    if (this.state.elapsedTime >= this.state.remainingTime) {
-      clearInterval(this.interval);
-      this.props.timerFinished();
-      this.resetTimer();
-    }
+    if (this.state.elapsedTime >= this.state.remainingTime) { this.endTimer(); }
 
     this.setState({ elapsedTime: new Date().getTime() - this.state.start });
+  }
+
+  endTimer () {
+    clearInterval(this.interval);
+    this.props.timerFinished();
+    this.resetTimer();
   }
 
   handleController (e) {
@@ -79,29 +82,33 @@ class Timer extends React.Component {
     const remainingTime = this.state.remainingTime - this.state.elapsedTime;
     const timerText = timeFormatConverter(remainingTime);
 
-    let buttonText, buttonClass;
+    let btnText, btnContrClass, btnSkipClass;
 
     if (this.props.disabled) {
-      buttonClass = "timer-controller disabled";
+      [btnContrClass, btnSkipClass] = ["timer-controller disabled", "timer-skip disabled"];
     } else {
-      buttonClass = "timer-controller";
+      [btnContrClass, btnSkipClass] = "timer-controller";
     }
 
     if (!this.state.started) {
-      buttonText = "Start";
+      btnText = "Start";
     } else if (this.state.started && this.state.paused) {
-      buttonText = "Resume";
+      btnText = "Resume";
     } else {
-      buttonText = "Pause";
+      btnText = "Pause";
     }
 
     return (
       <div className={ klass }>
         <label className="timer-label">{ labelText }</label>
 
-        <button className={ buttonClass }
+        <button className={ btnContrClass }
           onClick={ this.handleController }
-          disabled={ this.props.disabled }>{ buttonText }</button>
+          disabled={ this.props.disabled }>{ btnText }</button>
+
+        <button className={ btnSkipClass }
+          onClick={ this.endTimer }
+          disabled={ this.props.disabled }>Skip</button>
 
         <label className="timer-countdown">{ timerText }</label>
       </div>

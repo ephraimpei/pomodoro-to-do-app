@@ -44,6 +44,8 @@ class ToDoShowItem extends React.Component {
       if (pomodoro.complete) { completeCounter += 1; }
     });
 
+    const pomodorosToLongBreak = 4 - (completeCounter % 4);
+
     return (
       <div className="to-do-show-item">
         <header className="to-do-show-item-title">{ this.props.attr.title }</header>
@@ -64,6 +66,9 @@ class ToDoShowItem extends React.Component {
         </div>
 
         <PomodoroIndex pomodoros={ this.props.attr.pomodoros } />
+
+        <label className="pomodoro-long-break-counter">
+          Pomodoros until long break: { pomodorosToLongBreak }</label>
 
         <TimerDisplay toDo={ this.props.attr }
           numCompleted={ completeCounter }

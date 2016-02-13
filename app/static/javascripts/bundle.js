@@ -44295,6 +44295,8 @@
 	        }
 	      });
 	
+	      var pomodorosToLongBreak = 4 - completeCounter % 4;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'to-do-show-item' },
@@ -44331,6 +44333,12 @@
 	          )
 	        ),
 	        _react2.default.createElement(_pomodoro_index2.default, { pomodoros: this.props.attr.pomodoros }),
+	        _react2.default.createElement(
+	          'label',
+	          { className: 'pomodoro-long-break-counter' },
+	          'Pomodoros until long break: ',
+	          pomodorosToLongBreak
+	        ),
 	        _react2.default.createElement(_timer_display2.default, { toDo: this.props.attr,
 	          numCompleted: completeCounter,
 	          complete: this.state.complete,
@@ -44603,6 +44611,8 @@
 	  value: true
 	});
 	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(8);
@@ -44631,6 +44641,7 @@
 	    _this.tickInterval = _this.tickInterval.bind(_this);
 	    _this.resetTimer = _this.resetTimer.bind(_this);
 	    _this.performAction = _this.performAction.bind(_this);
+	    _this.endTimer = _this.endTimer.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
 	      remainingTime: _this.props.timerLength * 60000,
@@ -44667,12 +44678,17 @@
 	    key: 'tickInterval',
 	    value: function tickInterval() {
 	      if (this.state.elapsedTime >= this.state.remainingTime) {
-	        clearInterval(this.interval);
-	        this.props.timerFinished();
-	        this.resetTimer();
+	        this.endTimer();
 	      }
 	
 	      this.setState({ elapsedTime: new Date().getTime() - this.state.start });
+	    }
+	  }, {
+	    key: 'endTimer',
+	    value: function endTimer() {
+	      clearInterval(this.interval);
+	      this.props.timerFinished();
+	      this.resetTimer();
 	    }
 	  }, {
 	    key: 'handleController',
@@ -44711,21 +44727,28 @@
 	      var remainingTime = this.state.remainingTime - this.state.elapsedTime;
 	      var timerText = (0, _timer.timeFormatConverter)(remainingTime);
 	
-	      var buttonText = undefined,
-	          buttonClass = undefined;
+	      var btnText = undefined,
+	          btnContrClass = undefined,
+	          btnSkipClass = undefined;
 	
 	      if (this.props.disabled) {
-	        buttonClass = "timer-controller disabled";
+	        btnContrClass = "timer-controller disabled";
+	        btnSkipClass = "timer-skip disabled";
 	      } else {
-	        buttonClass = "timer-controller";
+	        var _timerController = "timer-controller";
+	
+	        var _timerController2 = _slicedToArray(_timerController, 2);
+	
+	        btnContrClass = _timerController2[0];
+	        btnSkipClass = _timerController2[1];
 	      }
 	
 	      if (!this.state.started) {
-	        buttonText = "Start";
+	        btnText = "Start";
 	      } else if (this.state.started && this.state.paused) {
-	        buttonText = "Resume";
+	        btnText = "Resume";
 	      } else {
-	        buttonText = "Pause";
+	        btnText = "Pause";
 	      }
 	
 	      return _react2.default.createElement(
@@ -44738,10 +44761,17 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: buttonClass,
+	          { className: btnContrClass,
 	            onClick: this.handleController,
 	            disabled: this.props.disabled },
-	          buttonText
+	          btnText
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: btnSkipClass,
+	            onClick: this.endTimer,
+	            disabled: this.props.disabled },
+	          'Skip'
 	        ),
 	        _react2.default.createElement(
 	          'label',
