@@ -99,7 +99,7 @@ def __create_to_do_item(user):
 
 def __fetch_single_to_do_item(user, id):
     to_dos = ToDo.objects.get(author=user, id=id)
-    pdb.set_trace()
+
     return jsonify(to_do=to_do)
 
 def __update_to_do_item(user, id):

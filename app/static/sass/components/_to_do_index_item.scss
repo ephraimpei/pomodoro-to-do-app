@@ -29,8 +29,16 @@
     justify-content: center;
     flex-wrap: wrap;
 
+    width: $to-do-details-width;
+    height: $to-do-details-height;
+    margin: auto;
+
     * {
       margin: $to-do-item-details-spacing;
+    }
+
+    .to-do-index-item-description {
+      text-align: left;
     }
   }
 }

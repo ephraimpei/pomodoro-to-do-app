@@ -83,7 +83,6 @@ $sign-up-form-item-margin: 5px 0;
 $sign-up-form-width: 200px;
 $sign-up-form-margins: 50px 0;
 $sign-up-input-box-width: 100%;
-$avatar-preview-dim: 200px;
 
 /* user show page */
 /* to do show page */
@@ -107,6 +106,10 @@ $toggle-to-do-form-font-size: 1.2em;
         $to-do-title-font-size: 1.2em;
         $to-do-item-details-spacing: 1vh 0;
         $to-do-item-padding: 5px 0;
+
+            /* user show page - to do index item details */
+            $to-do-details-width: 40vw;
+            $to-do-details-height: 20vh;
 
     /* to do show page - to do show item */
     $to-do-show-item-margin: 5vh auto;
