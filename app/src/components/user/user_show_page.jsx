@@ -69,10 +69,13 @@ class UserShowPage extends React.Component {
 
   render () {
     const buttonText = this.state.displayToDoForm ? "Nevermind!" : "Create To Do Item!";
+    const headerLabel = `${ CurrentUserStore.get().username }'s To Do List'`;
 
     return (
       <div className="user-show-page">
         <div className="to-do-list-wrapper">
+          <label className="to-do-header-label">{ headerLabel }</label>
+          
           <button className="toggle-to-do-form"
             onClick={ this.toggleToDoForm }>{ buttonText }</button>
 
