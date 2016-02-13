@@ -38,6 +38,9 @@ class LoginForm extends React.Component {
   logIntoDemoAccount (e) {
     if (e) { e.preventDefault(); }
 
+    removeInvalidClass("form-username-input");
+    removeInvalidClass("form-password-input");
+
     $(".submit").addClass("disabled").prop("disabled", true);
 
     const formData = new FormData();
