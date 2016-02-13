@@ -6,10 +6,26 @@
   }
 
   .to-do-title-index-item {
+    font-size: $to-do-title-font-size;
+    font-weight: $bold;
+  }
+
+  .to-do-title-index-item {
     cursor: pointer;
   }
 
   .show-to-do-details {
     border-radius: $to-do-show-details-button-radius;
+  }
+
+  .to-do-index-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    * {
+      margin: $to-do-item-details-spacing;
+    }
   }
 }

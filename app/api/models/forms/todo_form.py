@@ -3,10 +3,12 @@ from app.api.models.validations import validate_num_pomodoros
 
 class ToDoForm(Form):
     title = StringField('title', [
-        validators.Required()
+        validators.Required(),
+        validators.Length(min=1, max=100)
     ])
     description = StringField('description', [
-        validators.Required()
+        validators.Required(),
+        validators.Length(min=1, max=500)
     ])
     num_pomodoros = IntegerField('num_pomodoros', [
         validators.Required(),

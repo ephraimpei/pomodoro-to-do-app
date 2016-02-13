@@ -10,8 +10,7 @@ class Timer extends React.Component {
     this.performAction = this.performAction.bind(this);
     this.state={
       start: new Date().getTime(),
-      // remainingTime: this.props.timerLength * 60000,
-      remainingTime: 10000,
+      remainingTime: this.props.timerLength * 60000,
       elapsedTime: 0,
       started: false,
       paused: false
@@ -19,17 +18,8 @@ class Timer extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // if (!nextProps.disabled && !nextProps.done && this.props.klass !== "pomodoro") {
-    //   this.performAction("Start");
-    // } else if (nextProps.done) {
-    //   this.performAction("Stop");
-    // }
-    if ((this.props.klass !== "pomodoro" && nextProps.turn === "pomodoro") || nextProps.disabled) {
+    if (nextProps.done) {
       this.performAction("Stop");
-    } else if (nextProps.done) {
-      this.performAction("Stop");
-    } else if (this.props.klass !== "pomodoro" && !nextProps.disabled) {
-      // this.performAction("Start");
     }
   }
 
@@ -97,7 +87,7 @@ class Timer extends React.Component {
       buttonClass = "timer-controller";
     }
 
-    if (!this.state.started && this.props.klass === "pomodoro") {
+    if (!this.state.started) {
       buttonText = "Start";
     } else if (this.state.started && this.state.paused) {
       buttonText = "Resume";

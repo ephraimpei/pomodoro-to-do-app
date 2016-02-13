@@ -1,6 +1,7 @@
 import React from 'react';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
 import ToDoForm from './todo_form.jsx';
+import PomodoroIndex from '../pomodoros/pomodoro_index.jsx';
 import { displayFlashMessage } from '../../utilities/flash.js';
 
 class ToDoItem extends React.Component {
@@ -9,6 +10,7 @@ class ToDoItem extends React.Component {
     this.deleteToDoItem = this.deleteToDoItem.bind(this);
     this.toggleEditForm = this.toggleEditForm.bind(this);
     this.hideForm = this.hideForm.bind(this);
+    this.showDetails = this.showDetails.bind(this);
     this.state = {
       complete: this.props.attr.complete,
       showDetails: false,
@@ -34,8 +36,26 @@ class ToDoItem extends React.Component {
     this.setState({ showEditForm: false });
   }
 
+  showDetails (e) {
+    e.preventDefault();
+
+    const showDetails = !this.state.showDetails;
+
+    this.setState({ showDetails });
+  }
+
   render () {
     const buttonText = this.state.showEditForm ? "Cancel" : "Edit";
+
+    const detailView = this.state.showDetails ? (
+        <div className="to-do-index-item-details">
+          <textarea className="to-do-index-item-description"
+            value={ this.props.attr.description }
+            disabled/>
+
+          <PomodoroIndex pomodoros={ this.props.attr.pomodoros } />
+        </div>
+      ) : "";
 
     return (
       <div className="to-do-index-item">
@@ -51,7 +71,8 @@ class ToDoItem extends React.Component {
           data-id={ this.props.attr._id.$oid }
           onClick={ this.props.goToShowPage }>{ this.props.attr.title }</label>
 
-        <button className="show-to-do-details">▼</button>
+        <button className="show-to-do-details"
+          onClick={ this.showDetails }>▼</button>
 
         <button className="show-to-do-item"
           data-id={ this.props.attr._id.$oid }
@@ -63,6 +84,8 @@ class ToDoItem extends React.Component {
         <button className="delete-to-do-item"
           onClick={ this.deleteToDoItem }>Delete</button>
 
+        { detailView }
+        
         <ToDoForm mode={ "edit" }
           visible={ this.state.showEditForm }
           username={ this.props.username }

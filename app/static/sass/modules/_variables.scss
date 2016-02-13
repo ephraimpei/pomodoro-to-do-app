@@ -47,9 +47,9 @@ $failed-validation-input-border: 2px solid red;
 $failed-validation-box-shadow: 0 0 10px red;
 
 /* flash messages */
-$flash-top: 15%;
-$flash-left: 40vw;
-$flash-font-size: 1.2em;
+$flash-top: 50vh;
+$flash-left: 30vw;
+$flash-font-size: 2em;
 $flash-border: $standard-border;
 $flash-border-radius: $base-border-radius;
 $flash-background-color: yellow;
@@ -107,13 +107,15 @@ $toggle-to-do-form-font-size: 1.2em;
     $to-do-show-item-desc-width: 30vw;
     $to-do-show-item-desc-height: 30vh;
 
-        /* to do show page - stats wrapper */
-        $stats-wrapper-child-spacing: 0 2vw;
+    /* to do show page - stats wrapper */
+    $stats-wrapper-child-spacing: 0 2vw;
 
-        /* user show page - to do index - to do item */
-        $to-do-item-margin: 10px 0;
-        $to-do-item-spacing: 0 1vw;
-        $to-do-show-details-button-radius: 3px;
+      /* user show page - to do index item */
+      $to-do-item-margin: 10px 0;
+      $to-do-item-spacing: 0 1vw;
+      $to-do-show-details-button-radius: 3px;
+      $to-do-title-font-size: 1.2em;
+      $to-do-item-details-spacing: 1vh 0;
 
 /* to do form */
 $to-do-form-margin-top: 5vh;
