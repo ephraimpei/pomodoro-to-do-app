@@ -36,7 +36,19 @@ class LoginForm extends React.Component {
   }
 
   logIntoDemoAccount (e) {
+    if (e) { e.preventDefault(); }
 
+    $(".submit").addClass("disabled").prop("disabled", true);
+
+    const formData = new FormData();
+
+    formData.append("username", "test_account");
+    formData.append("password", "password");
+
+    $(".form-username-input").val("test_account");
+    $(".form-password-input").val("password");
+
+    ApiSessionUtil.login(formData, this.props.success, this.props.failure);
   }
 
   changeUsername (e) {

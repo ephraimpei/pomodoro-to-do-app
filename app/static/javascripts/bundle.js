@@ -36524,7 +36524,23 @@
 	    }
 	  }, {
 	    key: 'logIntoDemoAccount',
-	    value: function logIntoDemoAccount(e) {}
+	    value: function logIntoDemoAccount(e) {
+	      if (e) {
+	        e.preventDefault();
+	      }
+	
+	      (0, _jquery2.default)(".submit").addClass("disabled").prop("disabled", true);
+	
+	      var formData = new FormData();
+	
+	      formData.append("username", "test_account");
+	      formData.append("password", "password");
+	
+	      (0, _jquery2.default)(".form-username-input").val("test_account");
+	      (0, _jquery2.default)(".form-password-input").val("password");
+	
+	      _api_session_util2.default.login(formData, this.props.success, this.props.failure);
+	    }
 	  }, {
 	    key: 'changeUsername',
 	    value: function changeUsername(e) {
