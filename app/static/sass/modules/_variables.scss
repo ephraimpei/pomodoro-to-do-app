@@ -86,12 +86,15 @@ $sign-up-input-box-width: 100%;
 
 /* user show page */
 /* to do show page */
+$logged-in-label-font-size: 1.2em;
+$logged-in-label-width: 80vw;
+$logged-in-label-padding: 3vh 0;
 $to-do-header-label-font-size: 2.5em;
 $to-do-header-label-margin-bottom: 7vh;
 $to-do-index-wrapper-bg: white;
 $to-do-index-wrapper-width: 80vw;
 $to-do-index-wrapper-min-height: 50vw;
-$to-do-index-wrapper-margin: 10vh auto;
+$to-do-index-wrapper-margin: auto;
 $to-do-index-wrapper-padding: 10vh 0;
 $toggle-to-do-form-padding: 5px;
 $toggle-to-do-form-font-size: 1.2em;

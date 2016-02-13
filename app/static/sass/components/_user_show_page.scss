@@ -1,4 +1,13 @@
 .user-show-page {
+  .logged-in {
+    font-size: $logged-in-label-font-size;
+    display: block;
+    width: $logged-in-label-width;
+    margin: auto;
+    padding: $logged-in-label-padding;
+    font-weight: $light;
+  }
+
   .to-do-list-wrapper {
     border: $standard-border;
     border-radius: $base-border-radius;

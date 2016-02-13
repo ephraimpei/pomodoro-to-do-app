@@ -73,9 +73,11 @@ class UserShowPage extends React.Component {
 
     return (
       <div className="user-show-page">
+        <label className="logged-in">Logged in as: { CurrentUserStore.get().username }</label>
+
         <div className="to-do-list-wrapper">
           <label className="to-do-header-label">{ headerLabel }</label>
-          
+
           <button className="toggle-to-do-form"
             onClick={ this.toggleToDoForm }>{ buttonText }</button>
 
