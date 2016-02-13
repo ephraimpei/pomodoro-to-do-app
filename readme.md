@@ -42,8 +42,10 @@ Pomodoro To-Do List is a single page application that allows users to create, up
 - CRUD operations for to do items supported
 
 ### Product trade-off decisions
-- I thought through possible scenarios of what a user would expect when he/she added or removed pomodoros when editing them.  What about the
+- I thought through possible scenarios of what a user would expect when he/she added or removed pomodoros when editing them.  What about the pomodors
 
 
 ### Technical trade-off decisions
-- One thing I attempted to implement was adding a status tracker for each pomodoro (ie: "not_started", "in_progress", "complete") that would get updated whenever the user starts, pauses, or resumes a pomodoro. I also wanted to
+- One thing I attempted to implement was adding a status tracker for each pomodoro (ie: "not_started", "in_progress", "complete") that would get updated whenever the user starts, pauses, or resumes a pomodoro. I also wanted to update the remaining time for "in_progress" pomodoros whenever a user pauses the timer and also every minute of elapsed time.  The reason for that is because if internet connection fails, the browser crashes, or the user accidentally closes the browser the remaining time would still be stored so the user wouldn't have to start the pomodoro over.  This implementation proved to be difficult because of how the Pomodoro model was set up.  I didn't feel like it was necessary to have a collection just for Pomodoros and instead chose to embed them in each of the To Do documents they belong to.  The benefit of this was to improve querying/maintainability of the data 
+
+- I looked into more meaningful ways of notifying the user when a pomodoro timer was up.  In the end for ease of implementation and lack of time I went with the Flash message that I use for all notifications since it was simple and working.  I wanted to use a modal, but
