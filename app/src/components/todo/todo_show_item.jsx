@@ -62,7 +62,9 @@ class ToDoShowItem extends React.Component {
 
         <div className="stats-wrapper">
           <label className="complete-counter">Complete: { completeCounter }</label>
-          <label className="pomodoro-counter">Pomodoros: { this.props.attr.pomodoros.length }</label>
+          <label className="pomodoro-counter">Incomplete:
+            { this.props.attr.pomodoros.length - completeCounter }</label>
+          <label className="pomodoro-counter">Total: { this.props.attr.pomodoros.length }</label>
         </div>
 
         <PomodoroIndex pomodoros={ this.props.attr.pomodoros } />

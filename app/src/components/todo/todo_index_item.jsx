@@ -74,18 +74,20 @@ class ToDoItem extends React.Component {
         <button className="show-to-do-details"
           onClick={ this.showDetails }>▼</button>
 
-        <button className="show-to-do-item"
-          data-id={ this.props.attr._id.$oid }
-          onClick={ this.props.goToShowPage }>Show</button>
+        <div className="to-do-index-item-buttons-wrapper">
+          <button className="show-to-do-item"
+            data-id={ this.props.attr._id.$oid }
+            onClick={ this.props.goToShowPage }>Show</button>
 
-        <button className="edit-to-do-item"
-          onClick={ this.toggleEditForm }>{ buttonText }</button>
+          <button className="edit-to-do-item"
+            onClick={ this.toggleEditForm }>{ buttonText }</button>
 
-        <button className="delete-to-do-item"
-          onClick={ this.deleteToDoItem }>Delete</button>
+          <button className="delete-to-do-item"
+            onClick={ this.deleteToDoItem }>Delete</button>
+        </div>
 
         { detailView }
-        
+
         <ToDoForm mode={ "edit" }
           visible={ this.state.showEditForm }
           username={ this.props.username }

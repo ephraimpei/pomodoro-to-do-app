@@ -19,6 +19,10 @@
     cursor: pointer;
   }
 
+  .to-do-index-item-buttons-wrapper {
+    margin: $to-do-item-buttons-wrapper-margin;
+  }
+
   .show-to-do-details {
     border-radius: $to-do-show-details-button-radius;
   }

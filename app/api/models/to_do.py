@@ -14,7 +14,3 @@ class ToDo(db.Document):
     break_length = db.IntField(require=True)
     long_break_length = db.IntField(require=True)
     pomodoros = db.EmbeddedDocumentListField(Pomodoro)
-
-    meta = {
-        'ordering': ['+created_at']
-    }
