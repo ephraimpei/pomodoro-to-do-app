@@ -36508,7 +36508,7 @@
 	      (0, _jquery2.default)(".submit").addClass("disabled").prop("disabled", true);
 	
 	      var formData = new FormData();
-	
+	      debugger;
 	      formData.append("username", this.state.username);
 	      formData.append("password", this.state.password);
 	
@@ -36517,7 +36517,7 @@
 	  }, {
 	    key: 'handleKeyDown',
 	    value: function handleKeyDown(e) {
-	      if (e.charCode === 13) {
+	      if (e.keyCode === 13) {
 	        e.preventDefault();
 	        this.handleLoginSubmission();
 	      }
@@ -36885,7 +36885,7 @@
 	  }, {
 	    key: 'handleKeyPress',
 	    value: function handleKeyPress(e) {
-	      if (e.charCode === 13) {
+	      if (e.keyCode === 13) {
 	        this.handleSignUpSubmission();
 	      }
 	    }

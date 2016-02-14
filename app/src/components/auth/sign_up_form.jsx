@@ -33,7 +33,7 @@ class SignUpForm extends React.Component {
   }
 
   handleKeyPress (e) {
-    if (e.charCode === 13) { this.handleSignUpSubmission(); }
+    if (e.keyCode === 13) { this.handleSignUpSubmission(); }
   }
 
   changeUsername (e) {

@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
     $(".submit").addClass("disabled").prop("disabled", true);
 
     const formData = new FormData();
-
+    debugger;
     formData.append("username", this.state.username);
     formData.append("password", this.state.password);
 
@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
   }
 
   handleKeyDown (e) {
-    if (e.charCode === 13) {
+    if (e.keyCode === 13) {
       e.preventDefault();
       this.handleLoginSubmission();
     }
