@@ -36,6 +36,7 @@ Pomodoro To-Do List is a single page application that allows users to create, up
   + MongoDB
 
 ### App features
+
 - Hand rolled user authentication (up to 5 session supported)
 - Stores user, to do items, and pomodoros in MongoDB (user credentials hashed with BCrypt)
 - Incorporates latest JavaScript ES6 features and syntax
@@ -50,6 +51,8 @@ Pomodoro To-Do List is a single page application that allows users to create, up
 
 - I spent some time getting multiple session support working correctly.  This was a time trade-off since I knew this wasn't a requirement, but I decided to spend time implementing it because I believe proper session management is very important.  It's better for users to be able to log in with multiple sessions rather than just one. Number of sessions per user is limited to 5.
 
+- To notify the user after a pomodoro or break timer is up, I display a flash message and play a "ding" sound.  I thought playing the "ding" sound was good enough since it is very hard to miss, but I also decided to display a flash message because it was very easy to implement since it is the same function I use for all of my notifications and it will notify users who are deaf or hard of hearing.  I realize the flash notification positioning can be improved depending what the user is being notified of.  Right now it's positioned a certain % from the top and left of the viewport.  I added this to the future improvements section.  
+
 ### Technical trade-off decisions
 
 - I chose to use MongoDB over an RDB because I initially didn't think I'd be doing anything complicated with the data (proved to be slightly wrong here... see next bullet).  MongoDB and NoSQL in general are great for simplified data sets whereas SQL databases are good if there are complicated data requirements for reporting, analytics, etc.  Also, almost all of my planned calculations for pomodoros (number of complete/incomplete/total, pomodoros until long break) all are done in the front end since they were so simple.  
@@ -58,11 +61,9 @@ Pomodoro To-Do List is a single page application that allows users to create, up
 
 - Getting the timer to be very accurate proved tricky.  I calculate elapsed time using system time (new Date()) and get the remaining time by subtracting elapsed time from the start time.  There is some lag with getting state to update in React.  For the timer component, updating state with a new start time takes about 800ms, therefore the first second on the timer is only 200ms.  To account for this I added 800ms to the start time when invoking the setState method.  I realize there is probably a better solution like exploring the React lifecycle methods or even taking a step back and reorganizing my components such that the timer and start time are set at exactly the same time.  However, due to time constraints and for the sake of getting the product out I went with adding 800ms when setting the start time state.
 
-- I looked into more meaningful ways of notifying the user when a pomodoro timer was up.  In the end for ease of implementation and lack of time I went with the Flash message that I use for all notifications since it was simple and working.  I wanted to use a modal, but didn't have the time to implement it.
-
 ### Future developments
+- Improve flash notification positioning for different types of notifications
 - Secure the API with auth token / API token
-- Add feature to auto start the pomodoros and break timers
 - Implement status tracking for the pomodoros to track remaining time left
 - Use modal or another feature to notify user
 - Add avatar pictures to user profile
