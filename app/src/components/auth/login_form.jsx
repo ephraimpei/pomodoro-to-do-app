@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
     $(".submit").addClass("disabled").prop("disabled", true);
 
     const formData = new FormData();
-    
+
     formData.append("username", this.state.username);
     formData.append("password", this.state.password);
 
@@ -41,6 +41,7 @@ class LoginForm extends React.Component {
     removeInvalidClass("form-username-input");
     removeInvalidClass("form-password-input");
 
+    $(".login-form-demo-account").addClass("disabled").prop("disabled", true);
     $(".submit").addClass("disabled").prop("disabled", true);
 
     const formData = new FormData();

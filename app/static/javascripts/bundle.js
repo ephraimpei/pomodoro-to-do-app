@@ -36532,6 +36532,7 @@
 	      (0, _auth.removeInvalidClass)("form-username-input");
 	      (0, _auth.removeInvalidClass)("form-password-input");
 	
+	      (0, _jquery2.default)(".login-form-demo-account").addClass("disabled").prop("disabled", true);
 	      (0, _jquery2.default)(".submit").addClass("disabled").prop("disabled", true);
 	
 	      var formData = new FormData();
