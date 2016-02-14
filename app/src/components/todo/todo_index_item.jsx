@@ -71,10 +71,10 @@ class ToDoItem extends React.Component {
           data-id={ this.props.attr._id.$oid }
           onClick={ this.props.goToShowPage }>{ this.props.attr.title }</label>
 
-        <button className="show-to-do-details"
-          onClick={ this.showDetails }>▼</button>
-
         <div className="to-do-index-item-buttons-wrapper">
+          <button className="show-to-do-details"
+            onClick={ this.showDetails }>▼</button>
+          
           <button className="show-to-do-item"
             data-id={ this.props.attr._id.$oid }
             onClick={ this.props.goToShowPage }>Show</button>

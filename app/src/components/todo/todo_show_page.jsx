@@ -56,6 +56,8 @@ class ToDoShowPage extends React.Component {
 
     return (
       <div className="to-do-show-page">
+        <label className="logged-in">Logged in as: { CurrentUserStore.get().username }</label>
+        
         <div className="to-do-show-item-wrapper">
           { toDoShowItem }
         </div>
