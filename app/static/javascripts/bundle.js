@@ -44689,8 +44689,7 @@
 	    _this.endTimer = _this.endTimer.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
-	      // remainingTime: this.props.timerLength * 60000,
-	      remainingTime: 5000,
+	      remainingTime: _this.props.timerLength * 60000,
 	      elapsedTime: 0,
 	      started: false,
 	      paused: false

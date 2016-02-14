@@ -11,8 +11,7 @@ class Timer extends React.Component {
     this.endTimer = this.endTimer.bind(this);
     this.state={
       start: new Date().getTime(),
-      // remainingTime: this.props.timerLength * 60000,
-      remainingTime: 5000,
+      remainingTime: this.props.timerLength * 60000,
       elapsedTime: 0,
       started: false,
       paused: false
