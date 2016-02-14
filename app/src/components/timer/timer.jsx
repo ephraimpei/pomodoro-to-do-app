@@ -30,12 +30,15 @@ class Timer extends React.Component {
   }
 
   resetTimer () {
-    this.setState({
-      start: new Date().getTime(),
-      elapsedTime: 0,
-      started: false,
-      paused: false
-    });
+    setTimeout( () => {
+      this.setState({
+        start: new Date().getTime(),
+        elapsedTime: 0,
+        started: false,
+        paused: false
+      });
+    }, 100);
+
   }
 
   tickInterval () {
@@ -61,7 +64,7 @@ class Timer extends React.Component {
   performAction (option) {
     switch (option) {
       case "Start":
-        this.setState({ start: new Date().getTime(), started: true });
+        this.setState({ start: new Date().getTime() + 800, started: true });
         this.interval = window.setInterval(this.tickInterval, 100);
         break;
       case "Pause":

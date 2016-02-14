@@ -44707,12 +44707,16 @@
 	  }, {
 	    key: 'resetTimer',
 	    value: function resetTimer() {
-	      this.setState({
-	        start: new Date().getTime(),
-	        elapsedTime: 0,
-	        started: false,
-	        paused: false
-	      });
+	      var _this2 = this;
+	
+	      setTimeout(function () {
+	        _this2.setState({
+	          start: new Date().getTime(),
+	          elapsedTime: 0,
+	          started: false,
+	          paused: false
+	        });
+	      }, 100);
 	    }
 	  }, {
 	    key: 'tickInterval',
@@ -44744,7 +44748,7 @@
 	    value: function performAction(option) {
 	      switch (option) {
 	        case "Start":
-	          this.setState({ start: new Date().getTime(), started: true });
+	          this.setState({ start: new Date().getTime() + 800, started: true });
 	          this.interval = window.setInterval(this.tickInterval, 100);
 	          break;
 	        case "Pause":
