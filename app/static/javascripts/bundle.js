@@ -44687,9 +44687,11 @@
 	    _this.resetTimer = _this.resetTimer.bind(_this);
 	    _this.performAction = _this.performAction.bind(_this);
 	    _this.endTimer = _this.endTimer.bind(_this);
+	    _this.initAudioPlayer = _this.initAudioPlayer.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
-	      remainingTime: _this.props.timerLength * 60000,
+	      // remainingTime: this.props.timerLength * 60000,
+	      remainingTime: 5000,
 	      elapsedTime: 0,
 	      started: false,
 	      paused: false
@@ -44708,6 +44710,17 @@
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      clearInterval(this.interval);
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.initAudioPlayer();
+	    }
+	  }, {
+	    key: 'initAudioPlayer',
+	    value: function initAudioPlayer() {
+	      this.audio = new Audio();
+	      this.audio.src = "/audio/ding.wav";
 	    }
 	  }, {
 	    key: 'resetTimer',
@@ -44736,6 +44749,7 @@
 	    key: 'endTimer',
 	    value: function endTimer() {
 	      clearInterval(this.interval);
+	      this.audio.play();
 	      this.props.timerFinished();
 	      this.resetTimer();
 	    }

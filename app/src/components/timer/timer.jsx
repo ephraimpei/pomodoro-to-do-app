@@ -9,9 +9,11 @@ class Timer extends React.Component {
     this.resetTimer = this.resetTimer.bind(this);
     this.performAction = this.performAction.bind(this);
     this.endTimer = this.endTimer.bind(this);
+    this.initAudioPlayer = this.initAudioPlayer.bind(this);
     this.state={
       start: new Date().getTime(),
-      remainingTime: this.props.timerLength * 60000,
+      // remainingTime: this.props.timerLength * 60000,
+      remainingTime: 5000,
       elapsedTime: 0,
       started: false,
       paused: false
@@ -26,6 +28,15 @@ class Timer extends React.Component {
 
   componentWillUnmount () {
     clearInterval(this.interval);
+  }
+
+  componentDidMount () {
+    this.initAudioPlayer();
+  }
+
+  initAudioPlayer () {
+    this.audio = new Audio();
+    this.audio.src = "/audio/ding.wav";
   }
 
   resetTimer () {
@@ -48,6 +59,7 @@ class Timer extends React.Component {
 
   endTimer () {
     clearInterval(this.interval);
+    this.audio.play();
     this.props.timerFinished();
     this.resetTimer();
   }
