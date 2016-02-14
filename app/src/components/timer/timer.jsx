@@ -11,7 +11,8 @@ class Timer extends React.Component {
     this.endTimer = this.endTimer.bind(this);
     this.state={
       start: new Date().getTime(),
-      remainingTime: this.props.timerLength * 60000,
+      // remainingTime: this.props.timerLength * 60000,
+      remainingTime: 5000,
       elapsedTime: 0,
       started: false,
       paused: false
@@ -87,7 +88,7 @@ class Timer extends React.Component {
     if (this.props.disabled) {
       [btnContrClass, btnSkipClass] = ["timer-controller disabled", "timer-skip disabled"];
     } else {
-      [btnContrClass, btnSkipClass] = "timer-controller";
+      [btnContrClass, btnSkipClass] = ["timer-controller", "timer-skip"];
     }
 
     if (!this.state.started) {
