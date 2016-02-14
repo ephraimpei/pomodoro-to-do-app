@@ -12,8 +12,7 @@ class Timer extends React.Component {
     this.initAudioPlayer = this.initAudioPlayer.bind(this);
     this.state={
       start: new Date().getTime(),
-      // remainingTime: this.props.timerLength * 60000,
-      remainingTime: 5000,
+      remainingTime: this.props.timerLength * 60000,
       elapsedTime: 0,
       started: false,
       paused: false
@@ -21,8 +20,10 @@ class Timer extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.done) {
+    if (nextProps.toDoComplete) {
       this.performAction("Stop");
+    } else if (nextProps.myTurn && this.props.autoStart && this.props.toDoStarted) {
+      this.performAction("Start");
     }
   }
 
@@ -58,7 +59,7 @@ class Timer extends React.Component {
   }
 
   endTimer () {
-    clearInterval(this.interval);
+    this.performAction("Stop");
     this.audio.play();
     this.props.timerFinished();
     this.resetTimer();
@@ -75,6 +76,7 @@ class Timer extends React.Component {
   performAction (option) {
     switch (option) {
       case "Start":
+        if (this.props.klass === "pomodoro") { this.props.startToDo(); }
         this.setState({ start: new Date().getTime() + 800, started: true });
         this.interval = window.setInterval(this.tickInterval, 100);
         break;

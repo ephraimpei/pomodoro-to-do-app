@@ -36508,7 +36508,7 @@
 	      (0, _jquery2.default)(".submit").addClass("disabled").prop("disabled", true);
 	
 	      var formData = new FormData();
-	      debugger;
+	
 	      formData.append("username", this.state.username);
 	      formData.append("password", this.state.password);
 	
@@ -44404,10 +44404,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoShowItem).call(this, props, context));
 	
 	    _this.handleAutoChange = _this.handleAutoChange.bind(_this);
-	    _this.state = {
-	      complete: _this.props.attr.complete,
-	      timerAutoStart: true
-	    };
+	    _this.state = { complete: _this.props.attr.complete, timerAutoStart: true };
 	    return _this;
 	  }
 	
@@ -44419,7 +44416,8 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      (0, _jquery2.default)(".auto-start-on-radio").prop("checked", true);
+	      (0, _jquery2.default)(".auto-start-on-radio").prop("checked", this.state.timerAutoStart);
+	      (0, _jquery2.default)(".auto-start-off-radio").prop("checked", !this.state.timerAutoStart);
 	    }
 	  }, {
 	    key: 'handleAutoChange',
@@ -44573,11 +44571,17 @@
 	    _this.pomodoroTimerFinished = _this.pomodoroTimerFinished.bind(_this);
 	    _this.breakTimerFinished = _this.breakTimerFinished.bind(_this);
 	    _this.longBreakTimerFinished = _this.longBreakTimerFinished.bind(_this);
-	    _this.state = { turn: "pomodoro" };
+	    _this.startToDo = _this.startToDo.bind(_this);
+	    _this.state = { turn: "pomodoro", toDoStarted: false };
 	    return _this;
 	  }
 	
 	  _createClass(TimerDisplay, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return this.props.numCompleted === nextProps.numCompleted;
+	    }
+	  }, {
 	    key: 'pomodoroTimerFinished',
 	    value: function pomodoroTimerFinished() {
 	      this.props.finishPomodoro(this.props.numCompleted);
@@ -44601,6 +44605,13 @@
 	      (0, _flash.displayFlashMessage)("Long break time's over!");
 	
 	      this.setState({ turn: "pomodoro" });
+	    }
+	  }, {
+	    key: 'startToDo',
+	    value: function startToDo() {
+	      if (!this.state.toDoStarted) {
+	        this.setState({ toDoStarted: true });
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -44640,25 +44651,29 @@
 	        'div',
 	        { className: 'timer-display' },
 	        _react2.default.createElement(_timer2.default, { klass: 'pomodoro',
-	          imgUrl: '',
 	          timerLength: this.props.toDo.pomodoro_length,
 	          timerFinished: this.pomodoroTimerFinished,
-	          done: this.props.complete,
-	          turn: this.state.turn,
+	          toDoComplete: this.props.complete,
+	          myTurn: this.state.turn === "pomodoro",
+	          autoStart: this.props.autoMode,
+	          toDoStarted: this.state.toDoStarted,
+	          startToDo: this.startToDo,
 	          disabled: pomodoroDisabled }),
 	        _react2.default.createElement(_timer2.default, { klass: 'short-break',
-	          imgUrl: '',
 	          timerLength: this.props.toDo.break_length,
 	          timerFinished: this.breakTimerFinished,
-	          done: this.props.complete,
-	          turn: this.state.turn,
+	          toDoComplete: this.props.complete,
+	          myTurn: this.state.turn === "break",
+	          autoStart: this.props.autoMode,
+	          toDoStarted: this.state.toDoStarted,
 	          disabled: breakDisabled }),
 	        _react2.default.createElement(_timer2.default, { klass: 'long-break',
-	          imgUrl: '',
 	          timerLength: this.props.toDo.long_break_length,
 	          timerFinished: this.longBreakTimerFinished,
-	          done: this.props.complete,
-	          turn: this.state.turn,
+	          toDoComplete: this.props.complete,
+	          myTurn: this.state.turn === "longbreak",
+	          autoStart: this.props.autoMode,
+	          toDoStarted: this.state.toDoStarted,
 	          disabled: longBreakDisabled })
 	      );
 	    }
@@ -44711,8 +44726,7 @@
 	    _this.initAudioPlayer = _this.initAudioPlayer.bind(_this);
 	    _this.state = {
 	      start: new Date().getTime(),
-	      // remainingTime: this.props.timerLength * 60000,
-	      remainingTime: 5000,
+	      remainingTime: _this.props.timerLength * 60000,
 	      elapsedTime: 0,
 	      started: false,
 	      paused: false
@@ -44723,8 +44737,10 @@
 	  _createClass(Timer, [{
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.done) {
+	      if (nextProps.toDoComplete) {
 	        this.performAction("Stop");
+	      } else if (nextProps.myTurn && this.props.autoStart && this.props.toDoStarted) {
+	        this.performAction("Start");
 	      }
 	    }
 	  }, {
@@ -44769,7 +44785,7 @@
 	  }, {
 	    key: 'endTimer',
 	    value: function endTimer() {
-	      clearInterval(this.interval);
+	      this.performAction("Stop");
 	      this.audio.play();
 	      this.props.timerFinished();
 	      this.resetTimer();
@@ -44788,6 +44804,9 @@
 	    value: function performAction(option) {
 	      switch (option) {
 	        case "Start":
+	          if (this.props.klass === "pomodoro") {
+	            this.props.startToDo();
+	          }
 	          this.setState({ start: new Date().getTime() + 800, started: true });
 	          this.interval = window.setInterval(this.tickInterval, 100);
 	          break;

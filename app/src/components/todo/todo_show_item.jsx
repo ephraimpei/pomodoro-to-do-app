@@ -10,10 +10,7 @@ class ToDoShowItem extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleAutoChange = this.handleAutoChange.bind(this);
-    this.state = {
-      complete: this.props.attr.complete,
-      timerAutoStart: true
-    };
+    this.state = { complete: this.props.attr.complete, timerAutoStart: true };
   }
 
   componentWillReceiveProps (nextProps) {
@@ -21,7 +18,8 @@ class ToDoShowItem extends React.Component {
   }
 
   componentDidMount () {
-    $(".auto-start-on-radio").prop("checked", true);
+    $(".auto-start-on-radio").prop("checked", this.state.timerAutoStart);
+    $(".auto-start-off-radio").prop("checked", !this.state.timerAutoStart);
   }
 
   handleAutoChange (e) {

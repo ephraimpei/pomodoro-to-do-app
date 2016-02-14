@@ -9,7 +9,12 @@ class TimerDisplay extends React.Component {
     this.pomodoroTimerFinished = this.pomodoroTimerFinished.bind(this);
     this.breakTimerFinished = this.breakTimerFinished.bind(this);
     this.longBreakTimerFinished = this.longBreakTimerFinished.bind(this);
-    this.state={ turn: "pomodoro" };
+    this.startToDo = this.startToDo.bind(this);
+    this.state={ turn: "pomodoro", toDoStarted: false };
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    return this.props.numCompleted === nextProps.numCompleted;
   }
 
   pomodoroTimerFinished () {
@@ -34,6 +39,10 @@ class TimerDisplay extends React.Component {
     this.setState({ turn: "pomodoro" });
   }
 
+  startToDo () {
+    if (!this.state.toDoStarted) { this.setState({ toDoStarted: true }); }
+  }
+
   render () {
     let pomodoroDisabled, breakDisabled, longBreakDisabled;
 
@@ -56,27 +65,31 @@ class TimerDisplay extends React.Component {
     return (
       <div className="timer-display">
         <Timer klass="pomodoro"
-          imgUrl=""
           timerLength={ this.props.toDo.pomodoro_length }
           timerFinished={ this.pomodoroTimerFinished }
-          done={ this.props.complete }
-          turn={ this.state.turn }
+          toDoComplete={ this.props.complete }
+          myTurn={ this.state.turn === "pomodoro" }
+          autoStart={ this.props.autoMode }
+          toDoStarted={ this.state.toDoStarted }
+          startToDo={ this.startToDo }
           disabled={ pomodoroDisabled } />
 
         <Timer klass="short-break"
-          imgUrl=""
           timerLength={ this.props.toDo.break_length }
           timerFinished={ this.breakTimerFinished }
-          done={ this.props.complete }
-          turn={ this.state.turn }
+          toDoComplete={ this.props.complete }
+          myTurn={ this.state.turn === "break" }
+          autoStart={ this.props.autoMode }
+          toDoStarted={ this.state.toDoStarted }
           disabled={ breakDisabled } />
 
         <Timer klass="long-break"
-          imgUrl=""
           timerLength={ this.props.toDo.long_break_length }
           timerFinished={ this.longBreakTimerFinished }
-          done={ this.props.complete }
-          turn={ this.state.turn }
+          toDoComplete={ this.props.complete }
+          myTurn={ this.state.turn === "longbreak" }
+          autoStart={ this.props.autoMode }
+          toDoStarted={ this.state.toDoStarted }
           disabled={ longBreakDisabled } />
       </div>
     );
