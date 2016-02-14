@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import PomodoroIndex from '../pomodoros/pomodoro_index.jsx';
 import TimerDisplay from '../timer/timer_display.jsx';
 import ApiToDoUtil from '../../apiutil/api_to_do_util.js';
@@ -8,8 +9,10 @@ import { displayFlashMessage } from '../../utilities/flash.js';
 class ToDoShowItem extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.handleAutoChange = this.handleAutoChange.bind(this);
     this.state = {
       complete: this.props.attr.complete,
+      timerAutoStart: true
     };
   }
 
@@ -17,22 +20,14 @@ class ToDoShowItem extends React.Component {
     this.setState({ complete: nextProps.attr.complete });
   }
 
-  deleteToDoItem (e) {
-    e.preventDefault();
-
-    ApiToDoUtil.delete(this.props.username, this.props.attr._id.$oid, displayFlashMessage);
+  componentDidMount () {
+    $(".auto-start-on-radio").prop("checked", true);
   }
 
-  toggleEditForm (e) {
-    e.preventDefault();
+  handleAutoChange (e) {
+    const timerAutoStart = e.currentTarget.value === "on" ? true : false;
 
-    const newState = this.state.showEditForm ? false : true;
-
-    this.setState({ showEditForm: newState });
-  }
-
-  hideForm () {
-    this.setState({ showEditForm: false });
+    this.setState({ timerAutoStart });
   }
 
   render () {
@@ -72,10 +67,26 @@ class ToDoShowItem extends React.Component {
         <label className="pomodoro-long-break-counter">
           Pomodoros until long break: { pomodorosToLongBreak }</label>
 
+        <div className="auto-start-wrapper">
+          <label className="auto-start-label">Timer auto start: </label>
+
+          <label className="auto-start-on-label">on
+            <input type="radio" name="test" className="auto-start-on-radio"
+              onChange={ this.handleAutoChange } value="on" />
+          </label>
+
+          <label className="auto-start-off-label">off
+            <input type="radio" name="test" className="auto-start-off-radio"
+              onChange={ this.handleAutoChange } value="off" />
+          </label>
+        </div>
+
+
         <TimerDisplay toDo={ this.props.attr }
           numCompleted={ completeCounter }
           complete={ this.state.complete }
-          finishPomodoro={ this.props.finishPomodoro }/>
+          finishPomodoro={ this.props.finishPomodoro }
+          autoMode={ this.state.timerAutoStart }/>
       </div>
     );
   }

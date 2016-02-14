@@ -44365,6 +44365,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _jquery = __webpack_require__(7);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
 	var _pomodoro_index = __webpack_require__(308);
 	
 	var _pomodoro_index2 = _interopRequireDefault(_pomodoro_index);
@@ -44399,8 +44403,10 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ToDoShowItem).call(this, props, context));
 	
+	    _this.handleAutoChange = _this.handleAutoChange.bind(_this);
 	    _this.state = {
-	      complete: _this.props.attr.complete
+	      complete: _this.props.attr.complete,
+	      timerAutoStart: true
 	    };
 	    return _this;
 	  }
@@ -44411,25 +44417,16 @@
 	      this.setState({ complete: nextProps.attr.complete });
 	    }
 	  }, {
-	    key: 'deleteToDoItem',
-	    value: function deleteToDoItem(e) {
-	      e.preventDefault();
-	
-	      _api_to_do_util2.default.delete(this.props.username, this.props.attr._id.$oid, _flash.displayFlashMessage);
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      (0, _jquery2.default)(".auto-start-on-radio").prop("checked", true);
 	    }
 	  }, {
-	    key: 'toggleEditForm',
-	    value: function toggleEditForm(e) {
-	      e.preventDefault();
+	    key: 'handleAutoChange',
+	    value: function handleAutoChange(e) {
+	      var timerAutoStart = e.currentTarget.value === "on" ? true : false;
 	
-	      var newState = this.state.showEditForm ? false : true;
-	
-	      this.setState({ showEditForm: newState });
-	    }
-	  }, {
-	    key: 'hideForm',
-	    value: function hideForm() {
-	      this.setState({ showEditForm: false });
+	      this.setState({ timerAutoStart: timerAutoStart });
 	    }
 	  }, {
 	    key: 'render',
@@ -44494,10 +44491,34 @@
 	          'Pomodoros until long break: ',
 	          pomodorosToLongBreak
 	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'auto-start-wrapper' },
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'auto-start-label' },
+	            'Timer auto start: '
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'auto-start-on-label' },
+	            'on',
+	            _react2.default.createElement('input', { type: 'radio', name: 'test', className: 'auto-start-on-radio',
+	              onChange: this.handleAutoChange, value: 'on' })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'auto-start-off-label' },
+	            'off',
+	            _react2.default.createElement('input', { type: 'radio', name: 'test', className: 'auto-start-off-radio',
+	              onChange: this.handleAutoChange, value: 'off' })
+	          )
+	        ),
 	        _react2.default.createElement(_timer_display2.default, { toDo: this.props.attr,
 	          numCompleted: completeCounter,
 	          complete: this.state.complete,
-	          finishPomodoro: this.props.finishPomodoro })
+	          finishPomodoro: this.props.finishPomodoro,
+	          autoMode: this.state.timerAutoStart })
 	      );
 	    }
 	  }]);
