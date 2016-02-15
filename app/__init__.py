@@ -7,7 +7,12 @@ mongolab_uri = os.environ['MONGOLAB_URI']
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
-# MongoLab db connection settings
+#Local MongoDB connection settings
+# app.config["MONGODB_SETTINGS"] = {
+#     "DB": pomodoro_db_name
+# }
+
+#MongoLab db connection settings
 app.config["MONGODB_SETTINGS"] = {
     "DB": pomodoro_db_name,
     "host": mongolab_uri

@@ -37696,6 +37696,22 @@
 	      }
 	    }
 	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (this.props.mode === "edit" && this.props.attr._id.$oid !== nextProps.attr._id.$oid) {
+	        this.setState({
+	          title: nextProps.attr.title,
+	          description: nextProps.attr.description,
+	          numPomodoros: nextProps.attr.pomodoros.length,
+	          pomodoroLength: nextProps.attr.pomodoro_length,
+	          breakLength: nextProps.attr.break_length,
+	          longBreakLength: nextProps.attr.long_break_length,
+	          toDoTitleErrors: [],
+	          toDoDescriptionErrors: []
+	        });
+	      }
+	    }
+	  }, {
 	    key: 'handleToDoSubmssion',
 	    value: function handleToDoSubmssion(e) {
 	      if (e) {
