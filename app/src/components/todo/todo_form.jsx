@@ -56,6 +56,7 @@ class ToDoForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // only update if receiving props from a different ToDo
     if (this.props.mode === "edit" && this.props.attr._id.$oid !== nextProps.attr._id.$oid) {
       this.setState({
         title: nextProps.attr.title,
