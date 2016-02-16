@@ -47,8 +47,6 @@ Pomodoro To-Do List is a single page application that allows users to create, up
 
 ### Product trade-off decisions
 
-- When each timer is over, the next timer doesn't start automatically.  Right now, the user has freedom to start, pause, and skip timers as desired.  I thought about implementing a feature where the timers start automatically after one timer ends (ie: pomodoro timer finished, break timer starts).  However, this would take some time and the product needs to get shipped!  Therefore I left it out (this is added to future developments section)
-
 - I spent some time getting multiple session support working correctly.  This was a time trade-off since I knew this wasn't a requirement, but I decided to spend time implementing it because I believe proper session management is very important.  It's better for users to be able to log in with multiple sessions rather than just one. Number of sessions per user is limited to 5.
 
 - To notify the user after a pomodoro or break timer is up, I display a flash message and play a "ding" sound.  I thought playing the "ding" sound was good enough since it is very hard to miss, but I also decided to display a flash message because it was very easy to implement since it is the same function I use for all of my notifications and it will notify users who are deaf or hard of hearing.  I realize the flash notification positioning can be improved depending what the user is being notified of.  Right now it's positioned a certain % from the top and left of the viewport.  I added this to the future improvements section.  
